@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://uoh64wdou17v"]
+
+[ext_resource type="Script" uid="uid://dq6w73c0n8fs5" path="res://Script/building_production.gd" id="1_jvrr8"]
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="2_8t6ev"]
+
+[sub_resource type="Gradient" id="Gradient_vscd0"]
+offsets = PackedFloat32Array(0.4526678, 0.52667814, 0.5490534, 0.59552497)
+colors = PackedColorArray(0, 0, 0, 0.4627451, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7w5e0"]
+gradient = SubResource("Gradient_vscd0")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_bwnxn"]
+offsets = PackedFloat32Array(0.43137255, 0.49673203)
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_gge46"]
+gradient = SubResource("Gradient_bwnxn")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="BuildingProduction" type="Control" unique_id=1758492995]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_jvrr8")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1231301779]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRectBackground" type="TextureRect" parent="." unique_id=367418334]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8t6ev")
+stretch_mode = 5
+
+[node name="ItemPic" type="Control" parent="." unique_id=229719202]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ItemPic" unique_id=1453387241]
+layout_mode = 1
+offset_left = -64.0
+offset_top = -67.0
+offset_right = 64.0
+offset_bottom = 61.0
+step = 0.1
+fill_mode = 4
+texture_under = SubResource("GradientTexture2D_7w5e0")
+texture_progress = SubResource("GradientTexture2D_gge46")
+
+[node name="TextureRectItem" type="TextureRect" parent="ItemPic" unique_id=1955999197]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8t6ev")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LabelWarning" type="Label" parent="ItemPic" unique_id=1592527134]
+visible = false
+layout_mode = 0
+offset_left = 29.0
+offset_top = -61.0
+offset_right = 69.0
+offset_bottom = -11.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_font_sizes/font_size = 36
+text = "!"
+
+[node name="TimerProduction" type="Timer" parent="." unique_id=1326446217]
+wait_time = 0.1
+
+[node name="Button" type="Button" parent="." unique_id=1078998820]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[connection signal="timeout" from="TimerProduction" to="." method="_on_timer_production_timeout"]
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

@@ -1,0 +1,60 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dw6t3pjvosx65"]
+
+[ext_resource type="Texture2D" uid="uid://bru5c23xt33n5" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_eye_1.png" id="1_e064l"]
+[ext_resource type="Texture2D" uid="uid://0pukdqo5heu1" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_eye_2.png" id="2_o4ktl"]
+[ext_resource type="Texture2D" uid="uid://dggs4tojpgx7s" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_eye_3.png" id="3_f0dsy"]
+[ext_resource type="Texture2D" uid="uid://dpuvq10yw5e7e" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_eye_4.png" id="4_krhju"]
+[ext_resource type="Texture2D" uid="uid://bbvt2sltmv1p1" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_eye_5.png" id="5_g4lh5"]
+[ext_resource type="Texture2D" uid="uid://civivnawb4hii" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_eye_6.png" id="6_d5yhw"]
+[ext_resource type="Texture2D" uid="uid://bvocqj0pnebjf" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_eye_7.png" id="7_h1u83"]
+[ext_resource type="Texture2D" uid="uid://c3awew4cw3u58" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_eye_8.png" id="8_2l7we"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_e064l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o4ktl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f0dsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_krhju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g4lh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d5yhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h1u83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_2l7we")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_h1u83")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_d5yhw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_g4lh5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_krhju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f0dsy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o4ktl")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]

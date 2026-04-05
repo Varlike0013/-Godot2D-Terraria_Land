@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://drgtbjb1posoa"]
+
+[ext_resource type="Script" uid="uid://cdvjdkiwgqvf8" path="res://Script/building_row.gd" id="1_bmj7i"]
+[ext_resource type="Texture2D" uid="uid://dw2a775uar0ht" path="res://image/button_mobile/lineDark/lineDark11.png" id="3_kh3nr"]
+
+[node name="BuildingRow" type="HBoxContainer" unique_id=633264727]
+custom_minimum_size = Vector2(0, 150)
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_bmj7i")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1454038642]
+layout_mode = 2
+
+[node name="TextureButton" type="TextureButton" parent="." unique_id=778881029]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("3_kh3nr")
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

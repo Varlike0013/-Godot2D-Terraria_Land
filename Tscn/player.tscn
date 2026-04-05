@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://8pjrsdi30vxr"]
+
+[ext_resource type="Script" uid="uid://3yd5d2tk70yp" path="res://Script/charater/player.gd" id="1_pgo6l"]
+[ext_resource type="SpriteFrames" uid="uid://bmxp78hsf5hrg" path="res://Enemy/SpriteFrame/Swamp_Zombie/Swamp_Zombie_sprite_frames.tres" id="2_p8jg4"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Tscn/health_bar.tscn" id="3_o78tl"]
+[ext_resource type="Texture2D" uid="uid://4mfk0gvoc8nh" path="res://image/areaRound.png" id="4_p8jg4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqtel"]
+size = Vector2(15, 42)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pgo6l"]
+
+[node name="Player" type="RigidBody2D" unique_id=1360645317]
+script = ExtResource("1_pgo6l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1165773793]
+position = Vector2(-2, -21)
+sprite_frames = ExtResource("2_p8jg4")
+autoplay = "default"
+frame_progress = 0.7305384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=895679201]
+position = Vector2(-0.5, -21)
+shape = SubResource("RectangleShape2D_hqtel")
+
+[node name="Area2DAttack" type="Area2D" parent="." unique_id=711139296]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DAttack" unique_id=1512290720]
+position = Vector2(0, -32)
+scale = Vector2(25, 25)
+shape = SubResource("CircleShape2D_pgo6l")
+
+[node name="AreaRound" type="Sprite2D" parent="Area2DAttack/CollisionShape2D" unique_id=153518071]
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("4_p8jg4")
+
+[node name="Control" type="Control" parent="." unique_id=979082964]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HealthBar" parent="Control" unique_id=1260098963 node_paths=PackedStringArray("bind_node") instance=ExtResource("3_o78tl")]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -56.0
+offset_right = 142.0
+offset_bottom = -29.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)
+bind_node = NodePath("../..")
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=1812736048]

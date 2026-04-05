@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://df3arr47xhg3x"]
+
+[ext_resource type="Script" uid="uid://d2fj1rp2u541w" path="res://Script/production_item_make.gd" id="1_g166j"]
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="1_tdrjk"]
+
+[node name="ProductionItemMake" type="PanelContainer" unique_id=1633188126]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_g166j")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=762058117]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2132205763]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=1164693709]
+layout_mode = 2
+texture = ExtResource("1_tdrjk")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="LabelQuality" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1894782738]
+layout_mode = 2
+text = "x???"
+horizontal_alignment = 1
+
+[node name="LabelTime" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1697808843]
+layout_mode = 2
+text = "3.0 sec"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=1814795670]
+layout_mode = 2
+flat = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

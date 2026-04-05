@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dfgkem1l2ki2"]
+
+[ext_resource type="Texture2D" uid="uid://ja5e7agxgd43" path="res://Placed/Forest_Pylon_(placed)/Forest_Pylon_(placed) (1).png" id="1_mgox7"]
+[ext_resource type="Texture2D" uid="uid://b6jj84kq8n7ns" path="res://Placed/Forest_Pylon_(placed)/Forest_Pylon_(placed) (2).png" id="2_kqi5n"]
+[ext_resource type="Texture2D" uid="uid://5blo5kdwy2le" path="res://Placed/Forest_Pylon_(placed)/Forest_Pylon_(placed) (3).png" id="3_0s602"]
+[ext_resource type="Texture2D" uid="uid://b56c4gxg2ktte" path="res://Placed/Forest_Pylon_(placed)/Forest_Pylon_(placed) (4).png" id="4_bfhj5"]
+[ext_resource type="Texture2D" uid="uid://db1bxe8f6xdg3" path="res://Placed/Forest_Pylon_(placed)/Forest_Pylon_(placed) (5).png" id="5_pdynf"]
+[ext_resource type="Texture2D" uid="uid://b81fx3652umu0" path="res://Placed/Forest_Pylon_(placed)/Forest_Pylon_(placed) (6).png" id="6_eyuft"]
+[ext_resource type="Texture2D" uid="uid://hply3oha8nc8" path="res://Placed/Forest_Pylon_(placed)/Forest_Pylon_(placed) (7).png" id="7_556q7"]
+[ext_resource type="Texture2D" uid="uid://bcn3w046vu5n0" path="res://Placed/Forest_Pylon_(placed)/Forest_Pylon_(placed) (8).png" id="8_p7y6n"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mgox7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kqi5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0s602")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_bfhj5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_pdynf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_eyuft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_556q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_p7y6n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

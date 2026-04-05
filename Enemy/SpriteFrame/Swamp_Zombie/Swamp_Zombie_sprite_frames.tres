@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://bmxp78hsf5hrg"]
+
+[ext_resource type="Texture2D" uid="uid://38bi3p234bbv" path="res://Enemy/SpriteFrame/Swamp_Zombie/Swamp_Zombie_wps图片_1.png" id="1_teygq"]
+[ext_resource type="Texture2D" uid="uid://m0flkvm8cvji" path="res://Enemy/SpriteFrame/Swamp_Zombie/Swamp_Zombie_wps图片_2.png" id="2_3all3"]
+[ext_resource type="Texture2D" uid="uid://c11x0cdyq6417" path="res://Enemy/SpriteFrame/Swamp_Zombie/Swamp_Zombie_wps图片_3.png" id="3_qsmcd"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_teygq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3all3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qsmcd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bi6iqri2m8m6b"]
+
+[ext_resource type="Script" uid="uid://bfwdsq311nkpj" path="res://Script/top_index_slot.gd" id="1_ed812"]
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="1_g6urg"]
+
+[node name="TopIndexSlot" type="PanelContainer" unique_id=910705904]
+script = ExtResource("1_ed812")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1250976520]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=202580442]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer" unique_id=107029835]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_g6urg")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1023390624]
+layout_mode = 2
+text = "x999"

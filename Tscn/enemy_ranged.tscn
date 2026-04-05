@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dd2t8bnihh470"]
+
+[ext_resource type="Script" uid="uid://ddbfgfcppj2ow" path="res://Script/charater/enemy/enemy.gd" id="1_bk73x"]
+[ext_resource type="SpriteFrames" uid="uid://w51e2ehc4jjf" path="res://Enemy/SpriteFrame/Demon_Eye/DemonEye.tres" id="1_yk1cq"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Tscn/health_bar.tscn" id="3_a8och"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a8och"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bk73x"]
+
+[node name="EnemyRanged" type="RigidBody2D" unique_id=1720056162]
+script = ExtResource("1_bk73x")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2060537821]
+position = Vector2(0, -11)
+sprite_frames = ExtResource("1_yk1cq")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1413720369]
+position = Vector2(-6, -11)
+shape = SubResource("CircleShape2D_a8och")
+
+[node name="Area2DActtack" type="Area2D" parent="." unique_id=1354538966]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DActtack" unique_id=1703262253]
+position = Vector2(-7, -11)
+shape = SubResource("CircleShape2D_bk73x")
+
+[node name="Control" type="Control" parent="." unique_id=1057660061]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HealthBar" parent="Control" unique_id=1260098963 node_paths=PackedStringArray("bind_node") instance=ExtResource("3_a8och")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -45.0
+offset_top = -38.0
+offset_right = 139.0
+offset_bottom = -11.0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+bind_node = NodePath("../..")
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=54129945]
+
+[node name="Drops" type="Node" parent="." unique_id=1671275744]

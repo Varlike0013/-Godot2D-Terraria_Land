@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://viuutr06cxr5"]
+
+[ext_resource type="Script" uid="uid://bug5ckj056itc" path="res://Tscn/mysterious_portal.gd" id="1_8svlo"]
+[ext_resource type="SpriteFrames" uid="uid://dsw0oj8japcjc" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_Door.tres" id="1_ta7ev"]
+[ext_resource type="SpriteFrames" uid="uid://dw6t3pjvosx65" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_Eye.tres" id="2_1772t"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2yrer"]
+radius = 36.0
+height = 126.0
+
+[node name="MysteriousPortal" type="StaticBody2D" unique_id=1550762406]
+script = ExtResource("1_8svlo")
+enemy_array = Array[Array]([[null]])
+
+[node name="AnimatedSprite2DDoor" type="AnimatedSprite2D" parent="." unique_id=1201401337]
+position = Vector2(0, -95)
+sprite_frames = ExtResource("1_ta7ev")
+autoplay = "default"
+frame_progress = 0.100471966
+
+[node name="AnimatedSprite2DEye" type="AnimatedSprite2D" parent="." unique_id=1391045500]
+position = Vector2(0, -248)
+sprite_frames = ExtResource("2_1772t")
+autoplay = "default"
+frame_progress = 0.723186
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2033971603]
+position = Vector2(-1, -78)
+shape = SubResource("CapsuleShape2D_2yrer")
+
+[node name="TimerCreater" type="Timer" parent="." unique_id=1766973500]

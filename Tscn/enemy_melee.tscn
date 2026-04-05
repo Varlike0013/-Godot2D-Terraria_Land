@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://er7qaaror818"]
+
+[ext_resource type="Script" uid="uid://ddbfgfcppj2ow" path="res://Script/charater/enemy/enemy.gd" id="1_rtqqk"]
+[ext_resource type="SpriteFrames" uid="uid://dyp6dvri1gqss" path="res://Enemy/SpriteFrame/Zombie/Zombie.tres" id="2_b6tms"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Tscn/health_bar.tscn" id="3_b6tms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8vlk"]
+size = Vector2(15, 42)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rtqqk"]
+
+[node name="EnemyMelee" type="RigidBody2D" unique_id=39803458]
+script = ExtResource("1_rtqqk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1745895236]
+position = Vector2(-2, -21)
+sprite_frames = ExtResource("2_b6tms")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2136620474]
+position = Vector2(-0.5, -21)
+shape = SubResource("RectangleShape2D_p8vlk")
+
+[node name="Area2DActtack" type="Area2D" parent="." unique_id=1732842086]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DActtack" unique_id=908446065]
+position = Vector2(0, -22)
+shape = SubResource("CircleShape2D_rtqqk")
+
+[node name="Control" type="Control" parent="." unique_id=1904904119]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HealthBar" parent="Control" unique_id=1260098963 node_paths=PackedStringArray("bind_node") instance=ExtResource("3_b6tms")]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -56.0
+offset_right = 142.0
+offset_bottom = -29.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)
+bind_node = NodePath("../..")
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=1262689696]
+
+[node name="Drops" type="Node" parent="." unique_id=1227015834]

@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://igpep44im7pw"]
+
+[ext_resource type="Texture2D" uid="uid://tova7hkl7ht6" path="res://Enemy/SpriteFrame/Blue_Slime/Blue_Slime_wps图片_1.png" id="1_th7vo"]
+[ext_resource type="Texture2D" uid="uid://dt2ab1qgu8kgh" path="res://Enemy/SpriteFrame/Blue_Slime/Blue_Slime_wps图片_2.png" id="2_eri6s"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_th7vo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_eri6s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

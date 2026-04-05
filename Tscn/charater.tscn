@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://nba4142kdxf3"]
+
+[ext_resource type="SpriteFrames" uid="uid://bmxp78hsf5hrg" path="res://Enemy/SpriteFrame/Swamp_Zombie/Swamp_Zombie_sprite_frames.tres" id="1_7k104"]
+[ext_resource type="Script" uid="uid://c80q0r872u3m3" path="res://Script/charater/charater.gd" id="1_xg3e0"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Tscn/health_bar.tscn" id="3_b6tms"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8vlk"]
+size = Vector2(15, 42)
+
+[node name="Charater" type="RigidBody2D" unique_id=676157024]
+script = ExtResource("1_xg3e0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1418111818]
+position = Vector2(-2, -21)
+sprite_frames = ExtResource("1_7k104")
+autoplay = "default"
+frame_progress = 0.7305384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1964057807]
+position = Vector2(-0.5, -21)
+shape = SubResource("RectangleShape2D_p8vlk")
+
+[node name="Control" type="Control" parent="." unique_id=1145510635]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HealthBar" parent="Control" unique_id=1260098963 instance=ExtResource("3_b6tms")]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -56.0
+offset_right = 142.0
+offset_bottom = -29.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)

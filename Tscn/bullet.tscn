@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cttmu6hm6v8od"]
+
+[ext_resource type="SpriteFrames" uid="uid://dtqh6jnvgs0u0" path="res://Enemy/SpriteFrame/Ambience_EOC/Ambience_EOC.tres" id="1_j88tn"]
+[ext_resource type="Script" uid="uid://gao1piipip8l" path="res://Script/bullet.gd" id="1_y5r87"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0vu6"]
+
+[node name="Bullet" type="Node2D" unique_id=321174915]
+script = ExtResource("1_y5r87")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1803294744]
+sprite_frames = ExtResource("1_j88tn")
+autoplay = "default"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1692041034]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1458903117]
+shape = SubResource("CircleShape2D_y0vu6")

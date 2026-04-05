@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://cmbmqvc37pddb"]
+
+[ext_resource type="Script" uid="uid://dhcfshf7c4dxn" path="res://Script/production_slot.gd" id="1_e0xy6"]
+[ext_resource type="Texture2D" uid="uid://cm8u35d6sm08i" path="res://image/button_mobile/lineDark/lineDark20.png" id="2_e0xy6"]
+
+[node name="ProductionSlot" type="PanelContainer" unique_id=494213546]
+custom_minimum_size = Vector2(750, 100)
+offset_right = 116.0
+offset_bottom = 100.0
+script = ExtResource("1_e0xy6")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=97869368]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=1681151253]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+
+[node name="HBoxInput" type="HBoxContainer" parent="ScrollContainer/HBoxContainer" unique_id=1875438445]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="ScrollContainer/HBoxContainer" unique_id=203213117]
+layout_mode = 2
+texture = ExtResource("2_e0xy6")
+stretch_mode = 5
+
+[node name="LabelTime" type="Label" parent="ScrollContainer/HBoxContainer/TextureRect" unique_id=867305221]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "? sec"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxOutput" type="HBoxContainer" parent="ScrollContainer/HBoxContainer" unique_id=1968351768]
+layout_mode = 2
+
+[connection signal="gui_input" from="ScrollContainer" to="." method="_on_scroll_container_gui_input"]

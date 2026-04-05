@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dyp6dvri1gqss"]
+
+[ext_resource type="Texture2D" uid="uid://oromrd16n4rr" path="res://Enemy/SpriteFrame/Zombie/Zombie_wps图片_1.png" id="1_rofvw"]
+[ext_resource type="Texture2D" uid="uid://lswgdmc3o6kw" path="res://Enemy/SpriteFrame/Zombie/Zombie_wps图片_2.png" id="2_lfp7u"]
+[ext_resource type="Texture2D" uid="uid://cd231fpeymqg0" path="res://Enemy/SpriteFrame/Zombie/Zombie_wps图片_3.png" id="3_slyif"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rofvw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lfp7u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_slyif")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

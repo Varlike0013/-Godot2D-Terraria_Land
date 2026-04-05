@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://dtqh6jnvgs0u0"]
+
+[ext_resource type="Texture2D" uid="uid://1hoblgy1j886" path="res://Enemy/SpriteFrame/Ambience_EOC/Ambience_EOC_wps图片_1.png" id="1_ol63b"]
+[ext_resource type="Texture2D" uid="uid://dfbhc4ddwfvda" path="res://Enemy/SpriteFrame/Ambience_EOC/Ambience_EOC_wps图片_2.png" id="2_agokb"]
+[ext_resource type="Texture2D" uid="uid://dv5ud5ygc1eey" path="res://Enemy/SpriteFrame/Ambience_EOC/Ambience_EOC_wps图片_3.png" id="3_yo8qp"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ol63b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_agokb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yo8qp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

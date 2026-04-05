@@ -1,0 +1,42 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://ve0v1seh4wme"]
+
+[ext_resource type="Texture2D" uid="uid://bh61b35it15mk" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_wps图片_1.png" id="1_4tj3q"]
+[ext_resource type="Texture2D" uid="uid://mdie8718o5ul" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_wps图片_2.png" id="2_t6aoq"]
+[ext_resource type="Texture2D" uid="uid://by1ck17nwqvg7" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_wps图片_3.png" id="3_y63ej"]
+[ext_resource type="Texture2D" uid="uid://8dwnckw7ei0g" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_wps图片_4.png" id="4_whib7"]
+[ext_resource type="Texture2D" uid="uid://cel2g87up8glt" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_wps图片_5.png" id="5_gilel"]
+[ext_resource type="Texture2D" uid="uid://b7xqxxtnlfwxu" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_wps图片_6.png" id="6_1jnx3"]
+[ext_resource type="Texture2D" uid="uid://cj26v5c8ugaon" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_wps图片_7.png" id="7_m1xum"]
+[ext_resource type="Texture2D" uid="uid://cts1httb723ex" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_wps图片_8.png" id="8_0uf4m"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4tj3q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_t6aoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y63ej")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_whib7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_gilel")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1jnx3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_m1xum")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0uf4m")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

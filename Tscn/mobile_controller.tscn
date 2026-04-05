@@ -1,0 +1,79 @@
+[gd_scene format=3 uid="uid://dq82d2tta1oju"]
+
+[ext_resource type="Script" uid="uid://bvmk7dgr48xqc" path="res://Script/mobile_controller.gd" id="1_nlcob"]
+[ext_resource type="Texture2D" uid="uid://bqlva172sp4y6" path="res://image/button_mobile/lineDark/lineDark31.png" id="1_xtpt2"]
+[ext_resource type="Texture2D" uid="uid://k74puyurvee" path="res://image/button_mobile/lineDark/lineDark32.png" id="2_trrao"]
+[ext_resource type="Texture2D" uid="uid://b3n0qw0p7hixs" path="res://image/button_mobile/lineDark/lineDark33.png" id="3_1r6pp"]
+[ext_resource type="Texture2D" uid="uid://bcp7lhh2slrwl" path="res://image/button_mobile/lineDark/lineDark34.png" id="4_uviu8"]
+[ext_resource type="Texture2D" uid="uid://dsrcdvv8g4p65" path="res://image/button_mobile/lineDark/lineDark06.png" id="5_4usuw"]
+[ext_resource type="Texture2D" uid="uid://b542bk474l8hn" path="res://image/button_mobile/lineDark/lineDark46.png" id="6_6na3f"]
+[ext_resource type="Texture2D" uid="uid://f1jjbyrddowh" path="res://image/button_mobile/lineDark/lineDark40.png" id="8_1r6pp"]
+
+[node name="MobileController" type="Control" unique_id=1521621162 node_paths=PackedStringArray("controll_actions", "controll_knob", "controll_other")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 718.0
+offset_right = -1279.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_nlcob")
+controll_actions = NodePath("Actions")
+controll_knob = NodePath("Stick")
+controll_other = NodePath("Other")
+
+[node name="Actions" type="Control" parent="." unique_id=332552066]
+anchors_preset = 0
+offset_left = 1270.0
+offset_top = -178.0
+offset_right = 1270.0
+offset_bottom = -178.0
+
+[node name="TouchScreenButtonA" type="TouchScreenButton" parent="Actions" unique_id=962218014]
+position = Vector2(20, -40)
+texture_normal = ExtResource("1_xtpt2")
+
+[node name="TouchScreenButtonB" type="TouchScreenButton" parent="Actions" unique_id=675748861]
+position = Vector2(-40, 20)
+texture_normal = ExtResource("2_trrao")
+
+[node name="TouchScreenButtonX" type="TouchScreenButton" parent="Actions" unique_id=1984584666]
+position = Vector2(-100, -40)
+texture_normal = ExtResource("3_1r6pp")
+
+[node name="TouchScreenButtonY" type="TouchScreenButton" parent="Actions" unique_id=1746608812]
+position = Vector2(-40, -100)
+texture_normal = ExtResource("4_uviu8")
+
+[node name="Stick" type="Control" parent="." unique_id=165302068]
+anchors_preset = 0
+offset_left = 303.0
+offset_top = -236.0
+offset_right = 303.0
+offset_bottom = -236.0
+pivot_offset = Vector2(48, 40)
+
+[node name="Sprite2D" type="Sprite2D" parent="Stick" unique_id=1379367734]
+position = Vector2(48, 48)
+texture = ExtResource("5_4usuw")
+
+[node name="Knob" type="TouchScreenButton" parent="Stick" unique_id=525310010]
+texture_normal = ExtResource("6_6na3f")
+
+[node name="Other" type="Control" parent="." unique_id=356766767]
+anchors_preset = 0
+
+[node name="TouchScreenButtonClose" type="TouchScreenButton" parent="Other" unique_id=944801757]
+position = Vector2(0, -79)
+texture_normal = ExtResource("8_1r6pp")
+
+[connection signal="pressed" from="Actions/TouchScreenButtonA" to="." method="_on_touch_screen_button_a_pressed"]
+[connection signal="released" from="Actions/TouchScreenButtonA" to="." method="_on_touch_screen_button_a_released"]
+[connection signal="pressed" from="Actions/TouchScreenButtonX" to="." method="_on_touch_screen_button_x_pressed"]
+[connection signal="released" from="Actions/TouchScreenButtonX" to="." method="_on_touch_screen_button_x_released"]
+[connection signal="pressed" from="Stick/Knob" to="." method="_on_knob_pressed"]
+[connection signal="released" from="Stick/Knob" to="." method="_on_knob_released"]
+[connection signal="pressed" from="Other/TouchScreenButtonClose" to="." method="_on_touch_screen_button_close_pressed"]

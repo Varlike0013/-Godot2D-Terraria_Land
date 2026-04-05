@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://idmr06b3sjgh"]
+
+[ext_resource type="Script" uid="uid://bsv3mh33kv2es" path="res://Script/drop_item_2d.gd" id="1_cof7t"]
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="2_nugsu"]
+
+[node name="DropItem2D" type="Node2D" unique_id=603985826]
+script = ExtResource("1_cof7t")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=231397368]
+texture = ExtResource("2_nugsu")

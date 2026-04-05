@@ -1,0 +1,18 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://w51e2ehc4jjf"]
+
+[ext_resource type="Texture2D" uid="uid://fsdiy1w0mflk" path="res://Enemy/SpriteFrame/Demon_Eye/Demon_Eye_wps图片_1.png" id="1_qduv1"]
+[ext_resource type="Texture2D" uid="uid://bfnl73x7aknr7" path="res://Enemy/SpriteFrame/Demon_Eye/Demon_Eye_wps图片_2.png" id="2_xbpsk"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qduv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xbpsk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]

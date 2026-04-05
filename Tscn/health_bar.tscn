@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dfm8brxarbjdi"]
+
+[ext_resource type="Script" uid="uid://2jcsvdtfxlq2" path="res://Script/health_bar.gd" id="1_i00j3"]
+
+[node name="HealthBar" type="PanelContainer" unique_id=1260098963]
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_i00j3")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1141225312]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ProgressBar" type="ProgressBar" parent="HBoxContainer" unique_id=566173676]
+custom_minimum_size = Vector2(100, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=822865857]
+layout_mode = 2
+text = "?????/?????"
+
+[node name="Timer" type="Timer" parent="." unique_id=497586212]
+
+[node name="TopInfo" type="Control" parent="." unique_id=1780050068]
+layout_mode = 2
+
+[node name="LabelTop" type="Label" parent="TopInfo" unique_id=1259364473]
+layout_mode = 0
+offset_top = -23.0
+offset_right = 184.0
+text = "infomation"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

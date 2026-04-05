@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://cfc72nagr64vc"]
+
+[ext_resource type="Script" uid="uid://ddbfgfcppj2ow" path="res://Script/charater/enemy/enemy.gd" id="1_0n0qv"]
+[ext_resource type="SpriteFrames" uid="uid://igpep44im7pw" path="res://Enemy/SpriteFrame/Blue_Slime/Blue_slime.tres" id="2_6fsi0"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Tscn/health_bar.tscn" id="3_r36wu"]
+[ext_resource type="PackedScene" uid="uid://ce4pte6fjqruf" path="res://Tscn/drop_item.tscn" id="4_0n0qv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvr26"]
+size = Vector2(32, 22)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0n0qv"]
+
+[node name="Slime" type="RigidBody2D" unique_id=1146290761]
+script = ExtResource("1_0n0qv")
+attack_damage = Vector3(10, 2, 0)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1873082091]
+position = Vector2(0, -12)
+sprite_frames = ExtResource("2_6fsi0")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=166279042]
+position = Vector2(0, -11)
+shape = SubResource("RectangleShape2D_jvr26")
+
+[node name="Area2DActtack" type="Area2D" parent="." unique_id=1390669120]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DActtack" unique_id=2041994773]
+position = Vector2(0, -11)
+shape = SubResource("CircleShape2D_0n0qv")
+
+[node name="Control" type="Control" parent="." unique_id=219627064]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HealthBar" parent="Control" unique_id=1260098963 instance=ExtResource("3_r36wu")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -41.0
+offset_top = -41.0
+offset_right = 143.0
+offset_bottom = -14.0
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=838883385]
+
+[node name="Drops" type="Node" parent="." unique_id=1150812011]
+
+[node name="DropItem" parent="Drops" unique_id=2134098087 instance=ExtResource("4_0n0qv")]
+item_id = 5
+item_quality_min = 1
+item_quality_max = 2
+item_drop_rate = 80.0

@@ -1,0 +1,44 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="TerrariaLand"
+run/main_scene="uid://7otq1bhgd0m7"
+config/features=PackedStringArray("4.6", "Mobile")
+config/icon="res://image/icon.svg"
+
+[autoload]
+
+ManagerBlock="*uid://dno0saul5ma51"
+ManagerSettings="*uid://dtf2d6vmmkiyw"
+ManagerProjectile="*uid://cbnphktqulmqo"
+ManagerItem="*uid://he50ydcr15ne"
+ManagerBuilding="*uid://vg73h0sfxwsc"
+ManagerEnemy="*uid://bat027p13iy0e"
+
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=720
+
+[input_devices]
+
+pointing/android/enable_long_press_as_right_click=true
+pointing/emulate_touch_from_mouse=true
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
+renderer/rendering_method="mobile"

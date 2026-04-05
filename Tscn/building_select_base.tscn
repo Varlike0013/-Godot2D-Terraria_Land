@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://iuehj6823x4l"]
+
+[ext_resource type="Script" uid="uid://besn6mpvh3ra1" path="res://Script/building_select_base.gd" id="1_7m26w"]
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="3_po1ha"]
+
+[node name="BuildingSelectBase" type="PanelContainer" unique_id=1838650201]
+custom_minimum_size = Vector2(1440, 580)
+script = ExtResource("1_7m26w")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=359882773]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2098864969]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1137293485]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=642729684]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=396574544]
+custom_minimum_size = Vector2(750, 0)
+layout_mode = 2
+
+[node name="FoldableContainer" type="FoldableContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=129790336]
+layout_mode = 2
+title = "物品"
+title_alignment = 1
+
+[node name="GDCItem" type="GridContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/FoldableContainer" unique_id=845451969]
+layout_mode = 2
+columns = 6
+
+[node name="FoldableContainer2" type="FoldableContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2033817887]
+layout_mode = 2
+title = "工具"
+title_alignment = 1
+
+[node name="GDCTool" type="GridContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/FoldableContainer2" unique_id=1847885815]
+layout_mode = 2
+columns = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=1261691844]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer" unique_id=1858490889]
+layout_mode = 2
+
+[node name="PCItem" type="PanelContainer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer" unique_id=1083795406]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem" unique_id=971426877]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer" unique_id=1973648013]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer/MarginContainer" unique_id=864583839]
+layout_mode = 2
+texture = ExtResource("3_po1ha")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="LabelName" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer" unique_id=1561453447]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+
+[node name="LabelQuality" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer" unique_id=1715164150]
+layout_mode = 2
+text = "Quality"
+horizontal_alignment = 1
+
+[node name="LabelInterval" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer" unique_id=1247411440]
+layout_mode = 2
+text = "Interval"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer" unique_id=1869297164]
+layout_mode = 2
+
+[node name="TimerUpdate" type="Timer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer" unique_id=1894831257]
+wait_time = 0.1
+autostart = true
+
+[node name="PCTool" type="PanelContainer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer" unique_id=1066169583]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCTool" unique_id=1916666980]
+layout_mode = 2
+alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCTool/VBoxContainer" unique_id=585993523]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCTool/VBoxContainer/MarginContainer" unique_id=119873790]
+layout_mode = 2
+texture = ExtResource("3_po1ha")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="LabelName" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCTool/VBoxContainer" unique_id=1124571004]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+
+[node name="LabelQuality" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCTool/VBoxContainer" unique_id=233188310]
+layout_mode = 2
+text = "Quality"
+horizontal_alignment = 1
+
+[node name="LabelDurability" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCTool/VBoxContainer" unique_id=1022368082]
+layout_mode = 2
+text = "???/???"
+
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer/ProgressBar" to="." method="_on_progress_bar_value_changed"]
+[connection signal="timeout" from="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer/TimerUpdate" to="." method="_on_timer_update_timeout"]

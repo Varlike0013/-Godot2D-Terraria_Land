@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ce4pte6fjqruf"]
+
+[ext_resource type="Script" uid="uid://frolkmg42e22" path="res://Script/drop_item.gd" id="1_gvitn"]
+
+[node name="DropItem" type="Node" unique_id=2134098087]
+script = ExtResource("1_gvitn")

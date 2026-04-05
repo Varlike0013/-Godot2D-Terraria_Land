@@ -1,0 +1,439 @@
+[gd_scene format=3 uid="uid://7otq1bhgd0m7"]
+
+[ext_resource type="Script" uid="uid://cdurdemkr0j1q" path="res://Script/main.gd" id="1_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://5eluglia3f4" path="res://Tscn/forest_pylon.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://viuutr06cxr5" path="res://Tscn/mysterious_portal.tscn" id="3_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://nba4142kdxf3" path="res://Tscn/charater.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://8pjrsdi30vxr" path="res://Tscn/player.tscn" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dd2t8bnihh470" path="res://Tscn/enemy_ranged.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://cfc72nagr64vc" path="res://Enemy/Packed/slime.tscn" id="6_dg77c"]
+[ext_resource type="Script" uid="uid://cfmgb3dxr8ger" path="res://Script/level_ui_control.gd" id="7_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dq82d2tta1oju" path="res://Tscn/mobile_controller.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://drgtbjb1posoa" path="res://Tscn/building_row.tscn" id="7_efxa6"]
+[ext_resource type="PackedScene" uid="uid://d4emotvotfrgh" path="res://Tscn/top_index_bar.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://iuehj6823x4l" path="res://Tscn/building_select_base.tscn" id="11_dg77c"]
+[ext_resource type="PackedScene" uid="uid://ui8l45undioe" path="res://Tscn/building_select_production.tscn" id="11_efxa6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
+size = Vector2(1600, 200)
+
+[node name="Level" type="Node2D" unique_id=630580021 node_paths=PackedStringArray("pylon_point", "camera2d")]
+script = ExtResource("1_0xm2m")
+pylon_point = NodePath("ForestPylon")
+camera2d = NodePath("Camera/Camera2D")
+start_building = Array[int]([0, 1])
+
+[node name="Camera" type="Node2D" parent="." unique_id=794376766]
+position = Vector2(800, 360)
+
+[node name="Camera2D" type="Camera2D" parent="Camera" unique_id=898963946]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1960508637]
+position = Vector2(0, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1033836234]
+position = Vector2(800, 100)
+shape = SubResource("RectangleShape2D_ig7tw")
+
+[node name="ColorRect" type="ColorRect" parent="StaticBody2D" unique_id=81943724]
+offset_right = 1600.0
+offset_bottom = 200.0
+color = Color(0.6356338, 0.6356338, 0.6356338, 0.23529412)
+
+[node name="Home" type="StaticBody2D" parent="." unique_id=1878085141]
+position = Vector2(0, 520)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Home" unique_id=130250198]
+position = Vector2(71, 226)
+polygon = PackedVector2Array(-74, -227, 149, -224, 150, -432, -72, -437)
+
+[node name="ColorRect" type="ColorRect" parent="Home" unique_id=1991228665]
+offset_left = -3.0
+offset_top = -208.0
+offset_right = 217.0
+offset_bottom = 2.0
+
+[node name="Area2D" type="Area2D" parent="Home" unique_id=107825534]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Home/Area2D" unique_id=225797265]
+position = Vector2(71, 226)
+polygon = PackedVector2Array(-74, -227, 149, -224, 150, -432, -72, -437)
+
+[node name="ForestPylon" parent="." unique_id=213296927 instance=ExtResource("2_0xm2m")]
+position = Vector2(701, 518)
+
+[node name="MysteriousPortal" parent="." unique_id=1550762406 node_paths=PackedStringArray("level") instance=ExtResource("3_ycdy4")]
+position = Vector2(1163, 526)
+scale = Vector2(0.5, 0.5)
+level = NodePath("..")
+enemy_array = Array[Array]([[0, 0]])
+
+[node name="Charaters" type="Node2D" parent="." unique_id=740846970]
+
+[node name="Players" type="Node2D" parent="Charaters" unique_id=1990975525]
+
+[node name="Charater" parent="Charaters/Players" unique_id=676157024 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
+position = Vector2(414, 388)
+level = NodePath("../../..")
+
+[node name="Charater2" parent="Charaters/Players" unique_id=992018445 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
+position = Vector2(462, 415)
+level = NodePath("../../..")
+
+[node name="Charater3" parent="Charaters/Players" unique_id=759548088 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
+position = Vector2(503, 354)
+level = NodePath("../../..")
+
+[node name="Player" parent="Charaters/Players" unique_id=1360645317 node_paths=PackedStringArray("level") instance=ExtResource("4_7mycd")]
+position = Vector2(1473, 270)
+level = NodePath("../../..")
+
+[node name="Enemys" type="Node2D" parent="Charaters" unique_id=698884280]
+
+[node name="EnemyRanged" parent="Charaters/Enemys" unique_id=1720056162 node_paths=PackedStringArray("level") instance=ExtResource("5_lquwl")]
+position = Vector2(1060, 297)
+level = NodePath("../../..")
+
+[node name="EnemyRanged2" parent="Charaters/Enemys" unique_id=1225787539 node_paths=PackedStringArray("level") instance=ExtResource("5_lquwl")]
+position = Vector2(390, 291)
+level = NodePath("../../..")
+
+[node name="Slime" parent="Charaters/Enemys" unique_id=1146290761 node_paths=PackedStringArray("level") instance=ExtResource("6_dg77c")]
+position = Vector2(469, 273)
+level = NodePath("../../..")
+
+[node name="Slime2" parent="Charaters/Enemys" unique_id=1746158581 node_paths=PackedStringArray("level") instance=ExtResource("6_dg77c")]
+position = Vector2(469, 273)
+level = NodePath("../../..")
+
+[node name="Slime3" parent="Charaters/Enemys" unique_id=715317930 node_paths=PackedStringArray("level") instance=ExtResource("6_dg77c")]
+position = Vector2(469, 273)
+level = NodePath("../../..")
+
+[node name="Projectile" type="Node2D" parent="." unique_id=487496523]
+
+[node name="Drops" type="Node2D" parent="." unique_id=1974316000]
+
+[node name="ControlBuildings" type="Control" parent="." unique_id=918987595]
+custom_minimum_size = Vector2(1000, 1000)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1597.0
+offset_bottom = 1000.0
+
+[node name="MarginContainer" type="MarginContainer" parent="ControlBuildings" unique_id=1457431227]
+custom_minimum_size = Vector2(1600, 1000)
+layout_mode = 0
+offset_right = 1600.0
+offset_bottom = 1038.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 550
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 30
+
+[node name="BuidingRows" type="VBoxContainer" parent="ControlBuildings/MarginContainer" unique_id=507190444]
+layout_mode = 2
+
+[node name="BuidingRow" parent="ControlBuildings/MarginContainer/BuidingRows" unique_id=633264727 node_paths=PackedStringArray("ui_level") instance=ExtResource("7_efxa6")]
+layout_mode = 2
+ui_level = NodePath("../../../../LevelUi")
+
+[node name="BuidingRow2" parent="ControlBuildings/MarginContainer/BuidingRows" unique_id=730641698 node_paths=PackedStringArray("ui_level") instance=ExtResource("7_efxa6")]
+layout_mode = 2
+ui_level = NodePath("../../../../LevelUi")
+
+[node name="BuidingRow3" parent="ControlBuildings/MarginContainer/BuidingRows" unique_id=1651546487 node_paths=PackedStringArray("ui_level") instance=ExtResource("7_efxa6")]
+layout_mode = 2
+ui_level = NodePath("../../../../LevelUi")
+
+[node name="LevelUi" type="CanvasLayer" parent="." unique_id=714169567 node_paths=PackedStringArray("camera2d")]
+script = ExtResource("7_5vw27")
+camera2d = NodePath("../Camera/Camera2D")
+
+[node name="UI_Play" type="Control" parent="LevelUi" unique_id=338951327]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUi/UI_Play" unique_id=508705506]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 1354.0
+offset_top = 2.0
+offset_right = 1598.0
+offset_bottom = 33.0
+grow_horizontal = 0
+
+[node name="BT_Bag" type="Button" parent="LevelUi/UI_Play/HBoxContainer" unique_id=1250338091]
+layout_mode = 2
+text = "背包"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUi/UI_Play/HBoxContainer" unique_id=1486402951]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="LevelUi/UI_Play/HBoxContainer/VBoxContainer" unique_id=1292972006]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 2
+step = 10.0
+tick_count = 10
+ticks_position = 3
+
+[node name="MobileController" parent="LevelUi/UI_Play" unique_id=1521621162 instance=ExtResource("7_272bh")]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 720.0
+offset_right = 0.0
+offset_bottom = 720.0
+
+[node name="TopIndexBar" parent="LevelUi/UI_Play" unique_id=459347693 instance=ExtResource("9_kek77")]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 15.0
+offset_right = 1300.0
+offset_bottom = 57.0
+
+[node name="UI_Bag" type="Control" parent="LevelUi" unique_id=1786804260]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LevelUi/UI_Bag" unique_id=778103475]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUi/UI_Bag" unique_id=727523287]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 70
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelUi/UI_Bag/MarginContainer" unique_id=1468688687]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUi/UI_Bag/MarginContainer/PanelContainer" unique_id=1900740105]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LevelUi/UI_Bag/MarginContainer/PanelContainer/MarginContainer" unique_id=1991481143]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="LevelUi/UI_Bag/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=747608076]
+layout_mode = 2
+columns = 4
+
+[node name="Control" type="Control" parent="LevelUi/UI_Bag" unique_id=1804769262]
+anchors_preset = 0
+offset_left = 1513.0
+offset_top = 36.0
+offset_right = 1513.0
+offset_bottom = 36.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUi/UI_Bag/Control" unique_id=198314213]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -112.0
+offset_bottom = 31.0
+grow_horizontal = 0
+
+[node name="BT_exit" type="Button" parent="LevelUi/UI_Bag/Control/HBoxContainer" unique_id=929982916]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "X"
+
+[node name="BT_flash" type="Button" parent="LevelUi/UI_Bag/Control/HBoxContainer" unique_id=165986181]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "F"
+
+[node name="CB_flash" type="CheckButton" parent="LevelUi/UI_Bag/Control/HBoxContainer" unique_id=292097035]
+layout_mode = 2
+text = "自动更新"
+
+[node name="TimerFlash" type="Timer" parent="LevelUi/UI_Bag/Control/HBoxContainer/CB_flash" unique_id=654637683]
+wait_time = 0.1
+
+[node name="UI_Create" type="Control" parent="LevelUi" unique_id=1000150340]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LevelUi/UI_Create" unique_id=1553637251]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUi/UI_Create" unique_id=915999439]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 70
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelUi/UI_Create/MarginContainer" unique_id=1294695622]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUi/UI_Create/MarginContainer/PanelContainer" unique_id=1864461543]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LevelUi/UI_Create/MarginContainer/PanelContainer/MarginContainer" unique_id=1791693251]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="LevelUi/UI_Create/MarginContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1974692376]
+layout_mode = 2
+columns = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUi/UI_Create" unique_id=31804815]
+layout_mode = 0
+offset_left = 1452.0
+offset_top = 26.0
+offset_right = 1516.0
+offset_bottom = 66.0
+
+[node name="BT_exit" type="Button" parent="LevelUi/UI_Create/HBoxContainer" unique_id=1697806577]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "X"
+
+[node name="BT_flash" type="Button" parent="LevelUi/UI_Create/HBoxContainer" unique_id=1854804351]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "F"
+
+[node name="UI_Select" type="Control" parent="LevelUi" unique_id=709227878]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="LevelUi/UI_Select" unique_id=535981058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.6)
+
+[node name="MarginContainer" type="MarginContainer" parent="LevelUi/UI_Select" unique_id=935038016]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 70
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 70
+
+[node name="BuildingSelectBase" parent="LevelUi/UI_Select/MarginContainer" unique_id=1838650201 instance=ExtResource("11_dg77c")]
+visible = false
+layout_mode = 2
+array_items_id = Array[Vector3]([])
+
+[node name="BuildingSelect" parent="LevelUi/UI_Select/MarginContainer" unique_id=840198464 instance=ExtResource("11_efxa6")]
+visible = false
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUi/UI_Select" unique_id=1254194110]
+layout_mode = 0
+offset_left = 1452.0
+offset_top = 26.0
+offset_right = 1516.0
+offset_bottom = 66.0
+
+[node name="BT_exit" type="Button" parent="LevelUi/UI_Select/HBoxContainer" unique_id=1121864206]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "X"
+
+[node name="BT_flash" type="Button" parent="LevelUi/UI_Select/HBoxContainer" unique_id=164303206]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "F"
+
+[node name="UI_Top" type="Control" parent="LevelUi" unique_id=775714908]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TopInfo" type="Control" parent="LevelUi/UI_Top" unique_id=232360087]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 800.0
+offset_top = 100.0
+offset_right = 800.0
+offset_bottom = 100.0
+grow_horizontal = 2
+
+[node name="TopInfoShow" type="PanelContainer" parent="LevelUi/UI_Top/TopInfo" unique_id=721640744]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -32.0
+offset_top = -11.5
+offset_right = 32.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LabelTopInfo" type="Label" parent="LevelUi/UI_Top/TopInfo/TopInfoShow" unique_id=1142479492]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "信息显示"
+
+[connection signal="button_down" from="LevelUi/UI_Play/HBoxContainer/BT_Bag" to="LevelUi" method="_on_bt_bag_button_down"]
+[connection signal="value_changed" from="LevelUi/UI_Play/HBoxContainer/VBoxContainer/HSlider" to="LevelUi" method="_on_h_slider_value_changed"]
+[connection signal="BeClicked" from="LevelUi/UI_Play/TopIndexBar" to="LevelUi" method="_on_top_index_bar_be_clicked"]
+[connection signal="button_down" from="LevelUi/UI_Bag/Control/HBoxContainer/BT_exit" to="LevelUi" method="_on_bt_exit_button_down"]
+[connection signal="button_down" from="LevelUi/UI_Bag/Control/HBoxContainer/BT_flash" to="LevelUi" method="_on_bt_flash_button_down"]
+[connection signal="toggled" from="LevelUi/UI_Bag/Control/HBoxContainer/CB_flash" to="LevelUi" method="_on_cb_flash_toggled"]
+[connection signal="timeout" from="LevelUi/UI_Bag/Control/HBoxContainer/CB_flash/TimerFlash" to="LevelUi" method="_on_timer_flash_timeout"]
+[connection signal="button_down" from="LevelUi/UI_Create/HBoxContainer/BT_exit" to="LevelUi" method="_on_bt_create_exit_button_down"]
+[connection signal="button_down" from="LevelUi/UI_Select/HBoxContainer/BT_exit" to="LevelUi" method="_on_bt_select_exit_button_down"]

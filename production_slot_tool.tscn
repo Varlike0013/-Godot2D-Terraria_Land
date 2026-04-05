@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://d0k2blqno5lgk"]
+
+[ext_resource type="Script" uid="uid://bc0xavuf61y20" path="res://production_slot_tool.gd" id="1_0jnmx"]
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="1_gqndp"]
+
+[node name="ProductionSlotTool" type="PanelContainer" unique_id=1606205518]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_0jnmx")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1278804506]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1563404505]
+custom_minimum_size = Vector2(64, 0)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer" unique_id=2032976230]
+layout_mode = 2
+texture = ExtResource("1_gqndp")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="LabelQuality" type="Label" parent="MarginContainer/VBoxContainer" unique_id=453168481]
+layout_mode = 2
+text = "x???"
+horizontal_alignment = 1
+
+[node name="LabeEfcPickaxe" type="Label" parent="MarginContainer/VBoxContainer" unique_id=497774819]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "⛏???%"
+horizontal_alignment = 1
+
+[node name="LabeEfcAxe" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1935785291]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "⛏???%"
+horizontal_alignment = 1
+
+[node name="LabeEfcHammer" type="Label" parent="MarginContainer/VBoxContainer" unique_id=594260864]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "⛏???%"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="." unique_id=657468722]
+layout_mode = 2
+flat = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

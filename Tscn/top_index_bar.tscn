@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://d4emotvotfrgh"]
+
+[ext_resource type="Script" uid="uid://dpcc7s23i4txx" path="res://Script/top_index_bar.gd" id="1_tjrj2"]
+
+[node name="TopIndexBar" type="PanelContainer" unique_id=459347693]
+offset_right = 1000.0
+offset_bottom = 42.0
+script = ExtResource("1_tjrj2")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=190979263]
+layout_mode = 2
+horizontal_scroll_mode = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" unique_id=1129476474]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="." unique_id=528830891]
+layout_mode = 2
+flat = true
+
+[node name="TimerUpdate" type="Timer" parent="." unique_id=1445247284]
+wait_time = 0.1
+autostart = true
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]
+[connection signal="timeout" from="TimerUpdate" to="." method="_on_timer_update_timeout"]
