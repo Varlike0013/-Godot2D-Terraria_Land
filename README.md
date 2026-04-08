@@ -1,4 +1,4 @@
-<title id="0"># -Godot2D-Terraria_Land</title>
+<h1 id="0"># -Godot2D-Terraria_Land</h1>
 <anchor id="2"></anchor>
 <p id="3">creater_by: VarlikeAlert</p>
 <p id="4">一款基于 <strong>Godot Engine</strong> 开发的2D泰拉瑞亚同人游戏，融合养成、策略、建造与休闲元素，还原经典泰拉瑞亚玩法的同时，加入专属特色内容，适合各类喜欢2D像素风、探索建造类游戏的玩家。</p>
@@ -17,7 +17,7 @@
 <p id="16">开发语言：GDScript</p>
 <h2 id="17">📥 如何运行</h2>
 <ol id="18">
-  <li id="19">下载Godot Engine（推荐4.6.1稳定版）：<a href="https://godotengine.org/download/">Godot官方下载页</a></li>
+  <li id="19">下载Godot Engine（推荐4.6.2）：<a href="https://godotengine.org/download/">Godot官方下载页</a></li>
   <li id="20">克隆本仓库：<code>git clone git@github.com:Varlike0013/-Godot2D-Terraria_Land.git</code></li>
   <li id="21">打开Godot Engine，导入本项目文件夹，点击运行即可启动游戏。</li>
 </ol>
@@ -30,8 +30,7 @@
 <!-- 新增版本更新记录 -->
 <h2 id="29">📝 版本更新记录（Changelog）</h2>
 <ul id="30">
-  <li id="31"><strong>v1.0.0（2024-10-28）</strong>：初始版本，完成核心玩法（角色养成、建造、小怪清理、Boss击杀），适配Godot 4.6.1引擎。</li>
-  <li id="32"><strong>v1.0.1（2024-11-05）</strong>：修复部分地图加载bug，优化角色移动流畅度，新增2种基础建造材料。</li>
+  <li id="31"><strong>v0.0.1（2026/4/8）</strong>：初始版本,适配Godot 4.6.2引擎。</li>
   <li id="33"><strong>后续更新</strong>：可按“版本号 + 日期 + 更新内容”的格式补充，保持排序一致即可。</li>
 </ul>
 <anchor id="27"></anchor>
