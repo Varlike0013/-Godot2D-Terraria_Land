@@ -157,15 +157,15 @@ func set_magic_max(value:float):
 func be_death(): ##queue_free()
 	queue_free()
 func append_resistance_array(type:int,value:float): ##type:0-physical,1-magic,2-all,value in range(0,1)
-	switch:
-		case 0: resistance_array_physical.append(value)
-		case 1: resistance_array_magic.append(value)
-		case 2: resistance_array_all.append(value)
+	match type:
+		0: resistance_array_physical.append(value)
+		1: resistance_array_magic.append(value)
+		2: resistance_array_all.append(value)
 func remove_resistance_array(type:int,value:float): ##type:0-physical,1-magic,2-all,value in range(0,1)
-	switch:
-		case 0: resistance_array_physical.erase(value)
-		case 1: resistance_array_magic.erase(value)
-		case 2: resistance_array_all.erase(value)
+	match type:
+		0: resistance_array_physical.erase(value)
+		1: resistance_array_magic.erase(value)
+		2: resistance_array_all.erase(value)
 func _on_timer_update(): ##to do for timer_update
 	percentage_physical_resistance = ManagerMath.resistance_array_to_percentage(resistance_array_physical)
 	percentage_magic_resistance = ManagerMath.resistance_array_to_percentage(resistance_array_magic)
