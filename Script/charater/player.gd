@@ -7,10 +7,30 @@ class_name Player
 
 @export var distance_enemy:float = 10
 @export_group("Attributes")
-@export var attribute_strength:float = 10
-@export var attribute_agile:float = 10
-@export var attribute_physique:float = 10
+@export var attribute_vigor:float = 10 			##生命力
+@export var vigor_health_base:float = 100
+@export var vigor_health_growth:Array[Vector2] = [Vector2(1,10),Vector2(30,15),Vector2(50,12),Vector2(80,8),Vector2(100,4)]
+@export var attribute_mind:float = 10  			##集中力
+@export var mind_magic_base:float = 50
+@export var mind_magic_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
+@export var attribute_endurance:float = 10 		##耐力
+@export var endurance_equip_load:Vector2 = Vector2(0,10) ##负重
+@export var endurance_equip_load_base:float = 10
+@export var endurance_equip_load_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
+@export var attribute_strength:float = 10		##力量
+@export var strength_scaling_base:float = 50	##力量补正
+@export var strength_scaling_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
+@export var attribute_dexterity:float = 10  	##灵巧
+@export var dexterity_scaling_base:float = 50
+@export var dexterity_scaling_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
+@export var attribute_intelligence:float = 10 	##智力
+@export var intelligence_scaling_base:float = 50
+@export var intelligence_scaling_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
 
+var current_strength:float
+var current_dexterity:float
+var current_intelligence:float
+var equips_array:Array = []
 var enemys:Array[Enemy] = []
 
 func _ready() -> void:
@@ -63,6 +83,8 @@ func get_area_enemy()->Enemy:
 		else:
 			enemys.erase(e)
 	return null
+func update_equip_load() ->void:
+	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_mind,mind_magic_base,mind_magic_growth)
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
 func _on_area_2d_attack_area_exited(area: Area2D) -> void:
@@ -79,3 +101,11 @@ func _on_timer_attack_timeout() -> void:
 	if attack_target:
 		if attack_target is Enemy and attack_target in enemys:
 			attack_target.take_hit(attack_damage)
+func _on_timer_update() ->void:
+	_on_timer_update.super()
+	set_health_max(ManagerMath.attribute_base_growth(attribute_vigor,vigor_health_base,vigor_health_growth))
+	set_magic_max(ManagerMath.attribute_base_growth(attribute_mind,mind_magic_base,mind_magic_growth))
+	update_equip_load()
+	current_strength = ManagerMath.attribute_base_growth(attribute_strength,strength_scaling_base,strength_scaling_growth)
+	current_dexterity = ManagerMath.attribute_base_growth(attribute_dexterity,dexterity_scaling_base,dexterity_scaling_growth)
+	current_intelligence = ManagerMath.attribute_base_growth(attribute_intelligence,intelligence_scaling_base,intelligence_scaling_growth)

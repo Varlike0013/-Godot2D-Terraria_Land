@@ -14,10 +14,12 @@ enum MoveStaus {move,stop,stand,repeled}
 @export_group("BasicAttributes")
 @export var speed:float = 100
 @export var health:Vector2 = Vector2(100,100)
+@export var magic:Vector2 = Vector2(50,50)
 @export var defense_physical:float = 0
 @export var defense_magic:float = 0
-@export var percentage_physical_resistance:float = 0
-@export var percentage_magic_resistance:float = 0
+@export_range(0, 1) var percentage_physical_resistance:float = 0 ##range in 【0-1】
+@export_range(0, 1) var percentage_magic_resistance:float = 0  ##range in 【0-1】
+@export_range(0, 1) var percentage_all_resistance:float = 0  ##range in 【0-1】
 @export var is_fly:bool = false
 @export var fly_higth:float = 50
 @export_group("Attack","attack")
@@ -32,6 +34,11 @@ var pylon_point:PylonPoint
 @export_group("other")
 var ray_cast:RayCast2D
 var tween_hit:Tween
+var timer_update:Timer
+var resistance_array_physical:Array = []
+var resistance_array_magic:Array = []
+var resistance_array_all:Array = []
+
 
 func _ready() -> void:
 	add_to_group(group_target)
@@ -114,9 +121,9 @@ func take_hit(value:Vector3):##value(physical,magic,true)
 		await tween_hit.loop_finished
 		tween_hit.pause()
 	var real_value:Vector3 = Vector3.ZERO
-	real_value.x = (value.x-defense_physical)*percentage_physical_resistance
-	real_value.y = (value.y-defense_magic)*percentage_magic_resistance
-	real_value.z = value.z
+	real_value.x = (value.x-defense_physical)*(1-percentage_physical_resistance)
+	real_value.y = (value.y-defense_magic)*(1-percentage_magic_resistance)
+	real_value.z = value.z*(1-percentage_all_resistance)
 	reduce_health(real_value.x)
 	reduce_health(real_value.y)
 	reduce_health(real_value.z)
@@ -128,5 +135,38 @@ func reduce_health(value:float):
 func restore_health(value:float):
 	health.x += value
 	health.x = min(health.y,health.x)
+func set_health_max(value:float):
+	health.y = value
+	if health.x>health.y:
+		health.x = health.y
+func reduce_magic(value:float):
+	magic.x -= value
+	magic.x = max(0,magic.x)
+func restore_magic(value:float):
+	magic.x += value
+	magic.x = min(magic.y,magic.x)
+func is_magic_enough(value:float) ->bool:
+	if magic.x>=value:
+		return true
+	else:
+		return false
+func set_magic_max(value:float):
+	magic.y = value
+	if magic.x>magic.y:
+		magic.x = magic.y
 func be_death(): ##queue_free()
 	queue_free()
+func append_resistance_array(type:int,value:float): ##type:0-physical,1-magic,2-all,value in range(0,1)
+	switch:
+		case 0: resistance_array_physical.append(value)
+		case 1: resistance_array_magic.append(value)
+		case 2: resistance_array_all.append(value)
+func remove_resistance_array(type:int,value:float): ##type:0-physical,1-magic,2-all,value in range(0,1)
+	switch:
+		case 0: resistance_array_physical.erase(value)
+		case 1: resistance_array_magic.erase(value)
+		case 2: resistance_array_all.erase(value)
+func _on_timer_update(): ##to do for timer_update
+	percentage_physical_resistance = ManagerMath.resistance_array_to_percentage(resistance_array_physical)
+	percentage_magic_resistance = ManagerMath.resistance_array_to_percentage(resistance_array_magic)
+	percentage_all_resistance = ManagerMath.resistance_array_to_percentage(resistance_array_all)

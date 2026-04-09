@@ -62,7 +62,20 @@
 
 # <ul id="30">
 
-# &#x20; <li id="31"><strong>v0.0.1（2026/4/8）</strong>：初始版本,适配Godot 4.6.2引擎。</li>
+# &#x20; <li id="31"><strong>v0.0.1（2026/4/8）</strong>：初始版本,适配Godot 4.6.2引擎,第一次上传，游戏早期版本。</li>
+
+#   <li id="32"><strong>v0.0.2（2026/4/9）</strong>：完成玩家角色六大基础属性系统实装
+#     <ul>
+#       <li>生命力（Vigor）：提升生命值上限</li>
+#       <li>意志力（Mind）：提升专注值（FP）上限</li>
+#       <li>耐力（Endurance）：影响装备负重上限与精力</li>
+#       <li>力量（Strength）：提升物理攻击加成</li>
+#       <li>灵巧（Dexterity）：提升物理攻击加成</li>
+#       <li>智力（Intelligence）：提升魔法攻击加成</li>
+#     </ul>
+#   </li>
+
+#   <li id="33"><strong>v0.0.3（2026/4/9）</strong>：尝试将物品id等信息存储为JSON格式，方便修改和使用。</li>
 
 # &#x20; <li id="33"><strong>后续更新</strong>：可按“版本号 + 日期 + 更新内容”的格式补充，保持排序一致即可。</li>
 

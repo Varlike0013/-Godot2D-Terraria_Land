@@ -45,6 +45,17 @@ var array_items:Array[Item] = []
 func _ready() -> void:
 	append_item_nocheck(5000,1)
 	append_item_quality(5001,2)
+func load_items() -> Dictionary: ## 加载物品JSON
+    var file = FileAccess.open("item_data.json", FileAccess.READ)
+    if not file:
+        return {}
+    var json = JSON.new()
+    var err = json.parse(file.get_as_text())
+    file.close()
+    if err != OK:
+        print_error("JSON 错误:", json.get_error_message())
+        return {}
+    return json.data as Dictionary
 func append_item(new_item:Item):
 	if check_item_change(new_item.item_id):
 		var found:Item = find_item_get(new_item.item_id)
