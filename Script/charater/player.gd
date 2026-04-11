@@ -102,7 +102,7 @@ func _on_timer_attack_timeout() -> void:
 		if attack_target is Enemy and attack_target in enemys:
 			attack_target.take_hit(attack_damage)
 func _on_timer_update() ->void:
-	_on_timer_update.super()
+	super._on_timer_update()
 	set_health_max(ManagerMath.attribute_base_growth(attribute_vigor,vigor_health_base,vigor_health_growth))
 	set_magic_max(ManagerMath.attribute_base_growth(attribute_mind,mind_magic_base,mind_magic_growth))
 	update_equip_load()

@@ -19,9 +19,9 @@ size = Vector2(1600, 200)
 
 [node name="Level" type="Node2D" unique_id=630580021 node_paths=PackedStringArray("pylon_point", "camera2d")]
 script = ExtResource("1_0xm2m")
-start_building = Array[int]([0, 1])
 pylon_point = NodePath("ForestPylon")
 camera2d = NodePath("Camera/Camera2D")
+start_building = Array[int]([0, 1])
 
 [node name="Camera" type="Node2D" parent="." unique_id=794376766]
 position = Vector2(800, 360)
@@ -65,8 +65,8 @@ position = Vector2(701, 518)
 [node name="MysteriousPortal" parent="." unique_id=1550762406 node_paths=PackedStringArray("level") instance=ExtResource("3_ycdy4")]
 position = Vector2(1163, 526)
 scale = Vector2(0.5, 0.5)
-enemy_array = Array[Array]([[0, 0]])
 level = NodePath("..")
+enemy_array = Array[Array]([[0, 0]])
 
 [node name="Charaters" type="Node2D" parent="." unique_id=740846970]
 
