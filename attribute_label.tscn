@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://cabvklwutgwk0"]
+
+[ext_resource type="Script" uid="uid://k8vleb77ksk3" path="res://attribute_label.gd" id="1_r8q5f"]
+
+[node name="AttributeLabel" type="PanelContainer" unique_id=1333348291]
+offset_right = 26.0
+offset_bottom = 27.0
+script = ExtResource("1_r8q5f")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=688570926]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=997100816]
+layout_mode = 2
+
+[node name="Label_attribute" type="Label" parent="MarginContainer/HBoxContainer" unique_id=633478502]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "属性："
+
+[node name="Label_rating" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1794730883]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+text = "S+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer" unique_id=1801873610]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+tick_count = 5
+ticks_position = 3
+
+[node name="Label_value" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1182040064]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+text = "999/999"
+horizontal_alignment = 1
+vertical_alignment = 1
