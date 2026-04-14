@@ -13,6 +13,7 @@ enum MoveStaus {move,stop,stand,repeled}
 @export var group_target:String = "Character"
 @export_group("BasicAttributes")
 @export var charater_name: String = "name"
+@export var charater_level: int = 1
 @export var speed:float = 100
 @export var health:Vector2 = Vector2(100,100)
 @export var magic:Vector2 = Vector2(50,50)
