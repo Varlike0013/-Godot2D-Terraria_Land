@@ -12,11 +12,13 @@ enum MoveStaus {move,stop,stand,repeled}
 @export var move_staus:MoveStaus = MoveStaus.move
 @export var group_target:String = "Character"
 @export_group("BasicAttributes")
+@export var charater_name: String = "name"
 @export var speed:float = 100
 @export var health:Vector2 = Vector2(100,100)
 @export var magic:Vector2 = Vector2(50,50)
 @export var defense_physical:float = 0
 @export var defense_magic:float = 0
+@export var weight: float = 10
 @export_range(0, 1) var percentage_physical_resistance:float = 0 ##range in 【0-1】
 @export_range(0, 1) var percentage_magic_resistance:float = 0  ##range in 【0-1】
 @export_range(0, 1) var percentage_all_resistance:float = 0  ##range in 【0-1】
@@ -28,7 +30,8 @@ enum MoveStaus {move,stop,stand,repeled}
 @export var attack_inteval:float = 1.0
 @export var attack_target:Node2D
 @export_group("Repeled")
-@export var repeled_speed:float = 1000
+@export var repeled_value:float = 10000 ##击退常数，决定被击退时的速度repeled_speed = repeled_value/weight
+var repeled_speed:flaot = 0
 var repeled_direction:Vector2 = Vector2.ZERO
 var pylon_point:PylonPoint
 @export_group("other")
@@ -92,6 +95,7 @@ func get_face_dirtion() ->bool:##true is faced left
 func effect_repeled(distance:float,repeled_left:bool=true,high:float=0,duration:float = 0,is_face:bool=false):
 	##Parameter:距离，击退方向是否往左，时间，是否朝面向方向击退
 	# 计算击退方向
+	repeled_speed = repeled_value/weight
 	move_staus = MoveStaus.repeled
 	if duration == 0:
 		duration = distance/repeled_speed

@@ -10,8 +10,9 @@ class_name LabelAttribute
 
 func _ready() -> void:
 	label_attribute.text = attribut_name
-func update(rat:String,value:Vector2):
+	h_slider.max_value = 100
+func update(rat:String,value_rating:float,value_current:float): ##todo update infomation from player,value_current->attribute_current_value like attribut_vigor
 	label_rating.text = rat
-	label_value.text = str(value.x)+"/"+str(value.y)
+	label_value.text = str(value_rating)+"/"+str(value_current)
 	h_slider.value = value.x
-	h_slider.max_value = value.y
+

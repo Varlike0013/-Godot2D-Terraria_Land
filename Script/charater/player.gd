@@ -43,6 +43,9 @@ const ATTRIBUTE_RATING: Dictionary = { ##RANGE E->S
 @export var rating_value_dexterity:float = 10
 @export var rating_value_intekkigence:float = 10
 
+var current_vigor:float
+var current_mind:float
+var current_endurance:float
 var current_strength:float
 var current_dexterity:float
 var current_intelligence:float
@@ -99,17 +102,20 @@ func get_area_enemy()->Enemy:
 		else:
 			enemys.erase(e)
 	return null
-# 函数：输入 float → 返回评级字符串
+## 函数：输入 float → 返回评级字符串
 func get_attribute_rating(value: float) -> String:
 	# 遍历字典，判断区间
 	for grade in ATTRIBUTE_RATING:
 		var range = ATTRIBUTE_RATING[grade]
 		if value >= range.x and value < range.y:
             return grade
-    # 超出范围默认 S
-    return "S"
+    return "S"    # 超出范围默认 S
 func update_equip_load() ->void:
 	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_mind,mind_magic_base,mind_magic_growth)
+func append_equipment(equit:Equipment):
+	equips_array.append(equit)
+func remove_equipment(equit:Equipment):
+	equips_array.earse(equit)
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
 func _on_area_2d_attack_area_exited(area: Area2D) -> void:
