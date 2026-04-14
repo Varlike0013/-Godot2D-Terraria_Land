@@ -1,6 +1,15 @@
 extends Character
 class_name Player
 
+const ATTRIBUTE_RATING: Dictionary = { ##RANGE E->S
+    "E": Vector2(0, 15),
+    "D": Vector2(15, 30),
+    "C": Vector2(30, 50),
+    "B": Vector2(50, 75),
+    "A": Vector2(75, 90),
+    "S": Vector2(90, 100)
+}
+
 @onready var area_2d_attack: Area2D = $Area2DAttack
 @onready var collision_attack: CollisionShape2D = $Area2DAttack/CollisionShape2D
 @onready var timer_attack: Timer = $TimerAttack
@@ -26,6 +35,13 @@ class_name Player
 @export var attribute_intelligence:float = 10 	##智力
 @export var intelligence_scaling_base:float = 50
 @export var intelligence_scaling_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
+@export_group("RantingValue") ##影响属性成长
+@export var rating_value_vigor:float = 10
+@export var rating_value_mind:float = 10
+@export var rating_value_endurance:float = 10
+@export var rating_value_strength:float = 10
+@export var rating_value_dexterity:float = 10
+@export var rating_value_intekkigence:float = 10
 
 var current_strength:float
 var current_dexterity:float
@@ -83,6 +99,15 @@ func get_area_enemy()->Enemy:
 		else:
 			enemys.erase(e)
 	return null
+# 函数：输入 float → 返回评级字符串
+func get_attribute_rating(value: float) -> String:
+	# 遍历字典，判断区间
+	for grade in ATTRIBUTE_RATING:
+		var range = ATTRIBUTE_RATING[grade]
+		if value >= range.x and value < range.y:
+            return grade
+    # 超出范围默认 S
+    return "S"
 func update_equip_load() ->void:
 	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_mind,mind_magic_base,mind_magic_growth)
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:
