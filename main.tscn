@@ -84,9 +84,8 @@ level = NodePath("../../..")
 position = Vector2(503, 354)
 level = NodePath("../../..")
 
-[node name="Player" parent="Charaters/Players" unique_id=1360645317 node_paths=PackedStringArray("level") instance=ExtResource("4_7mycd")]
+[node name="Player" parent="Charaters/Players" unique_id=1360645317 instance=ExtResource("4_7mycd")]
 position = Vector2(1473, 270)
-level = NodePath("../../..")
 
 [node name="Enemys" type="Node2D" parent="Charaters" unique_id=698884280]
 

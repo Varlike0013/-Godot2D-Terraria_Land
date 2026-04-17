@@ -15,4 +15,3 @@ func update(rat:String,value_rating:float,value_current:float): ##todo update in
 	label_rating.text = rat
 	label_value.text = str(value_rating)+"/"+str(value_current)
 	h_slider.value = value_rating
-

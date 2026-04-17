@@ -2,12 +2,12 @@ extends Character
 class_name Player
 
 const ATTRIBUTE_RATING: Dictionary = { ##RANGE E->S
-    "E": Vector2(0, 15),
-    "D": Vector2(15, 30),
-    "C": Vector2(30, 50),
-    "B": Vector2(50, 75),
-    "A": Vector2(75, 90),
-    "S": Vector2(90, 100)
+	"E": Vector2(0, 15),
+	"D": Vector2(15, 30),
+	"C": Vector2(30, 50),
+	"B": Vector2(50, 75),
+	"A": Vector2(75, 90),
+	"S": Vector2(90, 100)
 }
 
 @onready var area_2d_attack: Area2D = $Area2DAttack
@@ -108,14 +108,14 @@ func get_attribute_rating(value: float) -> String:
 	for grade in ATTRIBUTE_RATING:
 		var range = ATTRIBUTE_RATING[grade]
 		if value >= range.x and value < range.y:
-            return grade
-    return "S"    # 超出范围默认 S
+			return grade
+	return "S"    # 超出范围默认 S
 func update_equip_load() ->void:
-	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_mind,mind_magic_base,mind_magic_growth)
+	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_endurance,endurance_equip_load_base,endurance_equip_load_growth)
 func append_equipment(equit:Equipment):
 	equips_array.append(equit)
 func remove_equipment(equit:Equipment):
-	equips_array.earse(equit)
+	equips_array.erase(equit)
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
 func _on_area_2d_attack_area_exited(area: Area2D) -> void:
