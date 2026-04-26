@@ -32,7 +32,7 @@ enum MoveStaus {move,stop,stand,repeled}
 @export var attack_target:Node2D
 @export_group("Repeled")
 @export var repeled_value:float = 10000 ##击退常数，决定被击退时的速度repeled_speed = repeled_value/weight
-var repeled_speed:flaot = 0
+var repeled_speed:float = 0
 var repeled_direction:Vector2 = Vector2.ZERO
 var pylon_point:PylonPoint
 @export_group("other")

@@ -112,10 +112,6 @@ func get_attribute_rating(value: float) -> String:
 	return "S"    # 超出范围默认 S
 func update_equip_load() ->void:
 	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_endurance,endurance_equip_load_base,endurance_equip_load_growth)
-func append_equipment(equit:Equipment):
-	equips_array.append(equit)
-func remove_equipment(equit:Equipment):
-	equips_array.erase(equit)
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:
 	pass # Replace with function body.
 func _on_area_2d_attack_area_exited(area: Area2D) -> void:

@@ -14,6 +14,8 @@ class_name DisplayerCharacterInfo
 
 var is_display_attribute:bool = true
 
+func _ready() -> void:
+	change_display()
 func update(current_player:Player):
 	update_label_attribute(current_player)
 	update_label_rich(current_player)
@@ -83,6 +85,6 @@ func change_display():
 	else:
 		label_attributelVBox.visible = false
 		rich_text_label.visible = true
-func _on_button_change_pressed():
+func _on_button_change_button_down() -> void:
 	is_display_attribute = !is_display_attribute
 	change_display()
