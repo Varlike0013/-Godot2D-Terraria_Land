@@ -1,4 +1,5 @@
 extends PanelContainer
+class_name DisplayerCharacterInfo
 
 @onready var label_name: Label = $HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Label_name
 @onready var button_change: Button = $HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonChange
