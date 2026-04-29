@@ -8,8 +8,12 @@ func _get_date() -> String:
 	return "%04d-%02d-%02d" % [time.year, time.month, time.day]
 func _get_log_path(type: String) -> String:
 	return log_dir + type + "_" + _get_date() + ".log"
-func append_line(msg: String):
+func append_line(msg: String,log_type:LogType):
 	var path = _get_log_path("main")
+	match log_type:
+		LogType.Main:_get_log_path("main")
+		LogType.Charater:_get_log_path("charater")
+		LogType.Errors:_get_log_path("errors")
 	write_log(path, "INFO: %s" % msg)
 # 写入日志文件
 # file_path: 日志路径 例如 "user://game.log"

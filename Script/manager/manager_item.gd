@@ -2,7 +2,7 @@ extends Node
 
 enum ItemInfoType{Name,Texture2d,Type,Null,ToolEfc,ToolDurability,ToolType}
 const ITEM_BAG = preload("uid://bgosrqbnyvula")
-const ItemNoRemoveList = [5000]
+const ItemNoRemoveList = [5000] ##无法被移除的物品的id
 const ItemInfo:Dictionary = {
 	0:{ItemInfoType.Name:"土块",
 		ItemInfoType.Type:Item.ItemType.Materials,
@@ -63,7 +63,7 @@ func append_item(new_item:Item):
 			found.restore_quality(new_item.item_quality)
 		else:
 			array_items.append(new_item)
-func append_item_nocheck(new_id:int,new_qua:int=1):
+func append_item_nocheck(new_id:int,new_qua:int=1): ##添加物品跳过检查步骤
 	var found:Item = find_item_get(new_id)
 	if found:
 		found.restore_quality(new_qua)
@@ -158,7 +158,7 @@ func get_item_info(new_id:int,type:ItemInfoType=ItemInfoType.Null):##null返回�
 		return item_info
 	else:
 		return item_info.get(type)
-func check_item_change(item_id:int)->bool:
+func check_item_change(item_id:int)->bool: ##检查物品是否在ItemNoRemoveList，在其中无法被增减数量
 	if item_id in ItemNoRemoveList:
 		return false
 	else:

@@ -24,6 +24,7 @@ ManagerItem="*uid://he50ydcr15ne"
 ManagerBuilding="*uid://vg73h0sfxwsc"
 ManagerEnemy="*uid://bat027p13iy0e"
 ManagerMath="*uid://c0kdd18ohgtx3"
+ManagerLogs="*uid://cf170idhdv5s2"
 
 [display]
 

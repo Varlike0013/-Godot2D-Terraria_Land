@@ -1,0 +1,63 @@
+{
+  "0": {
+	"Name": "土块",
+	"Type": "Materials",
+	"ToolType": "Pickaxe",
+	"Texture2d": "uid://bkjw5whsctrkg",
+	"description": ""
+  },
+  "1": {
+	"Name": "木头",
+	"Type": "Materials",
+	"ToolType": "Axe",
+	"Texture2d": "uid://72n8y8dcb1lt",
+	"description": ""
+  },
+  "2": {
+	"Name": "铁矿",
+	"Type": "Materials",
+	"ToolType": "Pickaxe",
+	"Texture2d": "uid://b260pg6we3y46",
+	"description": ""
+  },
+  "3": {
+	"Name": "铁锭",
+	"Type": "Materials",
+	"Texture2d": "uid://k4pbr8gjhnkj",
+	"description": ""
+  },
+  "4": {
+	"Name": "橡实",
+	"Type": "Materials",
+	"Texture2d": "uid://b2ipcnwydr46h",
+	"description": ""
+  },
+  "5": {
+	"Name": "凝胶",
+	"Type": "Materials",
+	"Texture2d": "uid://n4cmhfie58fg",
+	"description": ""
+  },
+  "6": {
+	"Name": "火把",
+	"Type": "Materials",
+	"Texture2d": "uid://cpk7v5vjt26bp",
+	"description": ""
+  },
+  "5000": {
+	"Name": "空手",
+	"Type": "Tool",
+	"Texture2d": "uid://i6kp3chgcv2g",
+	"description": "",
+	"ToolEfc": [30, 30, 30],
+	"ToolDurability": -1
+  },
+  "5001": {
+	"Name": "铁镐",
+	"Type": "Tool",
+	"Texture2d": "uid://mv88lde00dmn",
+	"description": "",
+	"ToolEfc": [40, 0, 0],
+	"ToolDurability": 20
+  }
+}

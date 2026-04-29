@@ -15,7 +15,7 @@ const ATTRIBUTE_RATING: Dictionary = { ##RANGE E->S
 @onready var timer_attack: Timer = $TimerAttack
 
 @export var distance_enemy:float = 10
-@export_group("Attributes")
+@export_group("Attributes")##vigor mind endurance strength dexterity intelligence
 @export var attribute_vigor:float = 10 			##生命力
 @export var vigor_health_base:float = 100
 @export var vigor_health_growth:Array[Vector2] = [Vector2(1,10),Vector2(30,15),Vector2(50,12),Vector2(80,8),Vector2(100,4)]

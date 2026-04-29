@@ -20,11 +20,15 @@ enum MoveStaus {move,stop,stand,repeled}
 @export var defense_physical:float = 0
 @export var defense_magic:float = 0
 @export var weight: float = 10
+@export var is_fly:bool = false
+@export var fly_higth:float = 50
+@export_group("Percentage")
 @export_range(0, 1) var percentage_physical_resistance:float = 0 ##range in 【0-1】
 @export_range(0, 1) var percentage_magic_resistance:float = 0  ##range in 【0-1】
 @export_range(0, 1) var percentage_all_resistance:float = 0  ##range in 【0-1】
-@export var is_fly:bool = false
-@export var fly_higth:float = 50
+@export_range(0, 1) var percentage_physical_bonus:float = 0 ##range in 【0-1】
+@export_range(0, 1) var percentage_magic_bonus:float = 0  ##range in 【0-1】
+@export_range(0, 1) var percentage_all_bonus:float = 0  ##range in 【0-1】
 @export_group("Attack","attack")
 @export var attack_damage:Vector3 = Vector3.ZERO
 @export var attack_range:float = 1
