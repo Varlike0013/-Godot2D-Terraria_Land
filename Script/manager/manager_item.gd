@@ -131,6 +131,12 @@ func get_item(new_id:int,new_qua:int=1)->Item:
 	return null
 func get_all_items()->Array[Item]:
 	return array_items
+func get_item_type(need_type:Item.ItemType)->Array[Item]:
+	var array:Array[Item] = []
+	for ar in array_items:
+		if ar.item_type == need_type:
+			array.append(ar)
+	return array
 func get_items_show()->Array[Item]:
 	var new_array:Array[Item] = []
 	for it in array_items:

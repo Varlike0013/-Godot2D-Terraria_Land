@@ -148,3 +148,5 @@ func _on_cb_flash_toggled(toggled_on: bool) -> void:
 		timer_flash.stop()
 func _on_timer_flash_timeout() -> void:
 	update_items()
+func _on_bt_np_cs_button_down() -> void:
+	pass # Replace with function body.
