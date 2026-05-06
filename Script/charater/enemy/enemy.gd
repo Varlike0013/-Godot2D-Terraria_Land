@@ -1,6 +1,9 @@
 extends Character
 class_name Enemy
 
+const COLLISION_LAYERE_ENEMY = 4
+const COLLISION_MASK_ENEMY = 2
+
 @onready var timer_attack: Timer = $TimerAttack
 @onready var area_2d_acttack: Area2D = $Area2DActtack
 @onready var drops: Node = $Drops
@@ -13,8 +16,8 @@ var area_nodes:Array = []
 
 func _ready() -> void:
 	super._ready()
-	area_2d_acttack.collision_layer = 4
-	area_2d_acttack.collision_mask = 2
+	area_2d_acttack.collision_layer = COLLISION_LAYERE_ENEMY
+	area_2d_acttack.collision_mask = COLLISION_MASK_ENEMY
 	area_2d_acttack.area_entered.connect(_on_area_2d_acttack_area_entered)
 	area_2d_acttack.area_exited.connect(_on_area_2d_acttack_area_exited)
 	timer_attack.timeout.connect(_on_timer_attack_timeout)

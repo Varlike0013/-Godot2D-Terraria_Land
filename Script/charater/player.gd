@@ -1,14 +1,8 @@
 extends Character
 class_name Player
 
-const ATTRIBUTE_RATING: Dictionary = { ##RANGE E->S
-	"E": Vector2(0, 15),
-	"D": Vector2(15, 30),
-	"C": Vector2(30, 50),
-	"B": Vector2(50, 75),
-	"A": Vector2(75, 90),
-	"S": Vector2(90, 100)
-}
+const COLLISION_MASK_PLAYER = 2
+const COLLISION_LAYERE_PLAYER = 4
 
 @onready var area_2d_attack: Area2D = $Area2DAttack
 @onready var collision_attack: CollisionShape2D = $Area2DAttack/CollisionShape2D
@@ -41,7 +35,7 @@ const ATTRIBUTE_RATING: Dictionary = { ##RANGE E->S
 @export var rating_value_endurance:float = 10
 @export var rating_value_strength:float = 10
 @export var rating_value_dexterity:float = 10
-@export var rating_value_intekkigence:float = 10
+@export var rating_value_intelligence:float = 10
 
 var current_vigor:float
 var current_mind:float
@@ -55,8 +49,8 @@ var enemys:Array[Enemy] = []
 func _ready() -> void:
 	super._ready()
 	collision_attack.scale = attack_range*Vector2(1,1)
-	area_2d_attack.collision_layer = 4
-	area_2d_attack.collision_mask = 2
+	area_2d_attack.collision_layer = COLLISION_LAYERE_PLAYER
+	area_2d_attack.collision_mask = COLLISION_MASK_PLAYER
 	area_2d_attack.area_entered.connect(_on_area_2d_attack_area_entered)
 	area_2d_attack.area_exited.connect(_on_area_2d_attack_area_exited)
 	area_2d_attack.body_entered.connect(_on_area_2d_attack_body_entered)
@@ -102,14 +96,6 @@ func get_area_enemy()->Enemy:
 		else:
 			enemys.erase(e)
 	return null
-## 函数：输入 float → 返回评级字符串
-func get_attribute_rating(value: float) -> String:
-	# 遍历字典，判断区间
-	for grade in ATTRIBUTE_RATING:
-		var range = ATTRIBUTE_RATING[grade]
-		if value >= range.x and value < range.y:
-			return grade
-	return "S"    # 超出范围默认 S
 func update_equip_load() ->void:
 	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_endurance,endurance_equip_load_base,endurance_equip_load_growth)
 func _on_area_2d_attack_area_entered(area: Area2D) -> void:

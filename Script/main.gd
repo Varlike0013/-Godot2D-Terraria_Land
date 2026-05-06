@@ -9,6 +9,7 @@ const DROP_ITEM_2D = preload("uid://idmr06b3sjgh")
 @onready var drops: Node2D = $Drops
 @onready var level_ui: LevelUi = $LevelUi
 @onready var buiding_rows: VBoxContainer = $ControlBuildings/MarginContainer/BuidingRows
+@onready var displayer_character_info: DisplayCharacterInfo = $LevelUi/UI_Top/DisplayerCharacterInfo
 
 @export var pylon_point:PylonPoint
 @export var camera2d:Camera2D
@@ -22,7 +23,16 @@ func _ready() -> void:
 	camera2d.limit_top = 0
 	camera2d.limit_bottom = 1000
 	camera2d.limit_right = 1600
+	displayer_character_info.visible = false
 	load_start_buildings()
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouse:
+		if event is InputEventMouseButton:
+			if event.button_mask == MouseButtonMask.MOUSE_BUTTON_MASK_LEFT and event.is_pressed():
+				var result = raycast_check_for_player()
+				if result:
+					if result is Player:
+						displayer_character_info.display(result)
 func load_start_buildings():
 	await get_tree().create_timer(0.1).timeout
 	for sbd in start_building:
@@ -70,6 +80,17 @@ func get_nearest_enemy(pos:Vector2)->Enemy:
 				nearest_dis = current
 				nearest = en
 	return nearest
+func raycast_check_for_player(): ##会返回player和enemy类
+	var space_state = get_world_2d().direct_space_state
+	var parameters = PhysicsPointQueryParameters2D.new()
+	parameters.position = get_global_mouse_position()
+	parameters.collide_with_areas = true
+	parameters.collision_mask = Player.COLLISION_LAYERE_PLAYER
+	var result = space_state.intersect_point(parameters)
+	if result.size()>0:
+		return result[0].collider.get_parent()
+	else:
+		return null
 func load_blocks():
 	for i in range(10):
 		for j in range(10):

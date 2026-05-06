@@ -29,13 +29,11 @@ text = "S+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer" unique_id=1801873610]
-custom_minimum_size = Vector2(100, 0)
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer" unique_id=403866614]
+custom_minimum_size = Vector2(115, 20)
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 4
-tick_count = 5
-ticks_position = 3
+show_percentage = false
 
 [node name="Label_value" type="Label" parent="MarginContainer/HBoxContainer" unique_id=1182040064]
 custom_minimum_size = Vector2(80, 30)

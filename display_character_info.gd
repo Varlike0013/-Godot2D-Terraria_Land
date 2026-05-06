@@ -1,7 +1,9 @@
 extends PanelContainer
-class_name DisplayerCharacterInfo
+class_name DisplayCharacterInfo
 
-@onready var label_name: Label = $HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/Label_name
+const MAX_SPRITE_SIZE = Vector2(150,120)
+
+@onready var label_name: Label = $HBoxContainer/MarginContainer2/VBoxContainer/Label_name
 @onready var button_change: Button = $HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonChange
 @onready var label_attribute_vigor: LabelAttribute = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/AttributeLabel
 @onready var label_attribute_mind: LabelAttribute = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/AttributeLabel2
@@ -11,22 +13,41 @@ class_name DisplayerCharacterInfo
 @onready var label_attribute_intelligence: LabelAttribute = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/AttributeLabel6
 @onready var label_attributelVBox: VBoxContainer = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/VBoxContainer
 @onready var rich_text_label: RichTextLabel = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/RichTextLabel
+@onready var animated_sprite_2d: AnimatedSprite2D = $HBoxContainer/MarginContainer2/VBoxContainer/Panel/AnimatedSprite2D
 
 var is_display_attribute:bool = true
 
 func _ready() -> void:
 	change_display()
+func display(current_player:Player):
+	visible = true
+	update(current_player)
 func update(current_player:Player):
+	update_sprite(current_player.animated_sprite_2d)
 	update_label_attribute(current_player)
 	update_label_rich(current_player)
+func update_sprite(ani_sprite_2d:AnimatedSprite2D):
+	if not ani_sprite_2d or not ani_sprite_2d.sprite_frames:
+		return
+	animated_sprite_2d.sprite_frames = ani_sprite_2d.sprite_frames
+	animated_sprite_2d.play("default")
+	var frame_texture: Texture2D = ani_sprite_2d.sprite_frames.get_frame_texture("default", 0)
+	if not frame_texture:
+		return
+	var tex_size: Vector2 = frame_texture.get_size()
+	var scale_x: float = MAX_SPRITE_SIZE.x / tex_size.x
+	var scale_y: float = MAX_SPRITE_SIZE.y / tex_size.y
+	var final_scale: float = min(scale_x, scale_y)  # 等比缩放核心
+	animated_sprite_2d.scale = Vector2(final_scale, final_scale)
+	animated_sprite_2d.play("default")
 func update_label_attribute(current_player:Player):
 	label_name.text = current_player.charater_name
-	label_attribute_vigor.update(current_player.get_attribute_rating(current_player.rating_value_vigor),current_player.rating_value_vigor,current_player.attribute_vigor)
-	label_attribute_mind.update(current_player.get_attribute_rating(current_player.rating_value_mind),current_player.rating_value_mind,current_player.attribute_mind)
-	label_attribute_endurance.update(current_player.get_attribute_rating(current_player.rating_value_endurance),current_player.rating_value_endurance,current_player.attribute_endurance)
-	label_attribute_strength.update(current_player.get_attribute_rating(current_player.rating_value_strength),current_player.rating_value_strength,current_player.attribute_strength)
-	label_attribute_dexterity.update(current_player.get_attribute_rating(current_player.rating_value_dexterity),current_player.rating_value_dexterity,current_player.attribute_dexterity)
-	label_attribute_intelligence.update(current_player.get_attribute_rating(current_player.rating_value_intelligence),current_player.rating_value_intelligence,current_player.attribute_intelligence)
+	label_attribute_vigor.update(current_player.rating_value_vigor,current_player.attribute_vigor)
+	label_attribute_mind.update(current_player.rating_value_mind,current_player.attribute_mind)
+	label_attribute_endurance.update(current_player.rating_value_endurance,current_player.attribute_endurance)
+	label_attribute_strength.update(current_player.rating_value_strength,current_player.attribute_strength)
+	label_attribute_dexterity.update(current_player.rating_value_dexterity,current_player.attribute_dexterity)
+	label_attribute_intelligence.update(current_player.rating_value_intelligence,current_player.attribute_intelligence)
 # 调用：update_label_rich($Player)
 func update_label_rich(current_player: Player):
 	rich_text_label.clear()
@@ -76,7 +97,7 @@ func update_label_rich(current_player: Player):
 	rich_text_label.append_text("耐力评级：%.1f\n" % current_player.rating_value_endurance)
 	rich_text_label.append_text("力量评级：%.1f\n" % current_player.rating_value_strength)
 	rich_text_label.append_text("灵巧评级：%.1f\n" % current_player.rating_value_dexterity)
-	rich_text_label.append_text("智力评级：%.1f\n" % current_player.rating_value_intekkigence)
+	rich_text_label.append_text("智力评级：%.1f\n" % current_player.rating_value_intelligence)
 	rich_text_label.append_text("\n[center][color=gray]========================[/color][/center]")
 func change_display():
 	if is_display_attribute:
@@ -88,3 +109,5 @@ func change_display():
 func _on_button_change_button_down() -> void:
 	is_display_attribute = !is_display_attribute
 	change_display()
+func _on_button_exit_button_down() -> void:
+	visible = false

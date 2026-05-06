@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://d4emotvotfrgh" path="res://Tscn/top_index_bar.tscn" id="9_kek77"]
 [ext_resource type="PackedScene" uid="uid://iuehj6823x4l" path="res://Tscn/building_select_base.tscn" id="11_dg77c"]
 [ext_resource type="PackedScene" uid="uid://ui8l45undioe" path="res://Tscn/building_select_production.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://b4bjc4a42on7x" path="res://display_character_info.tscn" id="14_w48qg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(1600, 200)
@@ -84,8 +85,9 @@ level = NodePath("../../..")
 position = Vector2(503, 354)
 level = NodePath("../../..")
 
-[node name="Player" parent="Charaters/Players" unique_id=1360645317 instance=ExtResource("4_7mycd")]
+[node name="Player" parent="Charaters/Players" unique_id=1360645317 node_paths=PackedStringArray("level") instance=ExtResource("4_7mycd")]
 position = Vector2(1473, 270)
+level = NodePath("../../..")
 
 [node name="Enemys" type="Node2D" parent="Charaters" unique_id=698884280]
 
@@ -425,6 +427,13 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 text = "信息显示"
+
+[node name="DisplayerCharacterInfo" parent="LevelUi/UI_Top" unique_id=1123885561 instance=ExtResource("14_w48qg")]
+layout_mode = 0
+offset_left = 932.0
+offset_top = 119.0
+offset_right = 1456.0
+offset_bottom = 434.0
 
 [connection signal="button_down" from="LevelUi/UI_Play/HBoxContainer/BT_Bag" to="LevelUi" method="_on_bt_bag_button_down"]
 [connection signal="value_changed" from="LevelUi/UI_Play/HBoxContainer/VBoxContainer/HSlider" to="LevelUi" method="_on_h_slider_value_changed"]

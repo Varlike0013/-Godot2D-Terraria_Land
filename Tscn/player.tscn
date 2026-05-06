@@ -11,7 +11,9 @@ size = Vector2(15, 42)
 [sub_resource type="CircleShape2D" id="CircleShape2D_pgo6l"]
 
 [node name="Player" type="RigidBody2D" unique_id=1360645317]
+position = Vector2(1, 0)
 script = ExtResource("1_pgo6l")
+charater_name = "player_object"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1165773793]
 position = Vector2(-2, -21)
