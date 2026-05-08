@@ -1,15 +1,14 @@
 extends Node
 class_name Item
 
-enum ItemType {Materials,Tool,WEAPON, ARMOR, ACCESSORY }
-enum ToolType {Null,Pickaxe,Axe,Hammer}
+enum ItemType {Materials,Pickaxe,Axe,PickAaxe,HamAxe,Hammer,WEAPON,HEAD,CHEST,LEGGINGS, ACCESSORY }
 
 var item_id:int
 var item_texture:Texture2D
 var item_name:String
 var item_quality:int
-var item_need_tool_type:ToolType = ToolType.Null
-var item_type:ItemType = ItemType.Materials
+var item_type:ItemType= ItemType.Materials
+var item_use_tool:ItemType = ItemType.Pickaxe
 var item_is_show:bool ##是否被显示在top_index
 var item_description: String = "item description"
 
@@ -22,3 +21,10 @@ func restore_quality(new_value:int):
 func reduce_quality(new_value:int):
 	item_quality -= new_value
 	item_quality = max(0,item_quality)
+func is_type_tool()->bool:
+	if item_type == ItemType.Pickaxe or item_type == ItemType.Axe or item_type == ItemType.PickAaxe:
+		return true
+	elif item_type == ItemType.HamAxe or item_type == ItemType.Hammer:
+		return true
+	else:
+		return false

@@ -36,6 +36,12 @@ const COLLISION_LAYERE_PLAYER = 4
 @export var rating_value_strength:float = 10
 @export var rating_value_dexterity:float = 10
 @export var rating_value_intelligence:float = 10
+@export_group("Equipment")
+@export var equip_weapon:Weapon
+@export var equip_head:Armor
+@export var equip_chest:Armor
+@export var equip_legg:Armor
+@export var equip_accessory:Array[Accessory]
 
 var current_vigor:float
 var current_mind:float
@@ -43,7 +49,6 @@ var current_endurance:float
 var current_strength:float
 var current_dexterity:float
 var current_intelligence:float
-var equips_array:Array = []
 var enemys:Array[Enemy] = []
 
 func _ready() -> void:
@@ -51,8 +56,6 @@ func _ready() -> void:
 	collision_attack.scale = attack_range*Vector2(1,1)
 	area_2d_attack.collision_layer = COLLISION_LAYERE_PLAYER
 	area_2d_attack.collision_mask = COLLISION_MASK_PLAYER
-	area_2d_attack.area_entered.connect(_on_area_2d_attack_area_entered)
-	area_2d_attack.area_exited.connect(_on_area_2d_attack_area_exited)
 	area_2d_attack.body_entered.connect(_on_area_2d_attack_body_entered)
 	area_2d_attack.body_exited.connect(_on_area_2d_attack_body_exited)
 	timer_attack.wait_time = attack_inteval
@@ -98,10 +101,34 @@ func get_area_enemy()->Enemy:
 	return null
 func update_equip_load() ->void:
 	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_endurance,endurance_equip_load_base,endurance_equip_load_growth)
-func _on_area_2d_attack_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
-func _on_area_2d_attack_area_exited(area: Area2D) -> void:
-	pass # Replace with function body.
+func get_equip(type:Item.ItemType,index:int=0)->Item:
+	var res:Item
+	match type:
+		Item.ItemType.WEAPON: res = equip_weapon
+		Item.ItemType.HEAD: res = equip_head
+		Item.ItemType.CHEST: res = equip_chest
+		Item.ItemType.LEGGINGS: res = equip_legg
+		Item.ItemType.ACCESSORY: res = equip_accessory.get(index)
+	return res
+func set_equip(item_id:int,type:Item.ItemType,index:int=0):
+	match type:
+		Item.ItemType.WEAPON: equip_weapon = ManagerItem.get_remove_item(item_id)
+		Item.ItemType.HEAD: equip_head = ManagerItem.get_remove_item(item_id)
+		Item.ItemType.CHEST: equip_chest = ManagerItem.get_remove_item(item_id)
+		Item.ItemType.LEGGINGS: equip_legg = ManagerItem.get_remove_item(item_id)
+		Item.ItemType.ACCESSORY: equip_accessory.set(index,ManagerItem.get_remove_item(item_id))
+func remove_qeuip(type:Item.ItemType,index:int=0):
+	match type:
+		Item.ItemType.WEAPON: ManagerItem.append_item_quality(equip_weapon.item_id);equip_weapon = null;
+		Item.ItemType.HEAD: ManagerItem.append_item_quality(equip_head.item_id);equip_head = null
+		Item.ItemType.CHEST: ManagerItem.append_item_quality(equip_chest.item_id);equip_chest = null
+		Item.ItemType.LEGGINGS: ManagerItem.append_item_quality(equip_legg.item_id);equip_legg = null
+		Item.ItemType.ACCESSORY: ManagerItem.append_item_quality(equip_accessory[index].item_id);equip_accessory[index] = null
+func find_equip(type:Item.ItemType,index:int=0)->bool:
+	if get_equip(type,index):
+		return true
+	else:
+		return false
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemys.append(body)
