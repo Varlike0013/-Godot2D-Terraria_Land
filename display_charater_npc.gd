@@ -14,6 +14,8 @@ var connect_player:Player
 
 func _ready() -> void:
 	load_slots_accessory(4)
+func update(player:Player):
+	connect_player = player
 func load_slots_accessory(accessory_number:int):
 	for i in range(accessory_number):
 		var slot:EquipSelectSlot = EQUIP_SELECT_SLOT.instantiate()

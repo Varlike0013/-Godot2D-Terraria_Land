@@ -10,6 +10,7 @@ const DROP_ITEM_2D = preload("uid://idmr06b3sjgh")
 @onready var level_ui: LevelUi = $LevelUi
 @onready var buiding_rows: VBoxContainer = $ControlBuildings/MarginContainer/BuidingRows
 @onready var displayer_character_info: DisplayCharacterInfo = $LevelUi/UI_Top/DisplayerCharacterInfo
+@onready var node_players: Node2D = $Charaters/Players
 
 @export var pylon_point:PylonPoint
 @export var camera2d:Camera2D
@@ -80,6 +81,12 @@ func get_nearest_enemy(pos:Vector2)->Enemy:
 				nearest_dis = current
 				nearest = en
 	return nearest
+func get_players()->Array[Player]:
+	var nodes:Array[Player]
+	for nd in node_players.get_children():
+		if nd is Player:
+			nodes.append(nd)
+	return nodes
 func raycast_check_for_player(): ##会返回player和enemy类
 	var space_state = get_world_2d().direct_space_state
 	var parameters = PhysicsPointQueryParameters2D.new()

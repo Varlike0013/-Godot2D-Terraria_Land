@@ -35,7 +35,7 @@ func update_item(new_id:int,new_qua:int=1,new_itl:float=1.0):
 	production_item_id = new_id
 	production_item_quality = new_qua
 	production_inteval = new_itl
-	current_item_tool_type =  ManagerItem.get_item_info(new_id,ManagerItem.ItemInfoType.ToolType)
+	current_item_tool_type =  ManagerItem.get_item_info(new_id,ManagerItem.ItemInfoType.ToolUseType)
 	set_current_inteval()
 	timer_production.start()
 func update_tool(item_tool:Item):

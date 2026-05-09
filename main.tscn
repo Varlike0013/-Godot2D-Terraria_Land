@@ -74,18 +74,6 @@ enemy_array = Array[Array]([[0, 0]])
 
 [node name="Players" type="Node2D" parent="Charaters" unique_id=1990975525]
 
-[node name="Charater" parent="Charaters/Players" unique_id=676157024 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
-position = Vector2(414, 388)
-level = NodePath("../../..")
-
-[node name="Charater2" parent="Charaters/Players" unique_id=992018445 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
-position = Vector2(462, 415)
-level = NodePath("../../..")
-
-[node name="Charater3" parent="Charaters/Players" unique_id=759548088 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
-position = Vector2(503, 354)
-level = NodePath("../../..")
-
 [node name="Player" parent="Charaters/Players" unique_id=1360645317 node_paths=PackedStringArray("level") instance=ExtResource("4_7mycd")]
 position = Vector2(1473, 270)
 level = NodePath("../../..")
@@ -110,6 +98,20 @@ level = NodePath("../../..")
 
 [node name="Slime3" parent="Charaters/Enemys" unique_id=715317930 node_paths=PackedStringArray("level") instance=ExtResource("6_dg77c")]
 position = Vector2(469, 273)
+level = NodePath("../../..")
+
+[node name="Charaters" type="Node2D" parent="Charaters" unique_id=1167868292]
+
+[node name="Charater" parent="Charaters/Charaters" unique_id=676157024 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
+position = Vector2(414, 388)
+level = NodePath("../../..")
+
+[node name="Charater2" parent="Charaters/Charaters" unique_id=992018445 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
+position = Vector2(462, 415)
+level = NodePath("../../..")
+
+[node name="Charater3" parent="Charaters/Charaters" unique_id=759548088 node_paths=PackedStringArray("level") instance=ExtResource("4_1bvp3")]
+position = Vector2(503, 354)
 level = NodePath("../../..")
 
 [node name="Projectile" type="Node2D" parent="." unique_id=487496523]
@@ -148,9 +150,10 @@ ui_level = NodePath("../../../../LevelUi")
 layout_mode = 2
 ui_level = NodePath("../../../../LevelUi")
 
-[node name="LevelUi" type="CanvasLayer" parent="." unique_id=714169567 node_paths=PackedStringArray("camera2d")]
+[node name="LevelUi" type="CanvasLayer" parent="." unique_id=714169567 node_paths=PackedStringArray("camera2d", "level")]
 script = ExtResource("7_5vw27")
 camera2d = NodePath("../Camera/Camera2D")
+level = NodePath("..")
 
 [node name="UI_Play" type="Control" parent="LevelUi" unique_id=338951327]
 layout_mode = 3

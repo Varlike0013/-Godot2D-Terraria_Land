@@ -6,15 +6,15 @@ const ItemNoRemoveList = [5000] ##无法被移除的物品的id
 const ItemInfo:Dictionary = {
 	0:{ItemInfoType.Name:"土块",
 		ItemInfoType.Type:Item.ItemType.Materials,
-		ItemInfoType.ToolUseType:Item.ItemType.Pickaxe,
+		ItemInfoType.ToolUseType:Item.ToolType.Pickaxe,
 		ItemInfoType.Texture2d:preload("uid://bkjw5whsctrkg")},
 	1:{ItemInfoType.Name:"木头",
 		ItemInfoType.Type:Item.ItemType.Materials,
-		ItemInfoType.ToolUseType:Item.ItemType.Axe,
+		ItemInfoType.ToolUseType:Item.ToolType.Axe,
 		ItemInfoType.Texture2d:preload("uid://72n8y8dcb1lt")},
 	2:{ItemInfoType.Name:"铁矿",
 		ItemInfoType.Type:Item.ItemType.Materials,
-		ItemInfoType.ToolUseType:Item.ItemType.Pickaxe,
+		ItemInfoType.ToolUseType:Item.ToolType.Pickaxe,
 		ItemInfoType.Texture2d:preload("uid://b260pg6we3y46")},
 	3:{ItemInfoType.Name:"铁锭",
 		ItemInfoType.Type:Item.ItemType.Materials,
@@ -29,12 +29,12 @@ const ItemInfo:Dictionary = {
 		ItemInfoType.Type:Item.ItemType.Materials,
 		ItemInfoType.Texture2d:preload("uid://cpk7v5vjt26bp")},
 	5000:{ItemInfoType.Name:"空手",
-		ItemInfoType.Type:Item.ItemType.Axe,
+		ItemInfoType.Type:Item.ItemType.WEAPONTOOL,
 		ItemInfoType.Texture2d:preload("uid://i6kp3chgcv2g"),
 		ItemInfoType.ToolEfc:Vector3(30,30,30),
 		ItemInfoType.ToolDurability:-1},
 	5001:{ItemInfoType.Name:"铁镐",
-		ItemInfoType.Type:Item.ItemType.Pickaxe,
+		ItemInfoType.Type:Item.ItemType.WEAPONTOOL,
 		ItemInfoType.Texture2d:preload("uid://mv88lde00dmn"),
 		ItemInfoType.ToolEfc:Vector3(40,0,0),
 		ItemInfoType.ToolDurability:20},
@@ -121,7 +121,7 @@ func get_item(new_id:int,new_qua:int=1)->Item:
 		var item:Item = Item.new(new_id,item_info.get(ItemInfoType.Texture2d),item_info.get(ItemInfoType.Type))
 		item.item_quality = new_qua
 		return item
-	elif is_type_tool(item_type):
+	elif item_type == Item.ItemType.TOOL or item_type == Item.ItemType.WEAPONTOOL:
 		var item:ItemTool = ItemTool.new(new_id,item_info.get(ItemInfoType.Texture2d),item_info.get(ItemInfoType.Type))
 		item.item_quality = new_qua
 		item.tool_durability = item_info.get(ItemInfoType.ToolDurability)
@@ -146,7 +146,7 @@ func get_items_show()->Array[Item]:
 func get_item_tools()->Array[Item]:
 	var new_array:Array[Item] = []
 	for it in array_items:
-		if  is_type_tool(it.item_type):
+		if  it.item_type == Item.ItemType.TOOL or it.item_type == Item.ItemType.WEAPONTOOL:
 			new_array.append(it)
 	return new_array
 func get_item_quality(new_id:int)->int:
@@ -175,10 +175,8 @@ func check_item_change(item_id:int)->bool: ##检查物品是否在ItemNoRemoveLi
 		return false
 	else:
 		return true
-func is_type_tool(item_type:Item.ItemType)->bool:
-	if item_type == Item.ItemType.Pickaxe or item_type == Item.ItemType.Axe or item_type == Item.ItemType.PickAaxe:
-		return true
-	elif item_type == Item.ItemType.HamAxe or item_type == Item.ItemType.Hammer:
+func is_type_tool(type:Item.ItemType)->bool:
+	if type == Item.ItemType.TOOL or type == Item.ItemType.WEAPONTOOL:
 		return true
 	else:
 		return false

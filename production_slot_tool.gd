@@ -12,7 +12,7 @@ signal Pressed(item_tool:Item)
 var current_item:Item
 
 func update(item_tool:Item):
-	if item_tool.item_type == Item.ItemType.Tool:
+	if ManagerItem.is_type_tool(item_tool.item_type):
 		current_item = item_tool
 		texture_rect.texture = item_tool.item_texture
 		label_quality.text = "x"+str(item_tool.item_quality)

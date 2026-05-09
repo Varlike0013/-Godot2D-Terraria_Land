@@ -1,5 +1,6 @@
 extends CanvasLayer
 class_name LevelUi
+const DISPLAY_CHARATER_NPC = preload("uid://di7bddk56tmpm")
 
 @onready var top_index_bar: TopIndexBar = $UI_Play/TopIndexBar
 @onready var ui_play: Control = $UI_Play
@@ -14,8 +15,10 @@ class_name LevelUi
 @onready var timer_flash: Timer = $UI_Bag/Control/HBoxContainer/CB_flash/TimerFlash
 @onready var top_info: Control = $UI_Top/TopInfo
 @onready var top_info_show: PanelContainer = $UI_Top/TopInfo/TopInfoShow
+@onready var v_box_players: VBoxContainer = $UI_NPCs/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ScrollContainer/VBoxContainer
 
 @export var camera2d:Camera2D
+@export var level:Level
 
 var selected_row:BuildingRow
 
@@ -34,6 +37,10 @@ func add_item_bag(item:Item):
 	var slot:ItemBagSlot = ManagerItem.get_item_bag()
 	grid_container_slots.add_child(slot)
 	slot.update(item)
+func add_player_slot(player:Player):
+	var slot:DisplayCharaterNpc = DISPLAY_CHARATER_NPC.instantiate()
+	v_box_players.add_child(slot)
+	slot.update(player)
 func add_building_slot(new_id:int):
 	var slot:BuildingSlot = ManagerBuilding.get_building_slot()
 	grid_container_create.add_child(slot)
@@ -44,6 +51,13 @@ func get_item_slots() ->Array[ItemBagSlot]:
 	var array:Array[ItemBagSlot] = []
 	for nd in nodes:
 		if nd is ItemBagSlot:
+			array.append(nd)
+	return array
+func get_player_slots()->Array[DisplayCharaterNpc]:
+	var nodes:Array = v_box_players.get_children()
+	var array:Array[DisplayCharaterNpc] = []
+	for nd in nodes:
+		if nd is DisplayCharaterNpc:
 			array.append(nd)
 	return array
 func get_building_slots() ->Array[BuildingSlot]:
@@ -122,6 +136,34 @@ func update_select(new_bd:BuildingProduction):
 		building_select_product.update(array)
 		building_select_product.current_building = new_bd
 		building_select_product.visible = true
+func update_players():
+	var array_players:Array[Player] = level.get_players()
+	var array_slots:Array[DisplayCharaterNpc] = get_player_slots()
+	var size_slots:int = array_slots.size()
+	var size_players:int = array_players.size()
+	if size_slots>size_players:
+		for i in range(size_slots):
+			if i<size_players:
+				var current_slot:DisplayCharaterNpc = array_slots.get(i)
+				var current_player:Player = array_players.get(i)
+				current_slot.update(current_player)
+			else:
+				var current_slot:DisplayCharaterNpc = array_slots.get(i)
+				current_slot.queue_free()
+	elif size_slots<size_players:
+		for i in range(size_players):
+			if i<size_slots:
+				var current_slot:DisplayCharaterNpc = array_slots.get(i)
+				var current_player:Player = array_players.get(i)
+				current_slot.update(current_player)
+			else:
+				var current_player:Player = array_players.get(i)
+				add_player_slot(current_player)
+	else:
+		for i in range(size_slots):
+			var current_slot:DisplayCharaterNpc = array_slots.get(i)
+			var current_player:Player = array_players.get(i)
+			current_slot.update(current_player)
 func _on_pressed_create_slot(id:int) ->void:
 	if selected_row:
 		selected_row.append_building(id)
@@ -150,6 +192,7 @@ func _on_cb_flash_toggled(toggled_on: bool) -> void:
 func _on_timer_flash_timeout() -> void:
 	update_items()
 func _on_bt_np_cs_button_down() -> void:
+	update_players()
 	ui_np_cs.visible = true
 func _on_ui_npc_bt_exit_button_down() -> void:
 	ui_np_cs.visible = false
