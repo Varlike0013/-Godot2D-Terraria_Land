@@ -2,6 +2,7 @@ extends PanelContainer
 class_name DisplayCharacterInfo
 
 const MAX_SPRITE_SIZE = Vector2(150,120)
+enum DisplayType {ATTRIBUTE,LABEL,EQUIP}
 
 @onready var label_name: Label = $HBoxContainer/MarginContainer2/VBoxContainer/Label_name
 @onready var button_change: Button = $HBoxContainer/MarginContainer/VBoxContainer/HBoxContainer/ButtonChange
@@ -11,14 +12,15 @@ const MAX_SPRITE_SIZE = Vector2(150,120)
 @onready var label_attribute_strength: LabelAttribute = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/AttributeLabel4
 @onready var label_attribute_dexterity: LabelAttribute = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/AttributeLabel5
 @onready var label_attribute_intelligence: LabelAttribute = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/VBoxContainer/AttributeLabel6
-@onready var label_attributelVBox: VBoxContainer = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/VBoxContainer
-@onready var rich_text_label: RichTextLabel = $HBoxContainer/MarginContainer/VBoxContainer/ScrollContainer/PanelContainer/RichTextLabel
 @onready var animated_sprite_2d: AnimatedSprite2D = $HBoxContainer/MarginContainer2/VBoxContainer/Panel/AnimatedSprite2D
+@onready var display_charater_equitment: DisplayCharaterEquipment = $HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/DisplayCharaterEquitment
+@onready var label_attributelVBox: VBoxContainer = $HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/VBoxContainer
+@onready var rich_text_label: RichTextLabel = $HBoxContainer/MarginContainer/VBoxContainer/PanelContainer/RichTextLabel
 
-var is_display_attribute:bool = true
+var display_type:DisplayType = DisplayType.ATTRIBUTE
 
 func _ready() -> void:
-	change_display()
+	change_display(display_type)
 func display(current_player:Player):
 	visible = true
 	update(current_player)
@@ -99,15 +101,25 @@ func update_label_rich(current_player: Player):
 	rich_text_label.append_text("灵巧评级：%.1f\n" % current_player.rating_value_dexterity)
 	rich_text_label.append_text("智力评级：%.1f\n" % current_player.rating_value_intelligence)
 	rich_text_label.append_text("\n[center][color=gray]========================[/color][/center]")
-func change_display():
-	if is_display_attribute:
-		label_attributelVBox.visible = true
-		rich_text_label.visible = false
-	else:
-		label_attributelVBox.visible = false
-		rich_text_label.visible = true
+func change_display(type:DisplayType):
+	match display_type:
+		DisplayType.ATTRIBUTE:
+			label_attributelVBox.visible = true
+			rich_text_label.visible = false
+			display_charater_equitment.visible = false
+		DisplayType.LABEL:
+			label_attributelVBox.visible = false
+			rich_text_label.visible = true
+			display_charater_equitment.visible = false
+		DisplayType.EQUIP:
+			label_attributelVBox.visible = false
+			rich_text_label.visible = false
+			display_charater_equitment.visible = true
 func _on_button_change_button_down() -> void:
-	is_display_attribute = !is_display_attribute
-	change_display()
+	match display_type:
+		DisplayType.ATTRIBUTE: display_type = DisplayType.LABEL
+		DisplayType.LABEL: display_type = DisplayType.EQUIP
+		DisplayType.EQUIP: display_type = DisplayType.ATTRIBUTE
+	change_display(display_type)
 func _on_button_exit_button_down() -> void:
 	visible = false

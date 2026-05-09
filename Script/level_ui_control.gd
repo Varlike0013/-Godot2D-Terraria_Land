@@ -6,6 +6,7 @@ class_name LevelUi
 @onready var ui_bag: Control = $UI_Bag
 @onready var ui_create: Control = $UI_Create
 @onready var ui_select: Control = $UI_Select
+@onready var ui_np_cs: Control = $UI_NPCs
 @onready var grid_container_slots: GridContainer = $UI_Bag/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/GridContainer
 @onready var grid_container_create: GridContainer = $UI_Create/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/GridContainer
 @onready var building_select_base: BuildingSelectBase = $UI_Select/MarginContainer/BuildingSelectBase
@@ -149,4 +150,6 @@ func _on_cb_flash_toggled(toggled_on: bool) -> void:
 func _on_timer_flash_timeout() -> void:
 	update_items()
 func _on_bt_np_cs_button_down() -> void:
-	pass # Replace with function body.
+	ui_np_cs.visible = true
+func _on_ui_npc_bt_exit_button_down() -> void:
+	ui_np_cs.visible = false
