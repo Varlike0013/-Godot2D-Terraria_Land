@@ -41,6 +41,7 @@ const COLLISION_LAYERE_PLAYER = 4
 @export var equip_head:Armor
 @export var equip_chest:Armor
 @export var equip_legg:Armor
+@export var equip_accessory_size:int = 4
 @export var equip_accessory:Array[Accessory]
 
 var current_vigor:float

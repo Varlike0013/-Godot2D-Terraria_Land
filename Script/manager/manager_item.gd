@@ -1,6 +1,8 @@
 extends Node
 
 enum ItemInfoType{Name,Texture2d,Type,Null,ToolEfc,ToolDurability,ToolUseType}
+
+const ITEM_DATA_JSON = "res://Json/item_data.json"
 const ITEM_BAG = preload("uid://bgosrqbnyvula")
 const ItemNoRemoveList = [5000] ##无法被移除的物品的id
 const ItemInfo:Dictionary = {
@@ -46,7 +48,7 @@ func _ready() -> void:
 	append_item_nocheck(5000,1)
 	append_item_quality(5001,2)
 func load_items() -> Dictionary: ## 加载物品JSON
-	var file = FileAccess.open("item_data.json", FileAccess.READ)
+	var file = FileAccess.open(ITEM_DATA_JSON, FileAccess.READ)
 	if not file:
 		return {}
 	var json = JSON.new()
