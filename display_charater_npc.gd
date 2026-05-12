@@ -9,10 +9,12 @@ const EQUIP_SELECT_SLOT = preload("uid://djgbro7hx24li")
 @onready var equip_select_slot_head: EquipSelectSlot = $MarginContainer/HBoxContainer/EquipSelectSlot2
 @onready var equip_select_slot_armor: EquipSelectSlot = $MarginContainer/HBoxContainer/EquipSelectSlot3
 @onready var equip_select_slot_htui: EquipSelectSlot = $MarginContainer/HBoxContainer/EquipSelectSlot4
+@onready var test_player: Player = $Player
 
 var connect_player:Player
 
 func _ready() -> void:
+	connect_player = test_player
 	load_slots_accessory()
 	#if connect_player:
 		#load_slots_accessory(connect_player.equip_accessory_size)

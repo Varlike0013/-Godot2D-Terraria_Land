@@ -23,13 +23,17 @@ var Buildings = {
 		BuildingDic.type:BuildingProduction.BuildingType.Production,
 		BuildingDic.texture2d: preload("uid://8pb3bporyda5")},
 }
-var BuildingProductions = {#bd_id:vec3(item_id,quality,time)
+var BuildingProductions = {#bd_id:vec3(item_id,quality,time) ##生产物品，不消耗料
 	0:[Vector3(0,1,1),Vector3(1,1,1)],
 	1:[Vector3(2,1,1)],
 }
+##制造物品消耗材料
 var BuildingProductionsMake = {#bd_id:time:float,array_in[vec2(item_id,quality)],array_out[vec2(item_id,quality)]
 	2:[{BuildingMake.time:3.0,BuildingMake.array_in:[Vector2(2,3)],BuildingMake.array_out:[Vector2(3,1)]}],
-	3:[{BuildingMake.time:3.0,BuildingMake.array_in:[Vector2(1,1),Vector2(5,1)],BuildingMake.array_out:[Vector2(6,3)]}],
+	3:[{BuildingMake.time:3.0,BuildingMake.array_in:[Vector2(1,1),Vector2(5,1)],BuildingMake.array_out:[Vector2(6,3)]},
+		{BuildingMake.time:3.0,BuildingMake.array_in:[Vector2(1,20)],BuildingMake.array_out:[Vector2(6000,1)]},
+		{BuildingMake.time:3.0,BuildingMake.array_in:[Vector2(1,30)],BuildingMake.array_out:[Vector2(6001,1)]},
+		{BuildingMake.time:3.0,BuildingMake.array_in:[Vector2(1,25)],BuildingMake.array_out:[Vector2(6002,1)]},],
 	4:[{BuildingMake.time:3.0,BuildingMake.array_in:[Vector2(3,10),Vector2(1,3)],BuildingMake.array_out:[Vector2(7,1)]}],
 }
 

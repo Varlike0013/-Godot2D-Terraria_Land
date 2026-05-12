@@ -283,7 +283,6 @@ text = "自动更新"
 wait_time = 0.1
 
 [node name="UI_NPCs" type="Control" parent="LevelUi" unique_id=1931034841]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

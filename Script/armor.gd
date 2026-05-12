@@ -1,19 +1,19 @@
 extends Item
 class_name Armor
 
-# 盔甲部位（泰拉固定三部位）
-enum ArmorPart { HEAD, CHEST, LEGS }
+enum ArmorPart { HEAD, CHEST, LEGS }	##盔甲部位（泰拉固定三部位）
+enum ArmorGroup {NULL,Wooden}
 
 # 盔甲專屬屬性
 @export var part: ArmorPart = ArmorPart.HEAD
-@export var defense: int = 5           # 防禦
-@export var class_bonus: float = 0.0  # 職業傷害加成（0.1 = +10%）
-@export var set_name: String = ""      # 套裝名稱（熔岩套、星璇套...）
+@export var defense: float = 1.0       # 防禦
+@export var group:ArmorGroup = ArmorGroup.NULL   # 套裝名稱（熔岩套、星璇套...）
 
-# 被動屬性加成
-func get_bonus() -> Dictionary:
-	return {
-		defense = defense,
-		damage_bonus = class_bonus,
-		set_name = set_name
-	}
+func update_info(armor_part:ArmorPart,armor_defense:int,armor_group:ArmorGroup) -> void:
+	part = armor_part
+	defense = armor_defense
+	group = armor_group
+func take_effect_armor_group():
+	match group:
+		ArmorGroup.NULL:pass
+		ArmorGroup.Wooden: pass## todo list buffer player.defense += 1
