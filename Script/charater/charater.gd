@@ -15,22 +15,17 @@ enum MoveStaus {move,stop,stand,repeled}
 @export var charater_name: String = "name"
 @export var charater_level: int = 1
 @export var speed:float = 100
-@export var health:Vector2 = Vector2(100,100)
+@export var health:Vector2 = Vector2(100,100) 
 @export var magic:Vector2 = Vector2(50,50)
-@export var defense_physical:float = 0
-@export var defense_magic:float = 0
+@export var defense:float = 0
 @export var weight: float = 10
 @export var is_fly:bool = false
 @export var fly_higth:float = 50
 @export_group("Percentage")
-@export_range(0, 1) var percentage_physical_resistance:float = 0 ##range in 【0-1】
-@export_range(0, 1) var percentage_magic_resistance:float = 0  ##range in 【0-1】
-@export_range(0, 1) var percentage_all_resistance:float = 0  ##range in 【0-1】
-@export_range(0, 1) var percentage_physical_bonus:float = 0 ##range in 【0-1】
-@export_range(0, 1) var percentage_magic_bonus:float = 0  ##range in 【0-1】
-@export_range(0, 1) var percentage_all_bonus:float = 0  ##range in 【0-1】
+@export_range(0, 1) var percentage_resistance:float = 0 ##range in 【0-1】
+@export_range(0, 1) var percentage_bonus:float = 0 ##range in 【0-1】
 @export_group("Attack","attack")
-@export var attack_damage:Vector3 = Vector3.ZERO
+@export var attack_damage:float = 0
 @export var attack_range:float = 1
 @export var attack_inteval:float = 1.0
 @export var attack_target:Node2D
@@ -43,9 +38,10 @@ var pylon_point:PylonPoint
 var ray_cast:RayCast2D
 var tween_hit:Tween
 var timer_update:Timer
-var resistance_array_physical:Array = []
-var resistance_array_magic:Array = []
-var resistance_array_all:Array = []
+var resistance_array:Array[float] = []
+var buffer_node:Node = Node.new()
+var buffer_array:Array[Buffer] = []
+var info_base:Dictionary = {}
 
 
 func _ready() -> void:
@@ -58,6 +54,7 @@ func _ready() -> void:
 	lock_rotation = true
 	collision_layer = 2##4表示会呗area检查到
 	collision_mask = 1 ##1表示与场景碰撞，1+2表示与场景和自己碰撞
+	add_child(buffer_node)
 func _physics_process(delta: float) -> void:
 	if move_staus == MoveStaus.move:
 		if pylon_point:
@@ -124,18 +121,41 @@ func effect_imprisonment(duration:float = 0.5):
 	move_staus = MoveStaus.stop
 	await get_tree().create_timer(duration).timeout
 	move_staus = MoveStaus.move
-func take_hit(value:Vector3):##value(physical,magic,true)
+func take_hit(value:float):
 	if !tween_hit.is_running():
 		tween_hit.play()
 		await tween_hit.loop_finished
 		tween_hit.pause()
-	var real_value:Vector3 = Vector3.ZERO
-	real_value.x = (value.x-defense_physical)*(1-percentage_physical_resistance)
-	real_value.y = (value.y-defense_magic)*(1-percentage_magic_resistance)
-	real_value.z = value.z*(1-percentage_all_resistance)
-	reduce_health(real_value.x)
-	reduce_health(real_value.y)
-	reduce_health(real_value.z)
+	var real_value:float = (value-defense)*(1-percentage_resistance)
+	reduce_health(real_value)
+func get_all_info()->Dictionary:
+	return {
+		## charater_level speed health magic defense weight fly_higth
+		"charater_level":charater_level,
+		"speed":speed,
+		"health":health,
+		"magic":magic,
+		"defense":defense,
+		"weight":defense,
+		"fly_higth":fly_higth,
+		"attack_damage":attack_damage,
+		"attack_inteval":attack_inteval,
+		"attack_range":attack_range,
+	}
+func append_buffer(buffer:Buffer):
+	buffer_node.add_child(buffer)
+	buffer_array.append(buffer)
+func remove_buffer(buffer:Buffer):
+	buffer_node.remove_child(buffer)
+	buffer_array.erase(buffer)
+func get_buffer(is_array:bool = true)->Array[Buffer]:
+	if is_array:
+		return buffer_array
+	var re_array:Array[Buffer] = []
+	for nd in buffer_node.get_children():
+		if nd is Buffer:
+			re_array.append(nd)
+	return re_array
 func reduce_health(value:float):
 	health.x -= value
 	health.x = max(0,health.x)
@@ -165,17 +185,9 @@ func set_magic_max(value:float):
 		magic.x = magic.y
 func be_death(): ##queue_free()
 	queue_free()
-func append_resistance_array(type:int,value:float): ##type:0-physical,1-magic,2-all,value in range(0,1)
-	match type:
-		0: resistance_array_physical.append(value)
-		1: resistance_array_magic.append(value)
-		2: resistance_array_all.append(value)
-func remove_resistance_array(type:int,value:float): ##type:0-physical,1-magic,2-all,value in range(0,1)
-	match type:
-		0: resistance_array_physical.erase(value)
-		1: resistance_array_magic.erase(value)
-		2: resistance_array_all.erase(value)
+func append_resistance_array(value:float): ##value in range(0,1)
+	resistance_array.append(value)
+func remove_resistance_array(value:float): ##value in range(0,1)
+	resistance_array.erase(value)
 func _on_timer_update(): ##to do for timer_update
-	percentage_physical_resistance = ManagerMath.resistance_array_to_percentage(resistance_array_physical)
-	percentage_magic_resistance = ManagerMath.resistance_array_to_percentage(resistance_array_magic)
-	percentage_all_resistance = ManagerMath.resistance_array_to_percentage(resistance_array_all)
+	percentage_resistance = ManagerMath.resistance_array_to_percentage(resistance_array)

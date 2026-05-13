@@ -91,14 +91,17 @@ level = NodePath("../../..")
 [node name="Slime" parent="Charaters/Enemys" unique_id=1146290761 node_paths=PackedStringArray("level") instance=ExtResource("6_dg77c")]
 position = Vector2(469, 273)
 level = NodePath("../../..")
+attack_damage = 0.0
 
 [node name="Slime2" parent="Charaters/Enemys" unique_id=1746158581 node_paths=PackedStringArray("level") instance=ExtResource("6_dg77c")]
 position = Vector2(469, 273)
 level = NodePath("../../..")
+attack_damage = 0.0
 
 [node name="Slime3" parent="Charaters/Enemys" unique_id=715317930 node_paths=PackedStringArray("level") instance=ExtResource("6_dg77c")]
 position = Vector2(469, 273)
 level = NodePath("../../..")
+attack_damage = 0.0
 
 [node name="Charaters" type="Node2D" parent="Charaters" unique_id=1167868292]
 

@@ -130,6 +130,12 @@ func find_equip(type:Item.ItemType,index:int=0)->bool:
 		return true
 	else:
 		return false
+func get_all_info()->Dictionary: ##list all attribute
+	var dic:Dictionary = {
+		"attribute_vigor":attribute_vigor,
+	}
+	dic.merge(super.get_all_info())
+	return dic
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemys.append(body)
