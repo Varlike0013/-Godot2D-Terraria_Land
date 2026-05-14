@@ -16,12 +16,8 @@ const COLLISION_LAYERE_PLAYER = 4
 @export var attribute_mind:float = 10  			##集中力
 @export var mind_magic_base:float = 50
 @export var mind_magic_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
-@export var attribute_endurance:float = 10 		##耐力
-@export var endurance_equip_load:Vector2 = Vector2(0,10) ##负重
-@export var endurance_equip_load_base:float = 10
-@export var endurance_equip_load_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
 @export var attribute_strength:float = 10		##力量
-@export var strength_scaling_base:float = 50	##力量补正
+@export var strength_scaling_base:float = 50
 @export var strength_scaling_growth:Array[Vector2] = [Vector2(1,5),Vector2(30,8),Vector2(50,6),Vector2(80,4),Vector2(100,3)]
 @export var attribute_dexterity:float = 10  	##灵巧
 @export var dexterity_scaling_base:float = 50
@@ -46,10 +42,12 @@ const COLLISION_LAYERE_PLAYER = 4
 
 var current_vigor:float
 var current_mind:float
-var current_endurance:float
 var current_strength:float
 var current_dexterity:float
 var current_intelligence:float
+var bonus_strength:float
+var bonus_dexterity:float
+var bonus_intelligence:float
 var enemys:Array[Enemy] = []
 
 func _ready() -> void:
@@ -100,8 +98,6 @@ func get_area_enemy()->Enemy:
 		else:
 			enemys.erase(e)
 	return null
-func update_equip_load() ->void:
-	endurance_equip_load.y = ManagerMath.attribute_base_growth(attribute_endurance,endurance_equip_load_base,endurance_equip_load_growth)
 func get_equip(type:Item.ItemType,index:int=0)->Item:
 	var res:Item
 	match type:
@@ -150,9 +146,17 @@ func _on_timer_attack_timeout() -> void:
 			attack_target.take_hit(attack_damage)
 func _on_timer_update() ->void:
 	super._on_timer_update()
-	set_health_max(ManagerMath.attribute_base_growth(attribute_vigor,vigor_health_base,vigor_health_growth))
-	set_magic_max(ManagerMath.attribute_base_growth(attribute_mind,mind_magic_base,mind_magic_growth))
-	update_equip_load()
-	current_strength = ManagerMath.attribute_base_growth(attribute_strength,strength_scaling_base,strength_scaling_growth)
-	current_dexterity = ManagerMath.attribute_base_growth(attribute_dexterity,dexterity_scaling_base,dexterity_scaling_growth)
-	current_intelligence = ManagerMath.attribute_base_growth(attribute_intelligence,intelligence_scaling_base,intelligence_scaling_growth)
+	##计算五维属性当前值
+	current_vigor = attribute_vigor
+	current_mind = attribute_mind
+	current_strength = attribute_strength
+	current_dexterity = attribute_dexterity
+	current_intelligence = attribute_intelligence
+	##更新生命值和蓝量最大值
+	set_health_max(ManagerMath.attribute_base_growth(current_vigor,vigor_health_base,vigor_health_growth))
+	set_magic_max(ManagerMath.attribute_base_growth(current_mind,mind_magic_base,mind_magic_growth))
+	##更新伤害值
+	bonus_strength = ManagerMath.attribute_base_growth(attribute_strength,strength_scaling_base,strength_scaling_growth)
+	bonus_dexterity = ManagerMath.attribute_base_growth(attribute_dexterity,dexterity_scaling_base,dexterity_scaling_growth)
+	bonus_intelligence = ManagerMath.attribute_base_growth(attribute_intelligence,intelligence_scaling_base,intelligence_scaling_growth)
+	attack_damage = equip_weapon.get_damage(self)
