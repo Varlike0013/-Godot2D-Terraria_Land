@@ -1,7 +1,7 @@
 extends Node
 class_name Item
 
-enum ItemType {Materials,WEAPON,TOOL,WEAPONTOOL,HEAD,CHEST,LEGGINGS, ACCESSORY }
+enum ItemType {Materials,WEAPON,TOOL,WEAPONTOOL,HEAD,CHEST,LEGGINGS, ACCESSORY,Coin}
 enum ToolType{NULL,Pickaxe,Axe,Hammer}
 
 var item_id:int

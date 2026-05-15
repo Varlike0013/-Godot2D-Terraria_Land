@@ -21,3 +21,14 @@ func attribute_base_growth(attrribut_value: int, value_base: float, array_growth
 		if points_in_range > 0:
 			result += points_in_range * add_per_level
 	return result
+func split_by_100_max_range(num:int,range:int=4)->Array[int]:
+	var arr:Array[int] = []
+	var count:int = 1
+	while num>0:
+		if count>=range:
+			arr.append(num)
+			break
+		arr.append(num%100)
+		num = num/100
+		count+=1
+	return arr

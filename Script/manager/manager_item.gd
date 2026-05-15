@@ -30,6 +30,18 @@ const ItemInfo:Dictionary = {
 	6:{ItemInfoType.Name:"火把",
 		ItemInfoType.Type:Item.ItemType.Materials,
 		ItemInfoType.Texture2d:preload("uid://cpk7v5vjt26bp")},
+	7:{ItemInfoType.Name:"铜币",
+		ItemInfoType.Type:Item.ItemType.Coin,
+		ItemInfoType.Texture2d:preload("uid://cpk7v5vjt26bp")},
+	8:{ItemInfoType.Name:"银币",
+		ItemInfoType.Type:Item.ItemType.Coin,
+		ItemInfoType.Texture2d:preload("uid://cpk7v5vjt26bp")},
+	9:{ItemInfoType.Name:"金币",
+		ItemInfoType.Type:Item.ItemType.Coin,
+		ItemInfoType.Texture2d:preload("uid://cpk7v5vjt26bp")},
+	10:{ItemInfoType.Name:"铂金币",
+		ItemInfoType.Type:Item.ItemType.Coin,
+		ItemInfoType.Texture2d:preload("uid://cpk7v5vjt26bp")},
 	5000:{ItemInfoType.Name:"空手",
 		ItemInfoType.Type:Item.ItemType.WEAPONTOOL,
 		ItemInfoType.Texture2d:preload("uid://i6kp3chgcv2g"),
@@ -98,6 +110,19 @@ func append_item_quality(new_id:int,new_qua:int=1):
 		else:
 			var item:Item = get_item(new_id,new_qua)
 			append_item(item)
+func append_items(array_item:Array[Vector2]):##id(int),qua(int)
+	for ar in array_item:
+		var new_item:Item = get_item(int(ar.x),int(ar.y))
+		append_item(new_item)
+func append_coin(value:int,type:int=0): ##0铜币，1银币，2金币，3铂金币
+	append_item_quality(7+type,value)
+func append_coin_value(value:int): ##添加货币，101，为1个银币1铜币，不看货币类型
+	var arr:Array[int] = ManagerMath.split_by_100_max_range(value)
+	match arr.size():
+		4 : append_coin(arr[0],3);append_coin(arr[1],2);append_coin(arr[2],1);append_coin(arr[3],0);
+		3 : append_coin(arr[0],2);append_coin(arr[1],1);append_coin(arr[2],0);
+		2 : append_coin(arr[0],1);append_coin(arr[1],0);
+		1 : append_coin(arr[0],0);
 func remove_item(new_item:Item):
 	if check_item_change(new_item.item_id):
 		var found:Item = find_item_get(new_item.item_id)
@@ -108,14 +133,27 @@ func remove_item_quality(new_id:int,new_qua:int=1):
 		var found:Item = find_item_get(new_id)
 		if found:
 			found.reduce_quality(new_qua)
-func append_items(array_item:Array[Vector2]):##id(int),qua(int)
-	for ar in array_item:
-		var new_item:Item = get_item(int(ar.x),int(ar.y))
-		append_item(new_item)
 func remove_items(array_item:Array[Vector2]):##id(int),qua(int)
 	for ar in array_item:
 		var new_item:Item = get_item(int(ar.x),int(ar.y))
 		remove_item(new_item)
+func remove_coin(value:int,type:int=0): ##0铜币，1银币，2金币，3铂金币
+	var current:int = get_coin_number(type)
+	if current>=value:
+		remove_item_quality(7+type,value)
+	else:
+		remove_coin(7+type+1,1)
+		append_coin(7+type,100)
+		remove_coin(value,type)
+func remove_coin_value(value:int): ##移除货币，101，为1个银币1铜币，不看货币类型
+	if !find_coin_value(value):
+		return
+	var arr:Array[int] = ManagerMath.split_by_100_max_range(value)
+	match arr.size():
+		4 : remove_coin(arr[0],3);remove_coin(arr[1],2);remove_coin(arr[2],1);remove_coin(arr[3],0);
+		3 : remove_coin(arr[0],2);remove_coin(arr[1],1);remove_coin(arr[2],0);
+		2 : remove_coin(arr[0],1);remove_coin(arr[1],0);
+		1 : remove_coin(arr[0],0);
 func find_item_has(it_id:int,qua:int=-1)->bool:
 	var found:Item = find_item_get(it_id)
 	if found:
@@ -132,6 +170,12 @@ func find_item_get(it_id:int)->Item:
 		if it.item_id == it_id:
 			return it
 	return null
+func find_coin_value(value:int)->bool:
+	var current:int = get_coin_number()
+	if current<value:
+		return false
+	else:
+		return true
 func get_item(new_id:int,new_qua:int=1)->Item:
 	if new_id == -1:
 		return null
@@ -160,6 +204,16 @@ func get_item(new_id:int,new_qua:int=1)->Item:
 		item.update_info(Armor.ArmorPart.LEGS,item_info.get(ItemInfoType.Defense),item_info.get(ItemInfoType.ArmorGroup))
 		return item
 	return null
+func get_coin_number(type:int=4)->int:##0铜币，1银币，2金币，3铂金币,4全部
+	if type == 4:
+		var coins:int = get_item_quality(7)+get_item_quality(8)*100
+		coins += get_item_quality(9)*10000+get_item_quality(10)*1000000
+		return coins
+	else:
+		return  get_item_quality(type)
+func get_coin(type:int)->Item: ##0铜币，1银币，2金币，3铂金币
+	var coin:Item = find_item_get(7+type)
+	return coin
 func get_all_items()->Array[Item]:
 	return array_items
 func get_item_type(need_type:Item.ItemType)->Array[Item]:
