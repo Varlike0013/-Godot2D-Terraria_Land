@@ -8,6 +8,7 @@ const COLLISION_LAYERE_PLAYER = 4
 @onready var collision_attack: CollisionShape2D = $Area2DAttack/CollisionShape2D
 @onready var timer_attack: Timer = $TimerAttack
 
+@export var animatesprite2d_weapon:AnimatedSprite2D
 @export var distance_enemy:float = 10
 @export_group("Attributes")##vigor mind endurance strength dexterity intelligence
 @export var attribute_vigor:float = 10 			##生命力
@@ -132,6 +133,17 @@ func get_all_info()->Dictionary: ##list all attribute
 	}
 	dic.merge(super.get_all_info())
 	return dic
+func anispr_tween_angle(start:float,end:float,effect:float):
+	if animatesprite2d_weapon:
+		var tween:Tween = create_tween().set_loops(1)
+		animatesprite2d_weapon.rotation = start
+		tween.tween_property(animatesprite2d_weapon,"rotation",effect,0.1)
+		tween.tween_property(animatesprite2d_weapon,"rotation",end,0.1)
+		
+func _on_take_effect_weapon()->void:
+	if equip_weapon:
+		animatesprite2d_weapon.play()
+		equip_weapon.attack()
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemys.append(body)
@@ -143,6 +155,7 @@ func _on_area_2d_attack_body_exited(body: Node2D) -> void:
 func _on_timer_attack_timeout() -> void:
 	if attack_target:
 		if attack_target is Enemy and attack_target in enemys:
+			_on_take_effect_weapon()
 			attack_target.take_hit(attack_damage)
 func _on_timer_update() ->void:
 	super._on_timer_update()

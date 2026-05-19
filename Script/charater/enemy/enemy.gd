@@ -10,6 +10,7 @@ const COLLISION_MASK_ENEMY = 2
 @onready var collision_self: CollisionShape2D = $CollisionShape2D
 @onready var collision_attack: CollisionShape2D = $Area2DActtack/CollisionShape2D
 
+@export var coin_drop:Vector2 = Vector2.ZERO
 var collision_acttack_position:Vector2
 var collision_self_positon:Vector2
 var area_nodes:Array = []
@@ -87,8 +88,12 @@ func drop_items():
 	for dr in drops_vec:
 		level.append_drops(int(dr.x),global_position)
 	ManagerItem.append_items(drops_vec)
+func drop_coin():
+	var rand:int = randi_range(int(coin_drop.x),int(coin_drop.y))
+	ManagerItem.append_coin_value(rand)
 func be_death():
 	drop_items()
+	drop_coin()
 	queue_free()
 func _on_area_2d_acttack_area_entered(area: Area2D) -> void:
 	if area.is_in_group(PylonPoint.GroupTarget):
