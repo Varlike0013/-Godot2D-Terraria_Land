@@ -1,31 +1,11 @@
 extends Character
 class_name Enemy
 
-const COLLISION_LAYERE_ENEMY = 4
-const COLLISION_MASK_ENEMY = 2
-
-@onready var timer_attack: Timer = $TimerAttack
-@onready var area_2d_acttack: Area2D = $Area2DActtack
 @onready var drops: Node = $Drops
-@onready var collision_self: CollisionShape2D = $CollisionShape2D
-@onready var collision_attack: CollisionShape2D = $Area2DActtack/CollisionShape2D
 
 @export var coin_drop:Vector2 = Vector2.ZERO
-var collision_acttack_position:Vector2
-var collision_self_positon:Vector2
 var area_nodes:Array = []
 
-func _ready() -> void:
-	super._ready()
-	area_2d_acttack.collision_layer = COLLISION_LAYERE_ENEMY
-	area_2d_acttack.collision_mask = COLLISION_MASK_ENEMY
-	area_2d_acttack.area_entered.connect(_on_area_2d_acttack_area_entered)
-	area_2d_acttack.area_exited.connect(_on_area_2d_acttack_area_exited)
-	timer_attack.timeout.connect(_on_timer_attack_timeout)
-	timer_attack.wait_time = attack_inteval
-	collision_acttack_position = collision_attack.position
-	collision_self_positon = collision_self.position
-	collision_attack.scale = attack_range*Vector2(1,1)
 func execute_stand():
 	if timer_attack.is_stopped() and attack_target:
 		timer_attack.start()
@@ -44,11 +24,11 @@ func attack_effect():
 			attack_target.take_hit(attack_damage)
 func attack_target_distance(atl_tar:Node2D=null) ->float:
 	if atl_tar:
-		var pos:Vector2 = collision_attack.global_position
+		var pos:Vector2 = self.global_position
 		var dis:float = pos.distance_to(atl_tar.position)
 		return dis
 	elif attack_target:
-		var pos:Vector2 = collision_attack.global_position
+		var pos:Vector2 = self.global_position
 		var dis:float = pos.distance_to(attack_target.position)
 		return dis
 	else:
@@ -59,17 +39,6 @@ func is_in_attack_ranged(atl_tar:Node2D=null)->bool:
 		return true
 	else:
 		return false
-func is_attack_range_dur()->bool:
-	return true
-func change_face_direction(is_left:bool):
-	if is_left:
-		animated_sprite_2d.flip_h = !default_direction
-		collision_self.position = collision_self_positon
-		collision_attack.position = collision_acttack_position
-	else:
-		animated_sprite_2d.flip_h = default_direction
-		collision_attack.position.x = -collision_acttack_position.x
-		collision_self.position.x = -collision_self_positon.x
 func get_drops_array()->Array[DropItem]:
 	var nodes:Array[Node] = drops.get_children()
 	var new_array:Array[DropItem] = []
@@ -105,6 +74,10 @@ func _on_area_2d_acttack_area_exited(area: Area2D) -> void:
 	if area.is_in_group(PylonPoint.GroupTarget):
 		var point:PylonPoint = area.get_parent()
 		area_nodes.erase(point)
+func _on_area_2d_attack_body_entered(body: Node2D) -> void:
+	pass
+func _on_area_2d_attack_body_exited(body: Node2D) -> void:
+	pass
 func _on_timer_attack_timeout() -> void:
 	if attack_target is PylonPoint and attack_target in area_nodes:
 		attack_effect()

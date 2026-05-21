@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://7otq1bhgd0m7"]
 
-[ext_resource type="Script" uid="uid://cdurdemkr0j1q" path="res://Script/main.gd" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://cdurdemkr0j1q" path="res://Script/level.gd" id="1_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://5eluglia3f4" path="res://Tscn/forest_pylon.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://viuutr06cxr5" path="res://Tscn/mysterious_portal.tscn" id="3_ycdy4"]
 [ext_resource type="PackedScene" uid="uid://nba4142kdxf3" path="res://Tscn/charater.tscn" id="4_1bvp3"]

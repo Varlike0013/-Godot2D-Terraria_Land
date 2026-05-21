@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dxp526ttbdwp2"]
+
+[ext_resource type="PackedScene" uid="uid://8pjrsdi30vxr" path="res://Tscn/player.tscn" id="1_dmt7c"]
+[ext_resource type="PackedScene" uid="uid://er7qaaror818" path="res://Tscn/enemy_melee.tscn" id="2_42diy"]
+[ext_resource type="PackedScene" uid="uid://dyd1flkcfn6uw" path="res://Tscn/weapons/sword/sword_wooden.tscn" id="2_d8a0y"]
+
+[node name="TestPlayerWeapon" type="Node2D" unique_id=1680644078]
+
+[node name="Player" parent="." unique_id=1360645317 node_paths=PackedStringArray("weapon_2d", "attack_target") instance=ExtResource("1_dmt7c")]
+position = Vector2(158, 340)
+attack_range = 0.25
+weapon_2d = NodePath("SwordWooden")
+attack_target = NodePath("../EnemyMelee")
+
+[node name="SwordWooden" parent="Player" unique_id=502484249 instance=ExtResource("2_d8a0y")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=831286615]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2070326635]
+position = Vector2(0, 720)
+polygon = PackedVector2Array(101, -218, 304, -218, 463, -254, 677, -252, 886, -212, 1027, -246, 1182, -244, 1363, -169, 1529, -237, 1657, -667, 1645, 32, 736, 44, -57, 40, -52, -632, 48, -250)
+
+[node name="EnemyMelee" parent="." unique_id=39803458 node_paths=PackedStringArray("attack_target") instance=ExtResource("2_42diy")]
+position = Vector2(1164, 167)
+attack_target = NodePath("../Player")

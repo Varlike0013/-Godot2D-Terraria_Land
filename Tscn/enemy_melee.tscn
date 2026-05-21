@@ -3,11 +3,12 @@
 [ext_resource type="Script" uid="uid://ddbfgfcppj2ow" path="res://Script/charater/enemy/enemy.gd" id="1_rtqqk"]
 [ext_resource type="SpriteFrames" uid="uid://dyp6dvri1gqss" path="res://Enemy/SpriteFrame/Zombie/Zombie.tres" id="2_b6tms"]
 [ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Tscn/health_bar.tscn" id="3_b6tms"]
+[ext_resource type="Texture2D" uid="uid://4mfk0gvoc8nh" path="res://image/areaRound.png" id="3_ubi6y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8vlk"]
 size = Vector2(15, 42)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_rtqqk"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_ti2oo"]
 
 [node name="EnemyMelee" type="RigidBody2D" unique_id=39803458]
 script = ExtResource("1_rtqqk")
@@ -21,11 +22,16 @@ autoplay = "default"
 position = Vector2(-0.5, -21)
 shape = SubResource("RectangleShape2D_p8vlk")
 
-[node name="Area2DActtack" type="Area2D" parent="." unique_id=1732842086]
+[node name="Area2DAttack" type="Area2D" parent="." unique_id=166803068]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DActtack" unique_id=908446065]
-position = Vector2(0, -22)
-shape = SubResource("CircleShape2D_rtqqk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DAttack" unique_id=1234809373]
+position = Vector2(0, -32)
+scale = Vector2(25, 25)
+shape = SubResource("CircleShape2D_ti2oo")
+
+[node name="AreaRound" type="Sprite2D" parent="Area2DAttack/CollisionShape2D" unique_id=266183871]
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("3_ubi6y")
 
 [node name="Control" type="Control" parent="." unique_id=1904904119]
 layout_mode = 3

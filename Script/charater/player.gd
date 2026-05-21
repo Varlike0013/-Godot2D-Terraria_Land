@@ -1,14 +1,6 @@
 extends Character
 class_name Player
 
-const COLLISION_MASK_PLAYER = 2
-const COLLISION_LAYERE_PLAYER = 4
-
-@onready var area_2d_attack: Area2D = $Area2DAttack
-@onready var collision_attack: CollisionShape2D = $Area2DAttack/CollisionShape2D
-@onready var timer_attack: Timer = $TimerAttack
-
-@export var animatesprite2d_weapon:AnimatedSprite2D
 @export var distance_enemy:float = 10
 @export_group("Attributes")##vigor mind endurance strength dexterity intelligence
 @export var attribute_vigor:float = 10 			##生命力
@@ -40,6 +32,7 @@ const COLLISION_LAYERE_PLAYER = 4
 @export var equip_legg:Armor
 @export var equip_accessory_size:int = 4
 @export var equip_accessory:Array[Accessory]
+@export var weapon_2d:Weapon2D
 
 var current_vigor:float
 var current_mind:float
@@ -53,13 +46,7 @@ var enemys:Array[Enemy] = []
 
 func _ready() -> void:
 	super._ready()
-	collision_attack.scale = attack_range*Vector2(1,1)
-	area_2d_attack.collision_layer = COLLISION_LAYERE_PLAYER
-	area_2d_attack.collision_mask = COLLISION_MASK_PLAYER
-	area_2d_attack.body_entered.connect(_on_area_2d_attack_body_entered)
-	area_2d_attack.body_exited.connect(_on_area_2d_attack_body_exited)
-	timer_attack.wait_time = attack_inteval
-	timer_attack.timeout.connect(_on_timer_attack_timeout)
+	
 func _physics_process(delta: float) -> void:
 	if move_staus == MoveStaus.move:
 		if attack_target:
@@ -72,7 +59,7 @@ func _physics_process(delta: float) -> void:
 			else :
 				move_staus = MoveStaus.stand
 		else:
-			attack_target = level.get_nearest_enemy(global_position)
+			attack_target = get_nearest_enemy()
 	elif move_staus == MoveStaus.stand:
 		linear_velocity.x = 0
 		execute_stand()
@@ -84,6 +71,11 @@ func _physics_process(delta: float) -> void:
 		var rounded:Vector2 = ray_get_round_position(fly_higth)
 		if rounded:
 			position.y = rounded.y-fly_higth
+func get_nearest_enemy()->Node2D:
+	if level:
+		return level.get_nearest_enemy(global_position)
+	else:
+		return null
 func execute_stand():
 	if attack_target:
 		if timer_attack.is_stopped():
@@ -133,17 +125,11 @@ func get_all_info()->Dictionary: ##list all attribute
 	}
 	dic.merge(super.get_all_info())
 	return dic
-func anispr_tween_angle(start:float,end:float,effect:float):
-	if animatesprite2d_weapon:
-		var tween:Tween = create_tween().set_loops(1)
-		animatesprite2d_weapon.rotation = start
-		tween.tween_property(animatesprite2d_weapon,"rotation",effect,0.1)
-		tween.tween_property(animatesprite2d_weapon,"rotation",end,0.1)
-		
 func _on_take_effect_weapon()->void:
 	if equip_weapon:
-		animatesprite2d_weapon.play()
+		attack_target.take_hit(attack_damage)
 		equip_weapon.attack()
+		weapon_2d.attack()
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemys.append(body)
@@ -156,7 +142,7 @@ func _on_timer_attack_timeout() -> void:
 	if attack_target:
 		if attack_target is Enemy and attack_target in enemys:
 			_on_take_effect_weapon()
-			attack_target.take_hit(attack_damage)
+			##attack_target.take_hit(attack_damage)
 func _on_timer_update() ->void:
 	super._on_timer_update()
 	##计算五维属性当前值

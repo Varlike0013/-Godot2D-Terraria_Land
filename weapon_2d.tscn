@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://xqsrecdv4alk"]
+
+[ext_resource type="Texture2D" uid="uid://c6yw1168o1ejw" path="res://image/icon_male.png" id="1_530t8"]
+[ext_resource type="Script" uid="uid://bwdooxeaviyun" path="res://Script/weapon2d/weapon_2d.gd" id="1_o1h86"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o1h86"]
+radius = 21.920698
+height = 84.0
+
+[node name="Weapon2D" type="Area2D" unique_id=502484249]
+script = ExtResource("1_o1h86")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1478403325]
+position = Vector2(37, 3)
+rotation = 0.7853982
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("1_530t8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=555321152]
+position = Vector2(44, 1)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_o1h86")
+
+[node name="HitTimer" type="Timer" parent="." unique_id=188293840]

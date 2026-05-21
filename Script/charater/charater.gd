@@ -1,11 +1,14 @@
 extends RigidBody2D
 class_name Character
-
+const COLLISION_MASK_PLAYER = 2 ##与地面碰撞1，与敌人碰撞2
+const COLLISION_LAYERE_PLAYER = 4 ##交互层
 enum MoveStaus {move,stop,stand,repeled}
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label_top_info: Label = $Control/LabelTopInfo
 @onready var health_bar: HealthBar = $Control/HealthBar
+@onready var timer_attack: Timer = $TimerAttack
+@onready var area_2d_attack: Area2D = $Area2DActtack
 
 @export var level:Level
 @export var default_direction:bool = true ##default_direction == Left && true
@@ -50,10 +53,18 @@ func _ready() -> void:
 	tween_hit.tween_property(animated_sprite_2d,"modulate", Color(1, 0, 0), 0.15)
 	tween_hit.tween_property(animated_sprite_2d,"modulate", Color(1, 1, 1), 0.1)
 	tween_hit.pause()
-	pylon_point = level.pylon_point
+	if level:
+		pylon_point = level.pylon_point
 	lock_rotation = true
-	collision_layer = 2##4表示会呗area检查到
-	collision_mask = 1 ##1表示与场景碰撞，1+2表示与场景和自己碰撞
+	if area_2d_attack:
+		area_2d_attack.scale = Vector2(attack_range,attack_range)
+		area_2d_attack.collision_layer = COLLISION_LAYERE_PLAYER
+		area_2d_attack.collision_mask = COLLISION_MASK_PLAYER
+		area_2d_attack.body_entered.connect(_on_area_2d_attack_body_entered)
+		area_2d_attack.body_exited.connect(_on_area_2d_attack_body_exited)
+	if timer_attack:
+		timer_attack.wait_time = attack_inteval
+		timer_attack.timeout.connect(_on_timer_attack_timeout)
 	add_child(buffer_node)
 func _physics_process(delta: float) -> void:
 	if move_staus == MoveStaus.move:
@@ -191,3 +202,9 @@ func remove_resistance_array(value:float): ##value in range(0,1)
 	resistance_array.erase(value)
 func _on_timer_update(): ##to do for timer_update
 	percentage_resistance = ManagerMath.resistance_array_to_percentage(resistance_array)
+func _on_area_2d_attack_body_entered(body: Node2D) -> void:
+	pass
+func _on_area_2d_attack_body_exited(body: Node2D) -> void:
+	pass
+func _on_timer_attack_timeout():
+	pass
