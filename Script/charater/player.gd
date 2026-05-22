@@ -44,38 +44,17 @@ var bonus_dexterity:float
 var bonus_intelligence:float
 var enemys:Array[Enemy] = []
 
-func _ready() -> void:
-	super._ready()
-	
-func _physics_process(delta: float) -> void:
-	if move_staus == MoveStaus.move:
-		if attack_target:
-			if position.x<attack_target.position.x+distance_enemy:
-				linear_velocity.x = speed
-				change_face_direction(false)
-			elif position.x>attack_target.position.x-distance_enemy:
-				linear_velocity.x = -speed
-				change_face_direction(true)
-			else :
-				move_staus = MoveStaus.stand
-		else:
-			attack_target = get_nearest_enemy()
-	elif move_staus == MoveStaus.stand:
-		linear_velocity.x = 0
-		execute_stand()
-	elif move_staus == MoveStaus.stop:
-		linear_velocity = Vector2.ZERO
-	elif move_staus == MoveStaus.repeled:
-		linear_velocity = repeled_speed*repeled_direction
-	if is_fly:
-		var rounded:Vector2 = ray_get_round_position(fly_higth)
-		if rounded:
-			position.y = rounded.y-fly_higth
-func get_nearest_enemy()->Node2D:
+func get_nearest_for_player()->Node2D:
+	var result:Node2D = null
+	if enemys.size()>0:
+		result = get_area_enemy()
+		if result:
+			return result
 	if level:
-		return level.get_nearest_enemy(global_position)
-	else:
-		return null
+		result = level.get_nearest_enemy(global_position)
+		if result:
+			return result
+	return result
 func execute_stand():
 	if attack_target:
 		if timer_attack.is_stopped():
@@ -133,11 +112,11 @@ func _on_take_effect_weapon()->void:
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemys.append(body)
-		move_staus = MoveStaus.stand
-		attack_target = body
 func _on_area_2d_attack_body_exited(body: Node2D) -> void:
 	if body is Enemy:
 		enemys.erase(body)
+		if body == attack_target:
+			attack_target = null
 func _on_timer_attack_timeout() -> void:
 	if attack_target:
 		if attack_target is Enemy and attack_target in enemys:

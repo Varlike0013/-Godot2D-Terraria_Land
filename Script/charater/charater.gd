@@ -11,6 +11,7 @@ enum MoveStaus {move,stop,stand,repeled}
 @onready var area_2d_attack: Area2D = $Area2DActtack
 
 @export var level:Level
+@export var pylon_point:PylonPoint
 @export var default_direction:bool = true ##default_direction == Left && true
 @export var move_staus:MoveStaus = MoveStaus.move
 @export var group_target:String = "Character"
@@ -28,6 +29,7 @@ enum MoveStaus {move,stop,stand,repeled}
 @export_range(0, 1) var percentage_resistance:float = 0 ##range in 【0-1】
 @export_range(0, 1) var percentage_bonus:float = 0 ##range in 【0-1】
 @export_group("Attack","attack")
+@export var attack_distance:float = 10.0
 @export var attack_damage:float = 0
 @export var attack_range:float = 1
 @export var attack_inteval:float = 1.0
@@ -36,7 +38,6 @@ enum MoveStaus {move,stop,stand,repeled}
 @export var repeled_value:float = 10000 ##击退常数，决定被击退时的速度repeled_speed = repeled_value/weight
 var repeled_speed:float = 0
 var repeled_direction:Vector2 = Vector2.ZERO
-var pylon_point:PylonPoint
 @export_group("other")
 var ray_cast:RayCast2D
 var tween_hit:Tween
@@ -68,13 +69,17 @@ func _ready() -> void:
 	add_child(buffer_node)
 func _physics_process(delta: float) -> void:
 	if move_staus == MoveStaus.move:
-		if pylon_point:
-			if pylon_point.position.x>position.x:
+		if attack_target:
+			if position.x<attack_target.position.x+attack_distance:
 				linear_velocity.x = speed
 				change_face_direction(false)
-			else:
+			elif position.x>attack_target.position.x-attack_distance:
 				linear_velocity.x = -speed
 				change_face_direction(true)
+			else :
+				move_staus = MoveStaus.stand
+		else:
+			attack_target = get_nearest()
 	elif move_staus == MoveStaus.stand:
 		linear_velocity.x = 0
 		execute_stand()
@@ -105,6 +110,17 @@ func ray_get_round_position(pos_y:float = 50)->Vector2:
 		return Vector2.ZERO
 func get_face_dirtion() ->bool:##true is faced left
 	return !(default_direction&&animated_sprite_2d.flip_h)
+func get_nearest()->Node2D: ## return pylon or charater,player,enemy
+	if self is Player:
+		return get_nearest_for_player()
+	elif  self is Enemy:
+		return get_nearest_for_enemy()
+	else:
+		return null
+func get_nearest_for_player()->Node2D:
+	return null
+func get_nearest_for_enemy()->Node2D:
+	return null
 func effect_repeled(distance:float,repeled_left:bool=true,high:float=0,duration:float = 0,is_face:bool=false):
 	##Parameter:距离，击退方向是否往左，时间，是否朝面向方向击退
 	# 计算击退方向

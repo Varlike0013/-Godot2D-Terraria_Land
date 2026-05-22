@@ -4,11 +4,32 @@ class_name Enemy
 @onready var drops: Node = $Drops
 
 @export var coin_drop:Vector2 = Vector2.ZERO
-var area_nodes:Array = []
+var node_attacks:Array[Node2D] = []
 
+
+func get_nearest_for_player()->Node2D:
+	var result:Node2D = null
+	if node_attacks.size()>0:
+		result = get_node_attack()
+		if result:
+			return result
+	if level:
+		result = level.get_nearest_player(global_position)
+		if result:
+			return result
+	if pylon_point:
+		attack_target = pylon_point
+	return result
 func execute_stand():
 	if timer_attack.is_stopped() and attack_target:
 		timer_attack.start()
+func get_node_attack()->Node2D:
+	for nd in node_attacks:
+		if nd:
+			return nd
+		else:
+			node_attacks.erase(nd)
+	return null
 func attack_effect():
 	#@creater_bullet
 	#var bullet:Bullet = ManagerProjectile.get_projectiles_id(0)
@@ -65,19 +86,15 @@ func be_death():
 	drop_coin()
 	queue_free()
 func _on_area_2d_acttack_area_entered(area: Area2D) -> void:
-	if area.is_in_group(PylonPoint.GroupTarget):
-		var point:PylonPoint = area.get_parent()
-		area_nodes.append(point)
-		move_staus = MoveStaus.stand
-		attack_target = point
+	pass
 func _on_area_2d_acttack_area_exited(area: Area2D) -> void:
-	if area.is_in_group(PylonPoint.GroupTarget):
-		var point:PylonPoint = area.get_parent()
-		area_nodes.erase(point)
+	pass
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
-	pass
+	if body is Player:
+		node_attacks.append(body)
 func _on_area_2d_attack_body_exited(body: Node2D) -> void:
-	pass
+	if body is Player:
+		node_attacks.erase(body)
 func _on_timer_attack_timeout() -> void:
-	if attack_target is PylonPoint and attack_target in area_nodes:
+	if attack_target is PylonPoint and attack_target in node_attacks:
 		attack_effect()

@@ -73,7 +73,7 @@ func get_empty_building_row()->BuildingRow:
 func get_nearest_enemy(pos:Vector2)->Enemy:
 	var nearest_dis:float = 99999.0
 	var nearest:Enemy
-	var enemy_array:Array = enemys.get_children()
+	var enemy_array:Array[Enemy] = get_enemys()
 	for en in enemy_array:
 		if en is Enemy:
 			var current:float = en.position.distance_to(pos)
@@ -81,10 +81,27 @@ func get_nearest_enemy(pos:Vector2)->Enemy:
 				nearest_dis = current
 				nearest = en
 	return nearest
+func get_nearest_player(pos:Vector2)->Player:
+	var nearest_dis:float = 99999.0
+	var nearest:Player
+	var array:Array[Player] = get_players()
+	for ar in array:
+		if ar is Player:
+			var current:float = ar.position.distance_to(pos)
+			if current<nearest_dis:
+				nearest_dis = current
+				nearest = ar
+	return nearest
 func get_players()->Array[Player]:
 	var nodes:Array[Player]
 	for nd in node_players.get_children():
 		if nd is Player:
+			nodes.append(nd)
+	return nodes
+func get_enemys()->Array[Enemy]:
+	var nodes:Array[Enemy]
+	for nd in enemys.get_children():
+		if nd is Enemy:
 			nodes.append(nd)
 	return nodes
 func raycast_check_for_player(): ##会返回player和enemy类

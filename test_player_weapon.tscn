@@ -8,9 +8,48 @@
 
 [node name="Player" parent="." unique_id=1360645317 node_paths=PackedStringArray("weapon_2d", "attack_target") instance=ExtResource("1_dmt7c")]
 position = Vector2(158, 340)
-attack_range = 0.25
+distance_enemy = 10.0
+attribute_vigor = 10.0
+vigor_health_base = 100.0
+vigor_health_growth = Array[Vector2]([Vector2(1, 10), Vector2(30, 15), Vector2(50, 12), Vector2(80, 8), Vector2(100, 4)])
+attribute_mind = 10.0
+mind_magic_base = 50.0
+mind_magic_growth = Array[Vector2]([Vector2(1, 5), Vector2(30, 8), Vector2(50, 6), Vector2(80, 4), Vector2(100, 3)])
+attribute_strength = 10.0
+strength_scaling_base = 50.0
+strength_scaling_growth = Array[Vector2]([Vector2(1, 5), Vector2(30, 8), Vector2(50, 6), Vector2(80, 4), Vector2(100, 3)])
+attribute_dexterity = 10.0
+dexterity_scaling_base = 50.0
+dexterity_scaling_growth = Array[Vector2]([Vector2(1, 5), Vector2(30, 8), Vector2(50, 6), Vector2(80, 4), Vector2(100, 3)])
+attribute_intelligence = 10.0
+intelligence_scaling_base = 50.0
+intelligence_scaling_growth = Array[Vector2]([Vector2(1, 5), Vector2(30, 8), Vector2(50, 6), Vector2(80, 4), Vector2(100, 3)])
+rating_value_vigor = 10.0
+rating_value_mind = 10.0
+rating_value_endurance = 10.0
+rating_value_strength = 10.0
+rating_value_dexterity = 10.0
+rating_value_intelligence = 10.0
+equip_accessory_size = 4
 weapon_2d = NodePath("SwordWooden")
+default_direction = true
+move_staus = 0
+group_target = "Character"
+charater_level = 1
+speed = 100.0
+health = Vector2(100, 100)
+magic = Vector2(50, 50)
+defense = 0.0
+weight = 10.0
+is_fly = false
+fly_higth = 50.0
+percentage_resistance = 0.0
+percentage_bonus = 0.0
+attack_damage = 0.0
+attack_range = 0.25
+attack_inteval = 1.0
 attack_target = NodePath("../EnemyMelee")
+repeled_value = 10000.0
 
 [node name="SwordWooden" parent="Player" unique_id=502484249 instance=ExtResource("2_d8a0y")]
 
