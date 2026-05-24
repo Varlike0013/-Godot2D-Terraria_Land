@@ -1,12 +1,22 @@
 extends Character
 class_name Enemy
 
+const COLLISION_LAYERE_CHARACTER = LAYER_ENEMY+LAYER_SCENE
+const COLLISION_MASK_CHARACTER = LAYER_SCENE+LAYER_PLAYER
+const COLLISION_LAYERE_AREA = LAYER_SCENE
+const COLLISION_MASK_AREA = LAYER_SCENE
+
 @onready var drops: Node = $Drops
 
 @export var coin_drop:Vector2 = Vector2.ZERO
 var node_attacks:Array[Node2D] = []
 
-
+func _ready() -> void:
+	super._ready()
+	collision_layer = COLLISION_LAYERE_CHARACTER
+	collision_mask = COLLISION_MASK_CHARACTER
+	area_2d_attack.collision_layer = COLLISION_LAYERE_AREA
+	area_2d_attack.collision_mask = COLLISION_MASK_AREA
 func get_nearest_for_player()->Node2D:
 	var result:Node2D = null
 	if node_attacks.size()>0:

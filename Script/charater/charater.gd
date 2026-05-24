@@ -1,14 +1,16 @@
 extends RigidBody2D
 class_name Character
-const COLLISION_MASK_PLAYER = 2 ##与地面碰撞1，与敌人碰撞2
-const COLLISION_LAYERE_PLAYER = 4 ##交互层
+
+const LAYER_SCENE  = 1  # 场景/地面
+const LAYER_PLAYER = 2  # 玩家
+const LAYER_ENEMY  = 4  # 敌人
 enum MoveStaus {move,stop,stand,repeled}
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var label_top_info: Label = $Control/LabelTopInfo
 @onready var health_bar: HealthBar = $Control/HealthBar
 @onready var timer_attack: Timer = $TimerAttack
-@onready var area_2d_attack: Area2D = $Area2DActtack
+@onready var area_2d_attack: Area2D = $Area2DAttack
 
 @export var level:Level
 @export var pylon_point:PylonPoint
@@ -29,7 +31,7 @@ enum MoveStaus {move,stop,stand,repeled}
 @export_range(0, 1) var percentage_resistance:float = 0 ##range in 【0-1】
 @export_range(0, 1) var percentage_bonus:float = 0 ##range in 【0-1】
 @export_group("Attack","attack")
-@export var attack_distance:float = 10.0
+@export var attack_distance:float = 50.0
 @export var attack_damage:float = 0
 @export var attack_range:float = 1
 @export var attack_inteval:float = 1.0
@@ -59,8 +61,6 @@ func _ready() -> void:
 	lock_rotation = true
 	if area_2d_attack:
 		area_2d_attack.scale = Vector2(attack_range,attack_range)
-		area_2d_attack.collision_layer = COLLISION_LAYERE_PLAYER
-		area_2d_attack.collision_mask = COLLISION_MASK_PLAYER
 		area_2d_attack.body_entered.connect(_on_area_2d_attack_body_entered)
 		area_2d_attack.body_exited.connect(_on_area_2d_attack_body_exited)
 	if timer_attack:
@@ -70,10 +70,10 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if move_staus == MoveStaus.move:
 		if attack_target:
-			if position.x<attack_target.position.x+attack_distance:
+			if position.x<attack_target.position.x-attack_distance:
 				linear_velocity.x = speed
 				change_face_direction(false)
-			elif position.x>attack_target.position.x-attack_distance:
+			elif position.x>attack_target.position.x+attack_distance:
 				linear_velocity.x = -speed
 				change_face_direction(true)
 			else :
@@ -92,7 +92,7 @@ func _physics_process(delta: float) -> void:
 		if rounded:
 			position.y = rounded.y-fly_higth
 func execute_stand():
-	pass
+	print(self,"execute_stand: no action")
 func change_face_direction(is_left:bool):
 	if is_left:
 		animated_sprite_2d.flip_h = !default_direction
@@ -219,8 +219,8 @@ func remove_resistance_array(value:float): ##value in range(0,1)
 func _on_timer_update(): ##to do for timer_update
 	percentage_resistance = ManagerMath.resistance_array_to_percentage(resistance_array)
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
-	pass
+	print(body,"into area ->area parent",self)
 func _on_area_2d_attack_body_exited(body: Node2D) -> void:
-	pass
+	print(body,"exit area ->area parent",self)
 func _on_timer_attack_timeout():
 	pass

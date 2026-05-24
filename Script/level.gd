@@ -109,7 +109,7 @@ func raycast_check_for_player(): ##会返回player和enemy类
 	var parameters = PhysicsPointQueryParameters2D.new()
 	parameters.position = get_global_mouse_position()
 	parameters.collide_with_areas = true
-	parameters.collision_mask = Player.COLLISION_LAYERE_PLAYER
+	parameters.collision_mask = Player.COLLISION_LAYERE_CHARACTER
 	var result = space_state.intersect_point(parameters)
 	if result.size()>0:
 		return result[0].collider.get_parent()

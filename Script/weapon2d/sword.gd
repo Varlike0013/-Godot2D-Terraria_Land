@@ -1,14 +1,9 @@
 extends Weapon2D
 class_name Sword
 
-@export var arc_segments: int = 5  # 弧线检测分段数
-@export var hit_delay: float = 0.05  # 伤害检测间隔
 
-var damaged_enemies: Array[Node2D] = []
-
-func _ready():
-	body_entered.connect(_on_body_entered)
 func attack():
+	print("attack",self)
 	attack_sword(deg_to_rad(-60), deg_to_rad(60), 0.3)
 func attack_sword(angle_start: float, angle_end: float, time: float, angle_effect: float = -1):
 	if is_attacking:
@@ -51,4 +46,4 @@ func _on_body_entered(body:Node2D):
 		# 击退
 		if body.has_method("apply_knockback"):
 			var direction = Vector2(cos(rotation), sin(rotation))
-			#body.effect_repeled(direction * knockback_force)
+			#body.effect_repeled(direction * knockback_force) 实现击退

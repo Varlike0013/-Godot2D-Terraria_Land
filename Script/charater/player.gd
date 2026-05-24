@@ -1,7 +1,11 @@
 extends Character
 class_name Player
 
-@export var distance_enemy:float = 10
+const COLLISION_LAYERE_CHARACTER = LAYER_PLAYER
+const COLLISION_MASK_CHARACTER =  LAYER_SCENE+LAYER_ENEMY
+const COLLISION_LAYERE_AREA = LAYER_SCENE
+const COLLISION_MASK_AREA = LAYER_SCENE
+
 @export_group("Attributes")##vigor mind endurance strength dexterity intelligence
 @export var attribute_vigor:float = 10 			##生命力
 @export var vigor_health_base:float = 100
@@ -44,6 +48,12 @@ var bonus_dexterity:float
 var bonus_intelligence:float
 var enemys:Array[Enemy] = []
 
+func _ready() -> void:
+	super._ready()
+	collision_layer = COLLISION_LAYERE_CHARACTER
+	collision_mask = COLLISION_MASK_CHARACTER
+	area_2d_attack.collision_layer = COLLISION_LAYERE_AREA
+	area_2d_attack.collision_mask = COLLISION_MASK_AREA
 func get_nearest_for_player()->Node2D:
 	var result:Node2D = null
 	if enemys.size()>0:
@@ -105,9 +115,9 @@ func get_all_info()->Dictionary: ##list all attribute
 	dic.merge(super.get_all_info())
 	return dic
 func _on_take_effect_weapon()->void:
-	if equip_weapon:
-		attack_target.take_hit(attack_damage)
-		equip_weapon.attack()
+	if weapon_2d:
+		print("weapon_2d",weapon_2d)
+		#attack_target.take_hit(attack_damage)
 		weapon_2d.attack()
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:
