@@ -8,7 +8,7 @@ const COLLISION_MASK_AREA = LAYER_SCENE
 
 @onready var drops: Node = $Drops
 
-@export var coin_drop:Vector2 = Vector2.ZERO
+@export var coin_drop:Vector2 = Vector2.ZERO ##drop coin range(x,y) max = y
 var node_attacks:Array[Node2D] = []
 
 func _ready() -> void:
@@ -96,9 +96,11 @@ func be_death():
 	drop_coin()
 	queue_free()
 func _on_area_2d_acttack_area_entered(area: Area2D) -> void:
-	pass
+	if area.is_in_group(PylonPoint.GroupTarget):
+		node_attacks.append(area)
 func _on_area_2d_acttack_area_exited(area: Area2D) -> void:
-	pass
+	if area.is_in_group(PylonPoint.GroupTarget):
+		node_attacks.erase(area)
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Player:
 		node_attacks.append(body)
@@ -106,5 +108,5 @@ func _on_area_2d_attack_body_exited(body: Node2D) -> void:
 	if body is Player:
 		node_attacks.erase(body)
 func _on_timer_attack_timeout() -> void:
-	if attack_target is PylonPoint and attack_target in node_attacks:
+	if attack_target is PylonPoint or attack_target is Player:
 		attack_effect()

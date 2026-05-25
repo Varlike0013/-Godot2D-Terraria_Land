@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://dxp526ttbdwp2"]
 
+[ext_resource type="Script" uid="uid://mvob8wi4u1j8" path="res://test_player_weapon.gd" id="1_kstpp"]
 [ext_resource type="PackedScene" uid="uid://er7qaaror818" path="res://Tscn/enemy_melee.tscn" id="2_42diy"]
 [ext_resource type="PackedScene" uid="uid://dyd1flkcfn6uw" path="res://Tscn/weapons/sword/sword_wooden.tscn" id="2_d8a0y"]
 [ext_resource type="PackedScene" uid="uid://8pjrsdi30vxr" path="res://player.tscn" id="3_d8a0y"]
 
 [node name="TestPlayerWeapon" type="Node2D" unique_id=1680644078]
+script = ExtResource("1_kstpp")
 
 [node name="Player" parent="." unique_id=2112964750 node_paths=PackedStringArray("weapon_2d", "attack_target") instance=ExtResource("3_d8a0y")]
 position = Vector2(511, 205)
@@ -22,13 +24,12 @@ position = Vector2(0, 720)
 polygon = PackedVector2Array(101, -218, 304, -218, 463, -254, 677, -252, 886, -212, 1027, -246, 1182, -244, 1363, -169, 1529, -237, 1657, -667, 1645, 32, 736, 44, -57, 40, -52, -632, 48, -250)
 
 [node name="EnemyMelee" parent="." unique_id=39803458 node_paths=PackedStringArray("attack_target") instance=ExtResource("2_42diy")]
-position = Vector2(790, 160)
+position = Vector2(1165, 154)
 attack_target = NodePath("../Player")
 
 [node name="EnemyMelee2" parent="." unique_id=1474874613 node_paths=PackedStringArray("attack_target") instance=ExtResource("2_42diy")]
 position = Vector2(273, 209)
 attack_target = NodePath("../Player")
 
-[node name="EnemyMelee3" parent="." unique_id=1491874097 node_paths=PackedStringArray("attack_target") instance=ExtResource("2_42diy")]
-position = Vector2(1164, 167)
-attack_target = NodePath("../Player")
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=809045214]
+position = Vector2(126, 485)

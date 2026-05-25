@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyd1flkcfn6uw"]
 
 [ext_resource type="Script" uid="uid://csycwso5hogsm" path="res://Script/weapon2d/sword.gd" id="1_kxe6q"]
-[ext_resource type="Texture2D" uid="uid://mv88lde00dmn" path="res://image/Item/Iron_Pickaxe.webp" id="2_kxe6q"]
+[ext_resource type="Texture2D" uid="uid://i6kp3chgcv2g" path="res://image/Item/Hand_Of_Creation.webp" id="2_kxe6q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o1h86"]
 radius = 12.0

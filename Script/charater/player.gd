@@ -73,6 +73,15 @@ func execute_stand():
 		attack_target = get_area_enemy()
 		if !attack_target:
 			move_staus = MoveStaus.move
+func change_face_direction(is_left:bool):
+	if is_left:
+		animated_sprite_2d.flip_h = !default_direction
+		if weapon_2d:
+			weapon_2d
+	else:
+		animated_sprite_2d.flip_h = default_direction
+		if weapon_2d:
+			weapon_2d
 func get_area_enemy()->Enemy:
 	for e in enemys:
 		if e:
@@ -116,8 +125,6 @@ func get_all_info()->Dictionary: ##list all attribute
 	return dic
 func _on_take_effect_weapon()->void:
 	if weapon_2d:
-		print("weapon_2d",weapon_2d)
-		#attack_target.take_hit(attack_damage)
 		weapon_2d.attack()
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:

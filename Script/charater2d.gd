@@ -1,5 +1,5 @@
-extends RigidBody2D
-class_name Character
+extends CharacterBody2D
+class_name Character2D
 
 const LAYER_SCENE  = 1  # 场景/地面
 const LAYER_PLAYER = 2  # 玩家
@@ -57,7 +57,6 @@ func _ready() -> void:
 	tween_hit.pause()
 	if level:
 		pylon_point = level.pylon_point
-	lock_rotation = true
 	if area_2d_attack:
 		area_2d_attack.scale = Vector2(attack_range,attack_range)
 		area_2d_attack.body_entered.connect(_on_area_2d_attack_body_entered)
@@ -68,31 +67,29 @@ func _ready() -> void:
 	add_child(buffer_node)
 func _physics_process(delta: float) -> void:
 	if move_staus == MoveStaus.move:
-		if is_ray_round(): ##在地面上
-			if attack_target:
-				if position.x<attack_target.position.x-attack_distance:
-					linear_velocity.x = speed
-					change_face_direction(false)
-				elif position.x>attack_target.position.x+attack_distance:
-					linear_velocity.x = -speed
-					change_face_direction(true)
-				else :
-					move_staus = MoveStaus.stand
-			else:
-				attack_target = get_nearest()
+		if attack_target:
+			if position.x<attack_target.position.x-attack_distance:
+				velocity.x = speed
+				change_face_direction(false)
+			elif position.x>attack_target.position.x+attack_distance:
+				velocity.x = -speed
+				change_face_direction(true)
+			else :
+				move_staus = MoveStaus.stand
 		else:
-			linear_velocity.x = 0
+			attack_target = get_nearest()
 	elif move_staus == MoveStaus.stand:
-		linear_velocity.x = 0
+		velocity.x = 0
 		execute_stand()
 	elif move_staus == MoveStaus.stop:
-		linear_velocity = Vector2.ZERO
+		velocity = Vector2.ZERO
 	elif move_staus == MoveStaus.repeled:
-		linear_velocity = repeled_speed*repeled_direction
+		velocity = repeled_speed*repeled_direction
 	if is_fly:
 		var rounded:Vector2 = ray_get_round_position(fly_higth)
 		if rounded:
 			position.y = rounded.y-fly_higth
+	move_and_slide()
 func execute_stand():
 	print(self,"execute_stand: no action")
 func change_face_direction(is_left:bool):
@@ -104,38 +101,16 @@ func ray_get_round_position(pos_y:float = 50)->Vector2:
 	if !ray_cast:
 		ray_cast = RayCast2D.new()
 		add_child(ray_cast)
-	ray_cast.target_position = Vector2(0,pos_y)
+		ray_cast.target_position = Vector2(0,pos_y)
 	ray_cast.force_raycast_update()
 	if ray_cast.is_colliding():
 		return ray_cast.get_collision_point()
 	else:
 		return Vector2.ZERO
-func ray_get_round_distance(pos_y:float = 50)->float:
-	if !ray_cast:
-		ray_cast = RayCast2D.new()
-		add_child(ray_cast)
-	ray_cast.target_position = Vector2(0,pos_y)
-	ray_cast.force_raycast_update()
-	if ray_cast.is_colliding():
-		return ray_cast.get_collision_point().distance_to(position)
-	else:
-		return -1
-func is_ray_round(pos_y:float = 25)->bool:
-	if !ray_cast:
-		ray_cast = RayCast2D.new()
-		add_child(ray_cast)
-	ray_cast.target_position = Vector2(0,pos_y)
-	ray_cast.force_raycast_update()
-	return ray_cast.is_colliding()
 func get_face_dirtion() ->bool:##true is faced left
 	return !(default_direction&&animated_sprite_2d.flip_h)
 func get_nearest()->Node2D: ## return pylon or charater,player,enemy
-	if self is Player:
-		return get_nearest_for_player()
-	elif  self is Enemy:
-		return get_nearest_for_enemy()
-	else:
-		return null
+	return null
 func get_nearest_for_player()->Node2D:
 	return null
 func get_nearest_for_enemy()->Node2D:
@@ -148,7 +123,7 @@ func effect_repeled(direction:Vector2,duration:float = 0.25):
 	await get_tree().create_timer(duration/2).timeout
 	repeled_direction.y = 0
 	await get_tree().create_timer(duration/2).timeout
-	linear_velocity = Vector2.ZERO
+	velocity = Vector2.ZERO
 	move_staus = MoveStaus.move
 func effect_imprisonment(duration:float = 0.5):
 	move_staus = MoveStaus.stop
