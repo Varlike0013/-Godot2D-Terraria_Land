@@ -40,9 +40,9 @@ enum MoveStaus {move,stop,stand,repeled}
 @export var repeled_speed:float = 1 ##击退常数，决定被击退时的速度repeled_speed = repeled_value/weight
 var repeled_direction:Vector2 = Vector2.ZERO
 @export_group("other")
-var ray_cast:RayCast2D
 var tween_hit:Tween
 var timer_update:Timer
+var ray_cast:RayCast2D = RayCast2D.new()
 var resistance_array:Array[float] = []
 var buffer_node:Node = Node.new()
 var buffer_array:Array[Buffer] = []
@@ -65,7 +65,9 @@ func _ready() -> void:
 	if timer_attack:
 		timer_attack.wait_time = attack_inteval
 		timer_attack.timeout.connect(_on_timer_attack_timeout)
+	ray_cast.position = Vector2(0,-10)
 	add_child(buffer_node)
+	add_child(ray_cast)
 func _physics_process(delta: float) -> void:
 	if move_staus == MoveStaus.move:
 		if is_ray_round(): ##在地面上
@@ -101,9 +103,6 @@ func change_face_direction(is_left:bool):
 	else:
 		animated_sprite_2d.flip_h = default_direction
 func ray_get_round_position(pos_y:float = 50)->Vector2:
-	if !ray_cast:
-		ray_cast = RayCast2D.new()
-		add_child(ray_cast)
 	ray_cast.target_position = Vector2(0,pos_y)
 	ray_cast.force_raycast_update()
 	if ray_cast.is_colliding():
@@ -111,9 +110,6 @@ func ray_get_round_position(pos_y:float = 50)->Vector2:
 	else:
 		return Vector2.ZERO
 func ray_get_round_distance(pos_y:float = 50)->float:
-	if !ray_cast:
-		ray_cast = RayCast2D.new()
-		add_child(ray_cast)
 	ray_cast.target_position = Vector2(0,pos_y)
 	ray_cast.force_raycast_update()
 	if ray_cast.is_colliding():
@@ -121,11 +117,10 @@ func ray_get_round_distance(pos_y:float = 50)->float:
 	else:
 		return -1
 func is_ray_round(pos_y:float = 25)->bool:
-	if !ray_cast:
-		ray_cast = RayCast2D.new()
-		add_child(ray_cast)
 	ray_cast.target_position = Vector2(0,pos_y)
 	ray_cast.force_raycast_update()
+	if ray_cast.is_colliding():
+		print(self,ray_cast.get_collision_point())
 	return ray_cast.is_colliding()
 func get_face_dirtion() ->bool:##true is faced left
 	return !(default_direction&&animated_sprite_2d.flip_h)
