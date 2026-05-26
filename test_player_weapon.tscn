@@ -30,6 +30,3 @@ attack_target = NodePath("../Player")
 [node name="EnemyMelee2" parent="." unique_id=1474874613 node_paths=PackedStringArray("attack_target") instance=ExtResource("2_42diy")]
 position = Vector2(273, 209)
 attack_target = NodePath("../Player")
-
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=809045214]
-position = Vector2(126, 485)
