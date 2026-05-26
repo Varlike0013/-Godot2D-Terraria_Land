@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djgbro7hx24li"]
 
 [ext_resource type="Script" uid="uid://db73gsqmu0bg3" path="res://equip_select_slot.gd" id="1_3ovtr"]
-[ext_resource type="Texture2D" uid="uid://b2ipcnwydr46h" path="res://image/Item/Acorn.webp" id="2_3ovtr"]
+[ext_resource type="Texture2D" uid="uid://b2ipcnwydr46h" path="res://image/Item/Materials/Acorn.webp" id="2_3ovtr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w5tm3"]
 

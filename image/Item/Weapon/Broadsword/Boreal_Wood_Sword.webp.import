@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://n4cmhfie58fg"
-path="res://.godot/imported/Gel.webp-eec9be36ffb270e0feed638acf971ff8.ctex"
+uid="uid://caq5bom7qysnm"
+path="res://.godot/imported/Boreal_Wood_Sword.webp-8b4381979409a363038c176dd6f7e535.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Item/Gel.webp"
-dest_files=["res://.godot/imported/Gel.webp-eec9be36ffb270e0feed638acf971ff8.ctex"]
+source_file="res://image/Item/Weapon/Broadsword/Boreal_Wood_Sword.webp"
+dest_files=["res://.godot/imported/Boreal_Wood_Sword.webp-8b4381979409a363038c176dd6f7e535.ctex"]
 
 [params]
 

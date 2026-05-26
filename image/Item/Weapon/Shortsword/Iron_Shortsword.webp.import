@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpk7v5vjt26bp"
-path="res://.godot/imported/Torch.webp-79cbf5288263bd2502848ed1d9680926.ctex"
+uid="uid://cs7mbmraxukv1"
+path="res://.godot/imported/Iron_Shortsword.webp-e39b9477ba7449bff037306054725c77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Item/Torch.webp"
-dest_files=["res://.godot/imported/Torch.webp-79cbf5288263bd2502848ed1d9680926.ctex"]
+source_file="res://image/Item/Weapon/Shortsword/Iron_Shortsword.webp"
+dest_files=["res://.godot/imported/Iron_Shortsword.webp-e39b9477ba7449bff037306054725c77.ctex"]
 
 [params]
 

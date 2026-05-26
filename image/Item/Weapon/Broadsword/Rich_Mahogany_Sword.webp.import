@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkjahwf8jv4e"
-path="res://.godot/imported/Furnace.webp-ae2354d523f19a4debc803eb753dfcb2.ctex"
+uid="uid://c2yej6dp6sa0t"
+path="res://.godot/imported/Rich_Mahogany_Sword.webp-9d40d1e8464e3266bee65963f1a79e40.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Furnace.webp"
-dest_files=["res://.godot/imported/Furnace.webp-ae2354d523f19a4debc803eb753dfcb2.ctex"]
+source_file="res://image/Item/Weapon/Broadsword/Rich_Mahogany_Sword.webp"
+dest_files=["res://.godot/imported/Rich_Mahogany_Sword.webp-9d40d1e8464e3266bee65963f1a79e40.ctex"]
 
 [params]
 

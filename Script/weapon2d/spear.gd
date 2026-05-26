@@ -1,7 +1,7 @@
 extends Weapon2D
 class_name Spear
 
-func attack():
+func attack(glo_pos:Vector2):
 	pass ##attack_spear()
 func attack_spear(angle: float, distance: float, time: float):
 	if not can_attack or is_attacking:

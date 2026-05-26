@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://si1w1s5c87y4"
-path="res://.godot/imported/Ebonwood.webp-655fe1bb6e3c058978e12280da3781c8.ctex"
+uid="uid://bjqjumtqotd1s"
+path="res://.godot/imported/Copper_Broadsword.webp-873d32e32968d198e4baf7ff2dc58ff2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Item/Ebonwood.webp"
-dest_files=["res://.godot/imported/Ebonwood.webp-655fe1bb6e3c058978e12280da3781c8.ctex"]
+source_file="res://image/Item/Weapon/Broadsword/Copper_Broadsword.webp"
+dest_files=["res://.godot/imported/Copper_Broadsword.webp-873d32e32968d198e4baf7ff2dc58ff2.ctex"]
 
 [params]
 

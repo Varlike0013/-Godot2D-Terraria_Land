@@ -3,7 +3,7 @@ extends Node
 func resistance_array_to_percentage(array:Array[float]): ##return in range(0,1)
 	var result:float = 1.0
 	for ar in array:
-		result*(1.0-ar)
+		result = result*(1.0-ar)
 	return result
 # 核心函数：根据属性值 + 分段成长表，计算最终数值
 # atr: 当前属性点（比如 10 点生命力）
@@ -21,14 +21,14 @@ func attribute_base_growth(attrribut_value: int, value_base: float, array_growth
 		if points_in_range > 0:
 			result += points_in_range * add_per_level
 	return result
-func split_by_100_max_range(num:int,range:int=4)->Array[int]:
+func split_by_100_max_range(num:int,times:int=4)->Array[int]: ##將一個數按每2位數分割，如123，輸出1,23
 	var arr:Array[int] = []
 	var count:int = 1
 	while num>0:
-		if count>=range:
+		if count>=times:
 			arr.append(num)
 			break
 		arr.append(num%100)
-		num = num/100
+		num = int(num/100.0)
 		count+=1
 	return arr

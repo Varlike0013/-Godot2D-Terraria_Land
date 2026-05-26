@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8pb3bporyda5"
-path="res://.godot/imported/Iron_Anvil.webp-94991c4f6d8adcf24bff32313fc2545d.ctex"
+uid="uid://bkjw5whsctrkg"
+path="res://.godot/imported/Dirt_Block.webp-3365527b000f43a4d580fe36206b83f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Iron_Anvil.webp"
-dest_files=["res://.godot/imported/Iron_Anvil.webp-94991c4f6d8adcf24bff32313fc2545d.ctex"]
+source_file="res://image/Item/Materials/Dirt_Block.webp"
+dest_files=["res://.godot/imported/Dirt_Block.webp-3365527b000f43a4d580fe36206b83f8.ctex"]
 
 [params]
 

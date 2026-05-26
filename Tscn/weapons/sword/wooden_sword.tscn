@@ -1,24 +1,22 @@
 [gd_scene format=3 uid="uid://dyd1flkcfn6uw"]
 
 [ext_resource type="Script" uid="uid://csycwso5hogsm" path="res://Script/weapon2d/sword.gd" id="1_kxe6q"]
-[ext_resource type="Texture2D" uid="uid://i6kp3chgcv2g" path="res://image/Item/Hand_Of_Creation.webp" id="2_kxe6q"]
+[ext_resource type="Texture2D" uid="uid://1nxq36otvea6" path="res://image/Item/Weapon/Broadsword/Wooden_Sword.webp" id="2_kxe6q"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o1h86"]
-radius = 12.0
-height = 40.0
+radius = 8.0
+height = 44.0
 
 [node name="SwordWooden" type="Area2D" unique_id=502484249]
 script = ExtResource("1_kxe6q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1478403325]
-position = Vector2(23, 0)
+position = Vector2(30, 0)
 rotation = 0.7853982
 scale = Vector2(0.99999994, 0.99999994)
 texture = ExtResource("2_kxe6q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=555321152]
-position = Vector2(22, 0)
+position = Vector2(30, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_o1h86")
-
-[node name="HitTimer" type="Timer" parent="." unique_id=188293840]

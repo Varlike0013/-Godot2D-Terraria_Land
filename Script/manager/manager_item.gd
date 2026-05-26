@@ -1,6 +1,6 @@
 extends Node
 
-enum ItemInfoType{Name,Texture2d,Type,Null,ToolEfc,ToolDurability,ToolUseType,Defense,ArmorGroup}
+enum ItemInfoType{Name,Texture2d,Type,Null,ToolEfc,ToolDurability,ToolUseType,Defense,ArmorGroup,WeaponPacked}
 
 const ITEM_DATA_JSON = "res://Json/item_data.json"
 const ITEM_BAG = preload("uid://bgosrqbnyvula")
@@ -67,6 +67,10 @@ const ItemInfo:Dictionary = {
 		ItemInfoType.Texture2d:preload("uid://cpk7v5vjt26bp"),
 		ItemInfoType.Defense:0,
 		ItemInfoType.ArmorGroup:Armor.ArmorGroup.Wooden},
+	7001:{ItemInfoType.Name:"木剑",
+		ItemInfoType.Type:Item.ItemType.WEAPON,
+		ItemInfoType.Texture2d:preload("uid://1nxq36otvea6"),
+		ItemInfoType.WeaponPacked:preload("uid://dyd1flkcfn6uw")}
 }
 
 var array_items:Array[Item] = []

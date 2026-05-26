@@ -11,6 +11,7 @@ enum MoveStaus {move,stop,stand,repeled}
 @onready var health_bar: HealthBar = $Control/HealthBar
 @onready var timer_attack: Timer = $TimerAttack
 @onready var area_2d_attack: Area2D = $Area2DAttack
+@onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 
 @export var level:Level
 @export var pylon_point:PylonPoint

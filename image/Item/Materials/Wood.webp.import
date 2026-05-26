@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkjw5whsctrkg"
-path="res://.godot/imported/Dirt_Block.webp-1b3902b39cd931dbd1fcf272b50d36ca.ctex"
+uid="uid://72n8y8dcb1lt"
+path="res://.godot/imported/Wood.webp-115652a33194e67b9ef460d845d4d775.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Item/Dirt_Block.webp"
-dest_files=["res://.godot/imported/Dirt_Block.webp-1b3902b39cd931dbd1fcf272b50d36ca.ctex"]
+source_file="res://image/Item/Materials/Wood.webp"
+dest_files=["res://.godot/imported/Wood.webp-115652a33194e67b9ef460d845d4d775.ctex"]
 
 [params]
 

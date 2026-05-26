@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b260pg6we3y46"
-path="res://.godot/imported/Iron_Ore.webp-f50132f0aa631b12e35b9f5ce11b26b3.ctex"
+uid="uid://ckrgobfjixkv1"
+path="res://.godot/imported/Shadewood_Sword.webp-a3663f6b65f097f017899731195aa3a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Item/Iron_Ore.webp"
-dest_files=["res://.godot/imported/Iron_Ore.webp-f50132f0aa631b12e35b9f5ce11b26b3.ctex"]
+source_file="res://image/Item/Weapon/Broadsword/Shadewood_Sword.webp"
+dest_files=["res://.godot/imported/Shadewood_Sword.webp-a3663f6b65f097f017899731195aa3a1.ctex"]
 
 [params]
 

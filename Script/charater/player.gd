@@ -125,7 +125,8 @@ func get_all_info()->Dictionary: ##list all attribute
 	return dic
 func _on_take_effect_weapon()->void:
 	if weapon_2d:
-		weapon_2d.attack()
+		if attack_target is Enemy:
+			weapon_2d.attack(attack_target.collision_shape_2d.global_position)
 func _on_area_2d_attack_body_entered(body: Node2D) -> void:
 	if body is Enemy:
 		enemys.append(body)

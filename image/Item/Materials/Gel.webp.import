@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://mv88lde00dmn"
-path="res://.godot/imported/Iron_Pickaxe.webp-f7f675e40f5dc27de10bf25552f53d26.ctex"
+uid="uid://n4cmhfie58fg"
+path="res://.godot/imported/Gel.webp-bc0b459fb256f9545982560fa19a9baa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Item/Iron_Pickaxe.webp"
-dest_files=["res://.godot/imported/Iron_Pickaxe.webp-f7f675e40f5dc27de10bf25552f53d26.ctex"]
+source_file="res://image/Item/Materials/Gel.webp"
+dest_files=["res://.godot/imported/Gel.webp-bc0b459fb256f9545982560fa19a9baa.ctex"]
 
 [params]
 

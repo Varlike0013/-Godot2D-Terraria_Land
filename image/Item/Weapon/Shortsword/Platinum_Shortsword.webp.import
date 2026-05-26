@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://k4pbr8gjhnkj"
-path="res://.godot/imported/Iron_Bar.webp-ed766768d0f48bce2496b40f1357f8a5.ctex"
+uid="uid://cteetyh8pfuuc"
+path="res://.godot/imported/Platinum_Shortsword.webp-5c6d80d8b713a9f380111d1dbcd190c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Item/Iron_Bar.webp"
-dest_files=["res://.godot/imported/Iron_Bar.webp-ed766768d0f48bce2496b40f1357f8a5.ctex"]
+source_file="res://image/Item/Weapon/Shortsword/Platinum_Shortsword.webp"
+dest_files=["res://.godot/imported/Platinum_Shortsword.webp-5c6d80d8b713a9f380111d1dbcd190c9.ctex"]
 
 [params]
 

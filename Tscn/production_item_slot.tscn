@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://boy5m3itr0gk5"]
 
-[ext_resource type="Texture2D" uid="uid://bkjw5whsctrkg" path="res://image/Item/Dirt_Block.webp" id="1_1kywe"]
+[ext_resource type="Texture2D" uid="uid://bkjw5whsctrkg" path="res://image/Item/Materials/Dirt_Block.webp" id="1_1kywe"]
 [ext_resource type="Script" uid="uid://ndtiscdnwp1b" path="res://Script/production_item_slot.gd" id="1_kan64"]
 
 [node name="ProductionItemSlot" type="MarginContainer" unique_id=314272210]

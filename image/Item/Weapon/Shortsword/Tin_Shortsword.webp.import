@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://i6kp3chgcv2g"
-path="res://.godot/imported/Hand_Of_Creation.webp-b35a6a1dd632a45566828815edaecef7.ctex"
+uid="uid://q7807lic425u"
+path="res://.godot/imported/Tin_Shortsword.webp-6dd1ab8d572fc08fec3fe3e87516f05a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://image/Item/Hand_Of_Creation.webp"
-dest_files=["res://.godot/imported/Hand_Of_Creation.webp-b35a6a1dd632a45566828815edaecef7.ctex"]
+source_file="res://image/Item/Weapon/Shortsword/Tin_Shortsword.webp"
+dest_files=["res://.godot/imported/Tin_Shortsword.webp-6dd1ab8d572fc08fec3fe3e87516f05a.ctex"]
 
 [params]
 
