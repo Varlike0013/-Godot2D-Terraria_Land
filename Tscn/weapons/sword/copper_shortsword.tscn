@@ -1,17 +1,19 @@
 [gd_scene format=3 uid="uid://dptpcr1w4w7ad"]
 
-[ext_resource type="Texture2D" uid="uid://b5ql7gdixnxrg" path="res://image/Item/Weapon/Shortsword/Copper_Shortsword.webp" id="1_gb5ur"]
+[ext_resource type="Script" uid="uid://csycwso5hogsm" path="res://Script/weapon2d/sword.gd" id="1_d08a4"]
+[ext_resource type="Texture2D" uid="uid://tu4clr1h2gu7" path="res://image/Item/Weapon/ShortSword/Copper_Shortsword.png" id="1_gb5ur"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d08a4"]
 radius = 5.0
 height = 44.0
 
-[node name="CopperShortsword" type="StaticBody2D" unique_id=1461811689]
+[node name="CopperShortsword" type="Area2D" unique_id=339681054]
+script = ExtResource("1_d08a4")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=455175695]
 position = Vector2(30, 0)
 rotation = 0.7853982
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.9999999, 0.9999999)
 texture = ExtResource("1_gb5ur")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=800526238]

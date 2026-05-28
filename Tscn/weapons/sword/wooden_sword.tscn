@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dyd1flkcfn6uw"]
 
 [ext_resource type="Script" uid="uid://csycwso5hogsm" path="res://Script/weapon2d/sword.gd" id="1_kxe6q"]
-[ext_resource type="Texture2D" uid="uid://1nxq36otvea6" path="res://image/Item/Weapon/Broadsword/Wooden_Sword.webp" id="2_kxe6q"]
+[ext_resource type="Texture2D" uid="uid://crcjp2nl3rim4" path="res://image/Item/Weapon/BroadSword/Wooden_Sword.png" id="2_eokwh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_o1h86"]
 radius = 8.0
@@ -14,7 +14,7 @@ script = ExtResource("1_kxe6q")
 position = Vector2(30, 0)
 rotation = 0.7853982
 scale = Vector2(0.99999994, 0.99999994)
-texture = ExtResource("2_kxe6q")
+texture = ExtResource("2_eokwh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=555321152]
 position = Vector2(30, 0)

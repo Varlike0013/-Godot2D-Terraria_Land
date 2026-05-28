@@ -19,28 +19,45 @@ var damaged_enemies: Array[Node2D] = []
 
 func _ready() -> void:
 	z_index = IndexZ
-	visible = false
+	finish_attack()
 	body_entered.connect(_on_body_entered)
-	var count:int = 0
-	while 1:
-		await get_tree().create_timer(1.0).timeout
-		change_angle(15*count)
-		count  += 1
 func attack(glo_pos:Vector2):
-	pass
-func change_angle(angle:float): ##输入angle为角度如60->>60°等
-	rotation = deg_to_rad(angle)
-	change_angle_sprite(angle)
-func change_angle_sprite(angle:float): ##输入angle为角度如60->>60°等
-	angle = wrapf(angle, -90.0, 270.0)
-	if attack_diretion(angle):
+	var direction:Vector2 = global_position.direction_to(glo_pos)
+	var angle_rad: float = direction.angle() ##攻击方向弧度，x轴正方向0，由weapon.position指向target.collision.position
+	if weapon_type == WeaponType.BroadSword:
+		if attack_diretion(angle_rad):
+			attack_sword_broad(deg_to_rad(-120), deg_to_rad(60), 0.3)
+		else:
+			attack_sword_broad(deg_to_rad(-60), deg_to_rad(-240), 0.3)
+	elif weapon_type == WeaponType.ShortSword:
+		attack_sword_short(angle_rad,10,0.3)
+func start_attack():
+	is_attacking = true
+	damaged_enemies.clear()
+	sprite_2d.visible = true
+	collision_shape.disabled = false
+func finish_attack():
+	is_attacking = false
+	sprite_2d.visible = false
+	collision_shape.disabled = true
+func circle_point(center: Vector2, radius: float, angle_rad: float) -> Vector2:
+	return center + Vector2(radius * cos(angle_rad), radius * sin(angle_rad))
+func circle_point_deg(center: Vector2, radius: float, angle_deg: float) -> Vector2:
+	var rad = deg_to_rad(angle_deg)
+	return center + Vector2(radius * cos(rad), radius * sin(rad))
+func change_angle(angle_rad:float): ##输入angle_rad为弧度等，rang_area(-2PI,2PI)
+	angle_rad = wrapf(angle_rad, -PI*2, 2*PI)
+	rotation = angle_rad
+	change_angle_sprite(angle_rad)
+func change_angle_sprite(angle_rad:float): ##输入angle_rad为弧度等
+	if attack_diretion(angle_rad):
 		sprite_2d.flip_h = false
 		sprite_2d.rotation = deg_to_rad(45)
 	else:
 		sprite_2d.flip_h = true
 		sprite_2d.rotation = deg_to_rad(135)
-func attack_diretion(angle:float)->bool: ##return true==right
-	if angle >=-90 and angle <= 90:
+func attack_diretion(angle_rad:float)->bool: ##return true==right
+	if angle_rad >= -PI/2 and angle_rad <= PI/2:
 		return true
 	else:
 		return false

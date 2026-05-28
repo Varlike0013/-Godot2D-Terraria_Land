@@ -69,7 +69,7 @@ const ItemInfo:Dictionary = {
 		ItemInfoType.ArmorGroup:Armor.ArmorGroup.Wooden},
 	7001:{ItemInfoType.Name:"木剑",
 		ItemInfoType.Type:Item.ItemType.WEAPON,
-		ItemInfoType.Texture2d:preload("uid://1nxq36otvea6"),
+		ItemInfoType.Texture2d:preload("uid://crcjp2nl3rim4"),
 		ItemInfoType.WeaponPacked:preload("uid://dyd1flkcfn6uw")}
 }
 

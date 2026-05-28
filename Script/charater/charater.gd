@@ -97,7 +97,7 @@ func _physics_process(delta: float) -> void:
 		if rounded:
 			position.y = rounded.y-fly_higth
 func execute_stand():
-	print(self,"execute_stand: no action")
+	pass
 func change_face_direction(is_left:bool):
 	if is_left:
 		animated_sprite_2d.flip_h = !default_direction
@@ -120,8 +120,6 @@ func ray_get_round_distance(pos_y:float = 50)->float:
 func is_ray_round(pos_y:float = 25)->bool:
 	ray_cast.target_position = Vector2(0,pos_y)
 	ray_cast.force_raycast_update()
-	if ray_cast.is_colliding():
-		print(self,ray_cast.get_collision_point())
 	return ray_cast.is_colliding()
 func get_face_dirtion() ->bool:##true is faced left
 	return !(default_direction&&animated_sprite_2d.flip_h)
