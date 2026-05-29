@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://di7bddk56tmpm"]
 
-[ext_resource type="Script" uid="uid://bakljd1qya054" path="res://display_charater_npc.gd" id="1_26ctd"]
+[ext_resource type="Script" uid="uid://bakljd1qya054" path="res://display_character_npc.gd" id="1_26ctd"]
 [ext_resource type="Texture2D" uid="uid://oromrd16n4rr" path="res://Enemy/SpriteFrame/Zombie/Zombie_wps图片_1.png" id="1_u4bhx"]
 [ext_resource type="PackedScene" uid="uid://djgbro7hx24li" path="res://equip_select_slot.tscn" id="2_tw2v4"]
 

@@ -7,7 +7,6 @@ const COLLISION_LAYERE_AREA = LAYER_SCENE
 const COLLISION_MASK_AREA = LAYER_SCENE
 
 @onready var drops: Node = $Drops
-
 @export var coin_drop:Vector2 = Vector2.ZERO ##drop coin range(x,y) max = y
 var node_attacks:Array[Node2D] = []
 
@@ -48,11 +47,11 @@ func attack_effect():
 	#level.append_projectile(bullet)
 	if attack_target:
 		if attack_target is Character:
-			health_bar.append_top_info("攻击造成："+str(attack_damage)+"伤害！")
-			attack_target.take_hit(attack_damage)
+			health_bar.append_top_info("攻击造成："+str(character_data.attack_damage)+"伤害！")
+			attack_target.take_hit(character_data.attack_damage)
 		elif attack_target is PylonPoint:
-			health_bar.append_top_info("攻击造成："+str(attack_damage)+"伤害！")
-			attack_target.take_hit(attack_damage)
+			health_bar.append_top_info("攻击造成："+str(character_data.attack_damage)+"伤害！")
+			attack_target.take_hit(character_data.attack_damage)
 func attack_target_distance(atl_tar:Node2D=null) ->float:
 	if atl_tar:
 		var pos:Vector2 = self.global_position
@@ -66,7 +65,7 @@ func attack_target_distance(atl_tar:Node2D=null) ->float:
 		return 0
 func is_in_attack_ranged(atl_tar:Node2D=null)->bool:
 	var dis = attack_target_distance(atl_tar)
-	if dis>0 and dis<attack_range:
+	if dis>0 and dis<character_data.attack_range:
 		return true
 	else:
 		return false

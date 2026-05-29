@@ -121,7 +121,7 @@ func append_items(array_item:Array[Vector2]):##id(int),qua(int)
 func append_coin(value:int,type:int=0): ##0铜币，1银币，2金币，3铂金币
 	append_item_quality(7+type,value)
 func append_coin_value(value:int): ##添加货币，101，为1个银币1铜币，不看货币类型
-	var arr:Array[int] = ManagerMath.split_by_100_max_range(value)
+	var arr:Array[int] = split_by_100_max_range(value)
 	match arr.size():
 		4 : append_coin(arr[0],3);append_coin(arr[1],2);append_coin(arr[2],1);append_coin(arr[3],0);
 		3 : append_coin(arr[0],2);append_coin(arr[1],1);append_coin(arr[2],0);
@@ -152,7 +152,7 @@ func remove_coin(value:int,type:int=0): ##0铜币，1银币，2金币，3铂金�
 func remove_coin_value(value:int): ##移除货币，101，为1个银币1铜币，不看货币类型
 	if !find_coin_value(value):
 		return
-	var arr:Array[int] = ManagerMath.split_by_100_max_range(value)
+	var arr:Array[int] = split_by_100_max_range(value)
 	match arr.size():
 		4 : remove_coin(arr[0],3);remove_coin(arr[1],2);remove_coin(arr[2],1);remove_coin(arr[3],0);
 		3 : remove_coin(arr[0],2);remove_coin(arr[1],1);remove_coin(arr[2],0);
@@ -269,3 +269,14 @@ func is_type_tool(type:Item.ItemType)->bool:
 		return true
 	else:
 		return false
+func split_by_100_max_range(num:int,times:int=4)->Array[int]: ##將一個數按每2位數分割，如123，輸出1,23
+	var arr:Array[int] = []
+	var count:int = 1
+	while num>0:
+		if count>=times:
+			arr.append(num)
+			break
+		arr.append(num%100)
+		num = int(num/100.0)
+		count+=1
+	return arr

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://da00ascmhs7xd"]
 
-[ext_resource type="Script" uid="uid://rmgstjxtel8d" path="res://display_charater_equitpment.gd" id="1_4mg5r"]
+[ext_resource type="Script" uid="uid://rmgstjxtel8d" path="res://display_character_equitpment.gd" id="1_4mg5r"]
 [ext_resource type="PackedScene" uid="uid://clgnxljbqm8tj" path="res://equipment_info_line.tscn" id="1_6pu0x"]
 
 [node name="DisplayCharaterEquipment" type="PanelContainer" unique_id=226914416]
