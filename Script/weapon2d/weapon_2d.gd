@@ -10,6 +10,7 @@ enum WeaponType{BroadSword,ShortSword,SpearT}
 @export var damage: int = 10
 @export var cooldown: float = 0.5
 @export var weapon_type:WeaponType
+@export var repeled:Vector2 = Vector2(50,-25)
 @export var default_direction:bool = true
 
 var can_attack: bool = true
