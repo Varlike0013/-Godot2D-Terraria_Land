@@ -5,7 +5,6 @@ class_name CharacterData
 @export var group_target: String = "Character"
 @export var character_name: String = "name"
 @export_group("BasicAttributes")
-@export var character_level: int = 1
 @export var speed: float = 100.0
 @export var health: Vector2 = Vector2(100, 100)    # (当前HP, 最大HP)
 @export var magic: Vector2 = Vector2(50, 50)       # (当前MP, 最大MP)
@@ -14,6 +13,12 @@ class_name CharacterData
 @export var weight: float = 10.0
 @export var is_fly: bool = false
 @export var fly_height: float = 50.0
+@export_group("level")
+@export var character_level: int = 1
+@export var level_health_base:float = 100.0
+@export var level_health_growth:float = 10.0
+@export var level_magic_base:float = 50.0
+@export var level_magic_growth:float = 5.0
 @export_group("Percentage")
 @export_range(0, 1) var percentage_resistance: float = 0.0 ##百分减伤
 @export_range(0, 1) var percentage_bonus: float = 0.0 ##百分比增伤
@@ -37,12 +42,16 @@ func set_health_max(value:float):
 	health.y = value
 	if health.x>health.y:
 		health.x = health.y
+func update_health():
+	set_health_max(level_health_base+(character_level-1)*level_health_growth)
 func reduce_magic(value:float):
 	magic.x -= value
 	magic.x = max(0,magic.x)
 func restore_magic(value:float):
 	magic.x += value
 	magic.x = min(magic.y,magic.x)
+func update_magic():
+	set_magic_max(level_magic_base+(character_level-1)*level_magic_growth)
 func is_magic_enough(value:float) ->bool:
 	if magic.x>=value:
 		return true
@@ -70,13 +79,15 @@ func append_bonus_array(value:float): ##value in range(0,1)
 	bonus_array.append(value)
 func remove_bonus_array(value:float): ##value in range(0,1)
 	bonus_array.erase(value)
+func update_bonus():
+	percentage_bonus = resistance_array_to_percentage(bonus_array)
 func resistance_array_to_percentage(array:Array[float]): ##return in range(0,1)
 	var result:float = 1.0
 	for ar in array:
 		result = result*(1.0-ar)
 	return result
-func attribute_base_growth(attrribut_value: int, value_base: float, array_growth: Array[Vector2]) -> float:##返回具体数值如血量等
-	var result: float = value_base
+func attribute_base_growth(attrribut_value: float,array_growth: Array[Vector2]) -> float:##返回具体数值如血量等
+	var result: float = 0
 	for i in range(array_growth.size()):
 		var threshold: float = array_growth[i].x
 		var add_per_level: float = array_growth[i].y
@@ -87,5 +98,3 @@ func attribute_base_growth(attrribut_value: int, value_base: float, array_growth
 		if points_in_range > 0:
 			result += points_in_range * add_per_level
 	return result
-func update_bonus():
-	percentage_bonus = resistance_array_to_percentage(bonus_array)
