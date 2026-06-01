@@ -98,3 +98,5 @@ func attribute_base_growth(attrribut_value: float,array_growth: Array[Vector2]) 
 		if points_in_range > 0:
 			result += points_in_range * add_per_level
 	return result
+func update_data():
+	pass
