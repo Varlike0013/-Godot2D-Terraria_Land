@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ui8l45undioe"]
 
 [ext_resource type="Script" uid="uid://bqburoc7ruvpm" path="res://Script/building_select_production.gd" id="1_fppxq"]
-[ext_resource type="PackedScene" uid="uid://boy5m3itr0gk5" path="res://Tscn/production_item_slot.tscn" id="3_kaha4"]
+[ext_resource type="PackedScene" uid="uid://boy5m3itr0gk5" path="res://Script/production_item_slot.tscn" id="3_kaha4"]
 [ext_resource type="Texture2D" uid="uid://cm8u35d6sm08i" path="res://image/button_mobile/lineDark/lineDark20.png" id="3_ofhn7"]
 
 [node name="BuildingSelectProduction" type="PanelContainer" unique_id=1838650201]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cabvklwutgwk0"]
 
-[ext_resource type="Script" uid="uid://k8vleb77ksk3" path="res://attribute_label.gd" id="1_r8q5f"]
+[ext_resource type="Script" uid="uid://k8vleb77ksk3" path="res://Script/attribute_label.gd" id="1_r8q5f"]
 
 [node name="AttributeLabel" type="PanelContainer" unique_id=1333348291]
 offset_right = 26.0

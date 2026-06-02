@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0k2blqno5lgk"]
 
-[ext_resource type="Script" uid="uid://bc0xavuf61y20" path="res://production_slot_tool.gd" id="1_0jnmx"]
+[ext_resource type="Script" uid="uid://bc0xavuf61y20" path="res://Script/production_slot_tool.gd" id="1_0jnmx"]
 [ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="1_gqndp"]
 
 [node name="ProductionSlotTool" type="PanelContainer" unique_id=1606205518]

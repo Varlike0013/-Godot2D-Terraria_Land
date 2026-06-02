@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://b4bjc4a42on7x"]
 
-[ext_resource type="Script" uid="uid://sgmse57w7mm3" path="res://display_character_info.gd" id="1_ws7w3"]
+[ext_resource type="Script" uid="uid://sgmse57w7mm3" path="res://Script/display_character_info.gd" id="1_ws7w3"]
 [ext_resource type="SpriteFrames" uid="uid://dtqh6jnvgs0u0" path="res://Enemy/SpriteFrame/Ambience_EOC/Ambience_EOC.tres" id="2_32ct2"]
-[ext_resource type="PackedScene" uid="uid://cabvklwutgwk0" path="res://attribute_label.tscn" id="2_ah34f"]
-[ext_resource type="PackedScene" uid="uid://da00ascmhs7xd" path="res://display_character_equitpment.tscn" id="4_32ct2"]
+[ext_resource type="PackedScene" uid="uid://cabvklwutgwk0" path="res://Script/attribute_label.tscn" id="2_ah34f"]
+[ext_resource type="PackedScene" uid="uid://da00ascmhs7xd" path="res://Script/display_character_equitpment.tscn" id="4_32ct2"]
 
 [node name="DisplayerCharacterInfo" type="PanelContainer" unique_id=1123885561]
 offset_right = 584.0

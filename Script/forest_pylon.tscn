@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c1h2asbck4eyp" path="res://Script/forest_pylon.gd" id="1_6mmxl"]
 [ext_resource type="SpriteFrames" uid="uid://dfgkem1l2ki2" path="res://Placed/Forest_Pylon_(placed)/forest_pylon.tres" id="1_qr2oj"]
-[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Tscn/health_bar.tscn" id="3_2ex2d"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Script/health_bar.tscn" id="3_2ex2d"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6mmxl"]
 radius = 23.0

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://clgnxljbqm8tj"]
 
-[ext_resource type="Script" uid="uid://cvneqr3r1akdm" path="res://equipment_info_line.gd" id="1_pkvet"]
+[ext_resource type="Script" uid="uid://cvneqr3r1akdm" path="res://Script/equipment_info_line.gd" id="1_pkvet"]
 [ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="2_8hn6t"]
 
 [node name="EquitmentInfoLine" type="PanelContainer" unique_id=264641821]

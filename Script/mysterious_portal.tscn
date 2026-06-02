@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://viuutr06cxr5"]
 
-[ext_resource type="Script" uid="uid://bug5ckj056itc" path="res://Tscn/mysterious_portal.gd" id="1_8svlo"]
+[ext_resource type="Script" uid="uid://bug5ckj056itc" path="res://Script/mysterious_portal.gd" id="1_8svlo"]
 [ext_resource type="SpriteFrames" uid="uid://dsw0oj8japcjc" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_Door.tres" id="1_ta7ev"]
 [ext_resource type="SpriteFrames" uid="uid://dw6t3pjvosx65" path="res://Enemy/SpriteFrame/Mysterious_Portal/Mysterious_Portal_Eye.tres" id="2_1772t"]
 

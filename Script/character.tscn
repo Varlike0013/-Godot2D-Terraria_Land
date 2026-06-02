@@ -2,7 +2,7 @@
 
 [ext_resource type="SpriteFrames" uid="uid://bmxp78hsf5hrg" path="res://Enemy/SpriteFrame/Swamp_Zombie/Swamp_Zombie_sprite_frames.tres" id="1_7k104"]
 [ext_resource type="Script" uid="uid://c80q0r872u3m3" path="res://Script/charater/character.gd" id="1_xg3e0"]
-[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Tscn/health_bar.tscn" id="3_b6tms"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Script/health_bar.tscn" id="3_b6tms"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p8vlk"]
 size = Vector2(15, 42)

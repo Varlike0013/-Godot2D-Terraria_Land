@@ -1,20 +1,20 @@
 [gd_scene format=3 uid="uid://7otq1bhgd0m7"]
 
 [ext_resource type="Script" uid="uid://cdurdemkr0j1q" path="res://Script/level.gd" id="1_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://5eluglia3f4" path="res://Tscn/forest_pylon.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://viuutr06cxr5" path="res://Tscn/mysterious_portal.tscn" id="3_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://nba4142kdxf3" path="res://Tscn/character.tscn" id="4_1bvp3"]
-[ext_resource type="PackedScene" uid="uid://8pjrsdi30vxr" path="res://player.tscn" id="4_7mycd"]
-[ext_resource type="PackedScene" uid="uid://dd2t8bnihh470" path="res://Tscn/enemy_ranged.tscn" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://5eluglia3f4" path="res://Script/forest_pylon.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://viuutr06cxr5" path="res://Script/mysterious_portal.tscn" id="3_ycdy4"]
+[ext_resource type="PackedScene" uid="uid://nba4142kdxf3" path="res://Script/character.tscn" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://8pjrsdi30vxr" path="res://Script/player.tscn" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://dd2t8bnihh470" path="res://Script/enemy_ranged.tscn" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cfc72nagr64vc" path="res://Enemy/Packed/slime.tscn" id="6_dg77c"]
 [ext_resource type="Script" uid="uid://cfmgb3dxr8ger" path="res://Script/level_ui_control.gd" id="7_5vw27"]
-[ext_resource type="PackedScene" uid="uid://dq82d2tta1oju" path="res://Tscn/mobile_controller.tscn" id="7_272bh"]
-[ext_resource type="PackedScene" uid="uid://drgtbjb1posoa" path="res://Tscn/building_row.tscn" id="7_efxa6"]
-[ext_resource type="PackedScene" uid="uid://d4emotvotfrgh" path="res://Tscn/top_index_bar.tscn" id="9_kek77"]
-[ext_resource type="PackedScene" uid="uid://iuehj6823x4l" path="res://Tscn/building_select_base.tscn" id="11_dg77c"]
-[ext_resource type="PackedScene" uid="uid://ui8l45undioe" path="res://Tscn/building_select_production.tscn" id="11_efxa6"]
-[ext_resource type="PackedScene" uid="uid://di7bddk56tmpm" path="res://display_character_npc.tscn" id="12_vivmo"]
-[ext_resource type="PackedScene" uid="uid://b4bjc4a42on7x" path="res://display_character_info.tscn" id="14_w48qg"]
+[ext_resource type="PackedScene" uid="uid://dq82d2tta1oju" path="res://Script/mobile_controller.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://drgtbjb1posoa" path="res://Script/building_row.tscn" id="7_efxa6"]
+[ext_resource type="PackedScene" uid="uid://d4emotvotfrgh" path="res://Script/top_index_bar.tscn" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://iuehj6823x4l" path="res://Script/building_select_base.tscn" id="11_dg77c"]
+[ext_resource type="PackedScene" uid="uid://ui8l45undioe" path="res://Script/building_select_production.tscn" id="11_efxa6"]
+[ext_resource type="PackedScene" uid="uid://di7bddk56tmpm" path="res://Script/display_character_npc.tscn" id="12_vivmo"]
+[ext_resource type="PackedScene" uid="uid://b4bjc4a42on7x" path="res://Script/display_character_info.tscn" id="14_w48qg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ig7tw"]
 size = Vector2(1600, 200)
@@ -76,28 +76,6 @@ enemy_array = Array[Array]([[0, 0]])
 
 [node name="Player" parent="Charaters/Players" unique_id=1360645317 node_paths=PackedStringArray("level") instance=ExtResource("4_7mycd")]
 position = Vector2(1473, 270)
-attribute_vigor = 10.0
-vigor_health_base = 100.0
-vigor_health_growth = Array[Vector2]([Vector2(1, 10), Vector2(30, 15), Vector2(50, 12), Vector2(80, 8), Vector2(100, 4)])
-attribute_mind = 10.0
-mind_magic_base = 50.0
-mind_magic_growth = Array[Vector2]([Vector2(1, 5), Vector2(30, 8), Vector2(50, 6), Vector2(80, 4), Vector2(100, 3)])
-attribute_strength = 10.0
-strength_scaling_base = 50.0
-strength_scaling_growth = Array[Vector2]([Vector2(1, 5), Vector2(30, 8), Vector2(50, 6), Vector2(80, 4), Vector2(100, 3)])
-attribute_dexterity = 10.0
-dexterity_scaling_base = 50.0
-dexterity_scaling_growth = Array[Vector2]([Vector2(1, 5), Vector2(30, 8), Vector2(50, 6), Vector2(80, 4), Vector2(100, 3)])
-attribute_intelligence = 10.0
-intelligence_scaling_base = 50.0
-intelligence_scaling_growth = Array[Vector2]([Vector2(1, 5), Vector2(30, 8), Vector2(50, 6), Vector2(80, 4), Vector2(100, 3)])
-rating_value_vigor = 10.0
-rating_value_mind = 10.0
-rating_value_endurance = 10.0
-rating_value_strength = 10.0
-rating_value_dexterity = 10.0
-rating_value_intelligence = 10.0
-equip_accessory_size = 4
 level = NodePath("../../..")
 
 [node name="Enemys" type="Node2D" parent="Charaters" unique_id=698884280]

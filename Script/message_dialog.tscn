@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cefgcnnnj11u4"]
 
-[ext_resource type="Script" uid="uid://bdoli1pdsvw56" path="res://message_dialog.gd" id="1_0680d"]
+[ext_resource type="Script" uid="uid://bdoli1pdsvw56" path="res://Script/message_dialog.gd" id="1_0680d"]
 
 [node name="MessageDialog" type="PanelContainer" unique_id=1598020525]
 offset_right = 320.0
