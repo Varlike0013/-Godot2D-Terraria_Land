@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://8pjrsdi30vxr"]
+
+[ext_resource type="Script" uid="uid://3yd5d2tk70yp" path="res://Script/charater/player/player.gd" id="1_hqtel"]
+[ext_resource type="SpriteFrames" uid="uid://bmxp78hsf5hrg" path="res://Enemy/SpriteFrame/Swamp_Zombie/Swamp_Zombie_sprite_frames.tres" id="2_sweqy"]
+[ext_resource type="Texture2D" uid="uid://4mfk0gvoc8nh" path="res://image/areaRound.png" id="3_2hs0m"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Script/charater/health_bar.tscn" id="4_1jxqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dw050"]
+size = Vector2(15, 42)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b26j0"]
+
+[node name="Player" type="RigidBody2D" unique_id=2112964750]
+script = ExtResource("1_hqtel")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=457488230]
+position = Vector2(-2, -21)
+sprite_frames = ExtResource("2_sweqy")
+autoplay = "default"
+frame_progress = 0.7305384
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1876414472]
+position = Vector2(-0.5, -21)
+shape = SubResource("RectangleShape2D_dw050")
+
+[node name="Area2DAttack" type="Area2D" parent="." unique_id=740013712]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DAttack" unique_id=466554250]
+position = Vector2(0, -32)
+scale = Vector2(25, 25)
+shape = SubResource("CircleShape2D_b26j0")
+
+[node name="AreaRound" type="Sprite2D" parent="Area2DAttack/CollisionShape2D" unique_id=1939760309]
+scale = Vector2(0.032, 0.032)
+texture = ExtResource("3_2hs0m")
+
+[node name="Control" type="Control" parent="." unique_id=1457897459]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="HealthBar" parent="Control" unique_id=1260098963 instance=ExtResource("4_1jxqw")]
+layout_mode = 0
+offset_left = -42.0
+offset_top = -56.0
+offset_right = 142.0
+offset_bottom = -29.0
+grow_horizontal = 1
+grow_vertical = 1
+scale = Vector2(0.5, 0.5)
+
+[node name="TimerAttack" type="Timer" parent="." unique_id=129231844]

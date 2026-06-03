@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dxp526ttbdwp2"]
+
+[ext_resource type="Script" uid="uid://mvob8wi4u1j8" path="res://test_player_weapon.gd" id="1_kstpp"]
+[ext_resource type="PackedScene" uid="uid://er7qaaror818" path="res://Script/charater/enemy/enemy_melee.tscn" id="2_42diy"]
+[ext_resource type="Script" uid="uid://dvitwc1y5w1rs" path="res://Script/charater/player/PlayerData.gd" id="3_355dv"]
+[ext_resource type="PackedScene" uid="uid://8pjrsdi30vxr" path="res://Script/charater/player/player.tscn" id="3_d8a0y"]
+[ext_resource type="Script" uid="uid://cw1qhl71u8ojx" path="res://Script/charater/CharacterData.gd" id="3_dwowh"]
+[ext_resource type="PackedScene" uid="uid://dptpcr1w4w7ad" path="res://Script/weapon2d/ShortSword/copper_shortsword.tscn" id="4_dwowh"]
+
+[sub_resource type="Resource" id="Resource_of57p"]
+script = ExtResource("3_355dv")
+metadata/_custom_type_script = "uid://dvitwc1y5w1rs"
+
+[sub_resource type="Resource" id="Resource_355dv"]
+script = ExtResource("3_dwowh")
+metadata/_custom_type_script = "uid://cw1qhl71u8ojx"
+
+[sub_resource type="Resource" id="Resource_t5umm"]
+script = ExtResource("3_dwowh")
+metadata/_custom_type_script = "uid://cw1qhl71u8ojx"
+
+[node name="TestPlayerWeapon" type="Node2D" unique_id=1680644078]
+script = ExtResource("1_kstpp")
+
+[node name="Player" parent="." unique_id=2112964750 node_paths=PackedStringArray("weapon_2d", "attack_target") instance=ExtResource("3_d8a0y")]
+position = Vector2(511, 205)
+weapon_2d = NodePath("CopperShortsword")
+character_data = SubResource("Resource_of57p")
+attack_target = NodePath("../EnemyMelee")
+
+[node name="CopperShortsword" parent="Player" unique_id=1461811689 instance=ExtResource("4_dwowh")]
+position = Vector2(0, -21)
+weapon_type = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=831286615]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=2070326635]
+position = Vector2(0, 720)
+polygon = PackedVector2Array(101, -218, 304, -218, 463, -254, 677, -252, 886, -212, 1027, -246, 1182, -244, 1363, -169, 1529, -237, 1657, -667, 1645, 32, 736, 44, -57, 40, -52, -632, 48, -250)
+
+[node name="EnemyMelee" parent="." unique_id=39803458 node_paths=PackedStringArray("attack_target") instance=ExtResource("2_42diy")]
+position = Vector2(1165, 154)
+character_data = SubResource("Resource_355dv")
+attack_target = NodePath("../Player")
+
+[node name="EnemyMelee2" parent="." unique_id=1474874613 node_paths=PackedStringArray("attack_target") instance=ExtResource("2_42diy")]
+position = Vector2(273, 209)
+character_data = SubResource("Resource_t5umm")
+attack_target = NodePath("../Player")

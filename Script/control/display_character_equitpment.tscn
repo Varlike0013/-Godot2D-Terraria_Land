@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://da00ascmhs7xd"]
+
+[ext_resource type="Script" uid="uid://rmgstjxtel8d" path="res://Script/control/display_character_equitpment.gd" id="1_4mg5r"]
+[ext_resource type="PackedScene" uid="uid://clgnxljbqm8tj" path="res://Script/control/equipment_info_line.tscn" id="1_6pu0x"]
+
+[node name="DisplayCharaterEquipment" type="PanelContainer" unique_id=226914416]
+offset_right = 372.0
+offset_bottom = 312.0
+script = ExtResource("1_4mg5r")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=487061294]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=1495273879]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1640408168]
+layout_mode = 2
+
+[node name="EquitmentInfoLine" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=264641821 instance=ExtResource("1_6pu0x")]
+layout_mode = 2
+
+[node name="EquitmentInfoLine2" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=156610545 instance=ExtResource("1_6pu0x")]
+layout_mode = 2
+
+[node name="EquitmentInfoLine3" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=740688895 instance=ExtResource("1_6pu0x")]
+layout_mode = 2
+
+[node name="EquitmentInfoLine4" parent="MarginContainer/HBoxContainer/VBoxContainer" unique_id=2147264570 instance=ExtResource("1_6pu0x")]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer" unique_id=2054374452]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer" unique_id=1415250236]
+layout_mode = 2
+
+[node name="EquitmentInfoLine" parent="MarginContainer/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=169282347 instance=ExtResource("1_6pu0x")]
+layout_mode = 2
+
+[node name="EquitmentInfoLine2" parent="MarginContainer/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=44772280 instance=ExtResource("1_6pu0x")]
+layout_mode = 2
+
+[node name="EquitmentInfoLine3" parent="MarginContainer/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=475316964 instance=ExtResource("1_6pu0x")]
+layout_mode = 2
+
+[node name="EquitmentInfoLine4" parent="MarginContainer/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=991434655 instance=ExtResource("1_6pu0x")]
+layout_mode = 2
+
+[node name="EquitmentInfoLine5" parent="MarginContainer/HBoxContainer/ScrollContainer/VBoxContainer2" unique_id=359771707 instance=ExtResource("1_6pu0x")]
+layout_mode = 2

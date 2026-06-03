@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://ddbfgfcppj2ow" path="res://Script/charater/enemy/enemy.gd" id="1_0n0qv"]
 [ext_resource type="SpriteFrames" uid="uid://igpep44im7pw" path="res://Enemy/SpriteFrame/Blue_Slime/Blue_slime.tres" id="2_6fsi0"]
-[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Script/health_bar.tscn" id="3_r36wu"]
-[ext_resource type="PackedScene" uid="uid://ce4pte6fjqruf" path="res://Script/drop_item.tscn" id="4_0n0qv"]
+[ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Script/charater/health_bar.tscn" id="3_r36wu"]
+[ext_resource type="PackedScene" uid="uid://ce4pte6fjqruf" path="res://Script/charater/enemy/drop_item.tscn" id="4_0n0qv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jvr26"]
 size = Vector2(32, 22)
