@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemRowMaterials" format=3 uid="uid://ceoma0yx4on40"]
+
+[ext_resource type="Script" uid="uid://dls425mlbbnou" path="res://Resource/DB_ITEM/Item_Row_Materials.gd" id="1_dswi4"]
+[ext_resource type="Texture2D" uid="uid://cpk7v5vjt26bp" path="res://image/Item/Materials/Torch.webp" id="2_dac5h"]
+
+[resource]
+script = ExtResource("1_dswi4")
+name = "火把"
+texture2d = ExtResource("2_dac5h")
+metadata/_custom_type_script = "uid://dls425mlbbnou"

@@ -15,7 +15,7 @@ func update(item_id:int,new_qua:int,new_time:float):
 	current_id = item_id
 	current_quality = new_qua
 	current_time = new_time
-	texture_rect.texture = ManagerItem.get_item_info(item_id,ManagerItem.ItemInfoType.Texture2d)
+	texture_rect.texture = ManagerItem.get_item_info(item_id).texture2d
 	label_quality.text = "x"+str(new_qua)
 	label_time.text = str(new_time)+" sec"
 func _on_button_button_down() -> void:

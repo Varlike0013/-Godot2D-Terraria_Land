@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemRowMaterials" format=3 uid="uid://vxsi7xifcmlh"]
+
+[ext_resource type="Script" uid="uid://dls425mlbbnou" path="res://Resource/DB_ITEM/Item_Row_Materials.gd" id="1_w8usd"]
+[ext_resource type="Texture2D" uid="uid://si1w1s5c87y4" path="res://image/Item/Materials/Ebonwood.webp" id="2_umvu8"]
+
+[resource]
+script = ExtResource("1_w8usd")
+UsingTool = 2
+name = "乌木"
+texture2d = ExtResource("2_umvu8")
+metadata/_custom_type_script = "uid://dls425mlbbnou"

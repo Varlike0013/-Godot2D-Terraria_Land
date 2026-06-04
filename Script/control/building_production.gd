@@ -22,7 +22,7 @@ var building_row:BuildingRow
 var current_production_inteval:float = 1.0
 var current_items_input:Array[Vector2]
 var current_items_output:Array[Vector2]
-var current_item_tool_type:Item.ToolType
+var current_item_tool_type:Item.ItemTool
 var current_tool_id:int = -1
 var current_tool_durability:Vector2 = Vector2.ZERO
 var current_tool_efc:Vector3
@@ -31,11 +31,11 @@ func _ready() -> void:
 	custom_minimum_size = control_size
 	timer_production.start()
 func update_item(new_id:int,new_qua:int=1,new_itl:float=1.0):
-	texture_rect_item.texture = ManagerItem.get_item_info(new_id,ManagerItem.ItemInfoType.Texture2d)
+	texture_rect_item.texture = ManagerItem.get_item_info(new_id).texture2d
 	production_item_id = new_id
 	production_item_quality = new_qua
 	production_inteval = new_itl
-	current_item_tool_type =  ManagerItem.get_item_info(new_id,ManagerItem.ItemInfoType.ToolUseType)
+	current_item_tool_type =  ManagerItem.get_item_info(new_id).UsingTool
 	set_current_inteval()
 	timer_production.start()
 func update_tool(item_tool:Item):
@@ -45,18 +45,18 @@ func update_tool(item_tool:Item):
 	set_current_inteval()
 	timer_production.start()
 func set_current_inteval():
-	if current_item_tool_type == Item.ToolType.Pickaxe and current_tool_efc.x != 0:
+	if current_item_tool_type == Item.ItemTool.PICKAXE and current_tool_efc.x != 0:
 		current_production_inteval = production_inteval/current_tool_efc.x*100
-	elif current_item_tool_type == Item.ToolType.Axe and current_tool_efc.y != 0:
+	elif current_item_tool_type == Item.ItemTool.AXE and current_tool_efc.y != 0:
 		current_production_inteval = production_inteval/current_tool_efc.y*100
-	elif current_item_tool_type == Item.ToolType.Hammer and current_tool_efc.z != 0:
+	elif current_item_tool_type == Item.ItemTool.HAMMER and current_tool_efc.z != 0:
 		current_production_inteval = production_inteval/current_tool_efc.z*100
 	else:
 		current_production_inteval = production_inteval/0.3
 	texture_progress_bar.max_value = current_production_inteval
 func update_production(time:float,array_in:Array[Vector2],array_out:Array[Vector2]):
 	var item_show_id:int = int(array_out.get(0).x)
-	texture_rect_item.texture = ManagerItem.get_item_info(item_show_id,ManagerItem.ItemInfoType.Texture2d)
+	texture_rect_item.texture = ManagerItem.get_item_info(item_show_id).texture2d
 	current_items_input = array_in
 	current_items_output = array_out
 	production_inteval = time

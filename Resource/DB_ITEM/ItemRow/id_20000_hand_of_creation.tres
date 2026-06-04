@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemRowTool" format=3 uid="uid://5pr5njv74gq2"]
+
+[ext_resource type="Script" uid="uid://b7e7dn8eabujl" path="res://Resource/DB_ITEM/Item_Row_Tool.gd" id="1_m2iui"]
+[ext_resource type="Texture2D" uid="uid://i6kp3chgcv2g" path="res://image/Item/Tool/Hand_Of_Creation.webp" id="2_eoupg"]
+
+[resource]
+script = ExtResource("1_m2iui")
+tool_efficiency = Vector3(30, 30, 30)
+tool_durability = -1
+name = "空手"
+type = 2
+texture2d = ExtResource("2_eoupg")
+metadata/_custom_type_script = "uid://b7e7dn8eabujl"

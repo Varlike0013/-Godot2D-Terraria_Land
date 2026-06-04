@@ -41,7 +41,7 @@ func _ready() -> void:
 		area_2d_attack.body_entered.connect(_on_area_2d_attack_body_entered)
 		area_2d_attack.body_exited.connect(_on_area_2d_attack_body_exited)
 	if timer_attack:
-		timer_attack.wait_time = character_data.attack_inteval
+		timer_attack.wait_time = character_data.attack_interval
 		timer_attack.timeout.connect(_on_timer_attack_timeout)
 	ray_cast.position = Vector2(0,-10)
 	add_child(buffer_node)

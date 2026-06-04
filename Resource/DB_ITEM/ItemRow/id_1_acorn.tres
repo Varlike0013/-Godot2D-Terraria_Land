@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemRowMaterials" format=3 uid="uid://6k44m1q1a7a5"]
+
+[ext_resource type="Script" uid="uid://dls425mlbbnou" path="res://Resource/DB_ITEM/Item_Row_Materials.gd" id="1_2e7uu"]
+[ext_resource type="Texture2D" uid="uid://b2ipcnwydr46h" path="res://image/Item/Materials/Acorn.webp" id="2_erb1e"]
+
+[resource]
+script = ExtResource("1_2e7uu")
+name = "橡子"
+texture2d = ExtResource("2_erb1e")
+metadata/_custom_type_script = "uid://dls425mlbbnou"

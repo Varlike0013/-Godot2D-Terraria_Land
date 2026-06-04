@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemRowWeapon" format=3 uid="uid://b62bvdx1db02"]
+
+[ext_resource type="PackedScene" uid="uid://dyd1flkcfn6uw" path="res://Script/weapon2d/BroadSword/wooden_sword.tscn" id="1_byw2f"]
+[ext_resource type="Script" uid="uid://br1s56tjdbold" path="res://Resource/DB_ITEM/Item_Row_Weapon.gd" id="2_sxfne"]
+[ext_resource type="Texture2D" uid="uid://crcjp2nl3rim4" path="res://image/Item/Weapon/BroadSword/Wooden_Sword.png" id="3_s4pub"]
+
+[resource]
+script = ExtResource("2_sxfne")
+packed = ExtResource("1_byw2f")
+name = "木剑"
+type = 1
+texture2d = ExtResource("3_s4pub")
+metadata/_custom_type_script = "uid://br1s56tjdbold"

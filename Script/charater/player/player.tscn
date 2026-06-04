@@ -2,8 +2,13 @@
 
 [ext_resource type="Script" uid="uid://3yd5d2tk70yp" path="res://Script/charater/player/player.gd" id="1_hqtel"]
 [ext_resource type="SpriteFrames" uid="uid://bmxp78hsf5hrg" path="res://Enemy/SpriteFrame/Swamp_Zombie/Swamp_Zombie_sprite_frames.tres" id="2_sweqy"]
+[ext_resource type="Script" uid="uid://dvitwc1y5w1rs" path="res://Script/charater/player/PlayerData.gd" id="2_swrpt"]
 [ext_resource type="Texture2D" uid="uid://4mfk0gvoc8nh" path="res://image/areaRound.png" id="3_2hs0m"]
 [ext_resource type="PackedScene" uid="uid://dfm8brxarbjdi" path="res://Script/charater/health_bar.tscn" id="4_1jxqw"]
+
+[sub_resource type="Resource" id="Resource_uqle6"]
+script = ExtResource("2_swrpt")
+metadata/_custom_type_script = "uid://dvitwc1y5w1rs"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dw050"]
 size = Vector2(15, 42)
@@ -12,6 +17,7 @@ size = Vector2(15, 42)
 
 [node name="Player" type="RigidBody2D" unique_id=2112964750]
 script = ExtResource("1_hqtel")
+character_data = SubResource("Resource_uqle6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=457488230]
 position = Vector2(-2, -21)

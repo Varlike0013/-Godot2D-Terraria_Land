@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemRowMaterials" format=3 uid="uid://dty7dtejvm4ya"]
+
+[ext_resource type="Script" uid="uid://dls425mlbbnou" path="res://Resource/DB_ITEM/Item_Row_Materials.gd" id="1_s6m2j"]
+[ext_resource type="Texture2D" uid="uid://bkjw5whsctrkg" path="res://image/Item/Materials/Dirt_Block.webp" id="2_5us07"]
+
+[resource]
+script = ExtResource("1_s6m2j")
+UsingTool = 1
+name = "土块"
+texture2d = ExtResource("2_5us07")
+metadata/_custom_type_script = "uid://dls425mlbbnou"

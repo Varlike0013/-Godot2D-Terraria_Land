@@ -7,7 +7,7 @@ class_name DropItem2D
 
 func update(id:int):
 	item_id = id
-	sprite_2d.texture = ManagerItem.get_item_info(item_id,ManagerItem.ItemInfoType.Texture2d)
+	sprite_2d.texture = ManagerItem.get_item_info(item_id).texture2d
 func be_drop():
 	var tween:Tween = create_tween().set_loops(1)
 	scale = Vector2(0,0)

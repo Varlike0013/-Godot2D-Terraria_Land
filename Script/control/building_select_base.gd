@@ -63,13 +63,13 @@ func update_show(): ##更新建筑信息到显示页面
 		var item_quality:int = current_building.production_item_quality
 		progress_bar.value = current_building.texture_progress_bar.value
 		progress_bar.max_value  = current_building.texture_progress_bar.max_value
-		texture_rect_item.texture = ManagerItem.get_item_info(item_id,ManagerItem.ItemInfoType.Texture2d)
-		label_name.text = ManagerItem.get_item_info(item_id,ManagerItem.ItemInfoType.Name)
+		texture_rect_item.texture = ManagerItem.get_item_info(item_id).texture2d
+		label_name.text = ManagerItem.get_item_info(item_id).name
 		label_quality.text = "x"+str(item_quality)+"("+str(ManagerItem.get_item_quality(item_id))+")"
 	if tool_id != -1:
 		var tool_durability:Vector2 = current_building.current_tool_durability
-		texture_rect_tool.texture = ManagerItem.get_item_info(tool_id,ManagerItem.ItemInfoType.Texture2d) 
-		label_name_tool.text = ManagerItem.get_item_info(tool_id,ManagerItem.ItemInfoType.Name)
+		texture_rect_tool.texture = ManagerItem.get_item_info(tool_id).texture2d
+		label_name_tool.text = ManagerItem.get_item_info(tool_id).name
 		label_quality_tool.text = "x"+str(ManagerItem.get_item_quality(tool_id))
 		if tool_durability.x<0:
 			label_durability.text = "Infinite"

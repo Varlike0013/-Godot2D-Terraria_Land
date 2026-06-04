@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemRowMaterials" format=3 uid="uid://12wcnkt4xyer"]
+
+[ext_resource type="Script" uid="uid://dls425mlbbnou" path="res://Resource/DB_ITEM/Item_Row_Materials.gd" id="1_qk8tk"]
+[ext_resource type="Texture2D" uid="uid://k4pbr8gjhnkj" path="res://image/Item/Materials/Iron_Bar.webp" id="2_jmyve"]
+
+[resource]
+script = ExtResource("1_qk8tk")
+name = "铁锭"
+texture2d = ExtResource("2_jmyve")
+metadata/_custom_type_script = "uid://dls425mlbbnou"

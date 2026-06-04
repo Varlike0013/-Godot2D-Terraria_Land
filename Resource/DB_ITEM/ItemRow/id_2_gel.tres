@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="ItemRowMaterials" format=3 uid="uid://di4u0b3tmvma5"]
+
+[ext_resource type="Script" uid="uid://dls425mlbbnou" path="res://Resource/DB_ITEM/Item_Row_Materials.gd" id="1_0jvat"]
+[ext_resource type="Texture2D" uid="uid://n4cmhfie58fg" path="res://image/Item/Materials/Gel.webp" id="2_35dig"]
+
+[resource]
+script = ExtResource("1_0jvat")
+name = "凝胶"
+texture2d = ExtResource("2_35dig")
+metadata/_custom_type_script = "uid://dls425mlbbnou"

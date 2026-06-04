@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemRowTool" format=3 uid="uid://dls0ot21qpu4c"]
+
+[ext_resource type="Script" uid="uid://b7e7dn8eabujl" path="res://Resource/DB_ITEM/Item_Row_Tool.gd" id="1_gnlva"]
+[ext_resource type="Texture2D" uid="uid://mv88lde00dmn" path="res://image/Item/Tool/Iron_Pickaxe.webp" id="2_ht30m"]
+
+[resource]
+script = ExtResource("1_gnlva")
+tool_efficiency = Vector3(45, 0, 0)
+tool_durability = 30
+name = "铁镐"
+type = 2
+texture2d = ExtResource("2_ht30m")
+metadata/_custom_type_script = "uid://b7e7dn8eabujl"
