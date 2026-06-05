@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TableBuildingRow" format=3 uid="uid://debr502lqio40"]
+
+[ext_resource type="Script" uid="uid://bn4pinim1hhmi" path="res://Resource/DB_Formula/Table_Formula_Row.gd" id="1_mbfdo"]
+[ext_resource type="Script" uid="uid://limgqcy1lywv" path="res://Resource/DB_Formula/Table_Building_Row.gd" id="2_3tptm"]
+[ext_resource type="Texture2D" uid="uid://b260pg6we3y46" path="res://image/Item/Materials/Iron_Ore.webp" id="2_xo403"]
+
+[sub_resource type="Resource" id="Resource_3tptm"]
+script = ExtResource("1_mbfdo")
+time = 1.0
+output_items_id = Array[Vector2]([Vector2(3, 1)])
+metadata/_custom_type_script = "uid://bn4pinim1hhmi"
+
+[resource]
+script = ExtResource("2_3tptm")
+Building_name = "矿场"
+building_texture = ExtResource("2_xo403")
+Building_formula = Array[ExtResource("1_mbfdo")]([SubResource("Resource_3tptm")])
+metadata/_custom_type_script = "uid://limgqcy1lywv"

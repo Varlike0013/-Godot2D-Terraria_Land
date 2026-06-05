@@ -1,9 +1,10 @@
 extends Node
 
-const DB_ITEM = preload("res://Resource/DB_ITEM.tres")
 const ITEM_DATA_JSON = "res://Json/item_data.json"
 const ITEM_BAG = preload("uid://bgosrqbnyvula")
+const DB_ITEM = preload("uid://c88bbwq7m7g5g")
 const ItemNoRemoveList = [5000] ##无法被移除的物品的id
+
 
 var array_items:Array[Item] = []
 

@@ -1,0 +1,36 @@
+[gd_resource type="Resource" script_class="TableBuildingRow" format=3 uid="uid://c4nm6fl6fa8ep"]
+
+[ext_resource type="Script" uid="uid://bn4pinim1hhmi" path="res://Resource/DB_Formula/Table_Formula_Row.gd" id="1_igtd4"]
+[ext_resource type="Script" uid="uid://limgqcy1lywv" path="res://Resource/DB_Formula/Table_Building_Row.gd" id="2_j32k8"]
+[ext_resource type="Texture2D" uid="uid://cters1pwrmqg3" path="res://image/Item/Work_Bench.webp" id="2_u14xn"]
+
+[sub_resource type="Resource" id="Resource_j32k8"]
+script = ExtResource("1_igtd4")
+input_items_id = Array[Vector2]([Vector2(0, 20)])
+output_items_id = Array[Vector2]([Vector2(30000, 1)])
+metadata/_custom_type_script = "uid://bn4pinim1hhmi"
+
+[sub_resource type="Resource" id="Resource_u14xn"]
+script = ExtResource("1_igtd4")
+input_items_id = Array[Vector2]([Vector2(0, 30)])
+output_items_id = Array[Vector2]([Vector2(30001, 1)])
+metadata/_custom_type_script = "uid://bn4pinim1hhmi"
+
+[sub_resource type="Resource" id="Resource_mjc8d"]
+script = ExtResource("1_igtd4")
+input_items_id = Array[Vector2]([Vector2(0, 25)])
+output_items_id = Array[Vector2]([Vector2(30002, 1)])
+metadata/_custom_type_script = "uid://bn4pinim1hhmi"
+
+[sub_resource type="Resource" id="Resource_gae1y"]
+script = ExtResource("1_igtd4")
+input_items_id = Array[Vector2]([Vector2(0, 1), Vector2(2, 1)])
+output_items_id = Array[Vector2]([Vector2(5, 3)])
+metadata/_custom_type_script = "uid://bn4pinim1hhmi"
+
+[resource]
+script = ExtResource("2_j32k8")
+Building_name = "工作区"
+building_texture = ExtResource("2_u14xn")
+Building_formula = Array[ExtResource("1_igtd4")]([SubResource("Resource_j32k8"), SubResource("Resource_u14xn"), SubResource("Resource_mjc8d"), SubResource("Resource_gae1y")])
+metadata/_custom_type_script = "uid://limgqcy1lywv"

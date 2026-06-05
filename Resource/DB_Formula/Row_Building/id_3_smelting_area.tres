@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TableBuildingRow" format=3 uid="uid://buqmmkmwyay5r"]
+
+[ext_resource type="Script" uid="uid://bn4pinim1hhmi" path="res://Resource/DB_Formula/Table_Formula_Row.gd" id="1_64dsm"]
+[ext_resource type="Script" uid="uid://limgqcy1lywv" path="res://Resource/DB_Formula/Table_Building_Row.gd" id="2_kjxi6"]
+[ext_resource type="Texture2D" uid="uid://dkjahwf8jv4e" path="res://image/Item/Furnace.webp" id="2_papq8"]
+
+[sub_resource type="Resource" id="Resource_kjxi6"]
+script = ExtResource("1_64dsm")
+input_items_id = Array[Vector2]([Vector2(3, 3)])
+output_items_id = Array[Vector2]([Vector2(4, 1)])
+metadata/_custom_type_script = "uid://bn4pinim1hhmi"
+
+[resource]
+script = ExtResource("2_kjxi6")
+Building_name = "熔炼池"
+building_texture = ExtResource("2_papq8")
+Building_formula = Array[ExtResource("1_64dsm")]([SubResource("Resource_kjxi6")])
+metadata/_custom_type_script = "uid://limgqcy1lywv"

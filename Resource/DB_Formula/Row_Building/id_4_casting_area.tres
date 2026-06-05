@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="TableBuildingRow" format=3 uid="uid://d1pfveme6m0ho"]
+
+[ext_resource type="Script" uid="uid://bn4pinim1hhmi" path="res://Resource/DB_Formula/Table_Formula_Row.gd" id="1_aafur"]
+[ext_resource type="Texture2D" uid="uid://8pb3bporyda5" path="res://image/Item/Iron_Anvil.webp" id="2_0g6dx"]
+[ext_resource type="Script" uid="uid://limgqcy1lywv" path="res://Resource/DB_Formula/Table_Building_Row.gd" id="2_rkvxi"]
+
+[sub_resource type="Resource" id="Resource_rkvxi"]
+script = ExtResource("1_aafur")
+input_items_id = Array[Vector2]([Vector2(4, 10), Vector2(0, 3)])
+output_items_id = Array[Vector2]([Vector2(20001, 1)])
+metadata/_custom_type_script = "uid://bn4pinim1hhmi"
+
+[resource]
+script = ExtResource("2_rkvxi")
+Building_name = "铸造区"
+building_texture = ExtResource("2_0g6dx")
+Building_formula = Array[ExtResource("1_aafur")]([SubResource("Resource_rkvxi")])
+metadata/_custom_type_script = "uid://limgqcy1lywv"

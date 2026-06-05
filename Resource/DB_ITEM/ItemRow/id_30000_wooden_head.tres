@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemRowArmor" format=3 uid="uid://c3m7y2dfyoqmb"]
+
+[ext_resource type="Script" uid="uid://bo1p4w8vu0n62" path="res://Resource/DB_ITEM/Item_Row_Armor.gd" id="1_tx5tc"]
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="2_2goq3"]
+
+[resource]
+script = ExtResource("1_tx5tc")
+defense = 1
+group = 1
+name = "木头盔"
+type = 4
+texture2d = ExtResource("2_2goq3")
+metadata/_custom_type_script = "uid://bo1p4w8vu0n62"

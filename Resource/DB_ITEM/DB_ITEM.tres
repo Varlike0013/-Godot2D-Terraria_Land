@@ -1,9 +1,13 @@
 [gd_resource type="Resource" script_class="TableItem" format=3 uid="uid://c88bbwq7m7g5g"]
 
+[ext_resource type="Script" uid="uid://bo1p4w8vu0n62" path="res://Resource/DB_ITEM/Item_Row_Armor.gd" id="1_n2aqb"]
 [ext_resource type="Script" uid="uid://dls425mlbbnou" path="res://Resource/DB_ITEM/Item_Row_Materials.gd" id="1_oq1p7"]
+[ext_resource type="Resource" uid="uid://c3m7y2dfyoqmb" path="res://Resource/DB_ITEM/ItemRow/id_30000_wooden_head.tres" id="2_aqr3a"]
 [ext_resource type="Resource" uid="uid://blnlu5btd4lkm" path="res://Resource/DB_ITEM/ItemRow/id_0_wood.tres" id="2_nwj7b"]
 [ext_resource type="Script" uid="uid://b7e7dn8eabujl" path="res://Resource/DB_ITEM/Item_Row_Tool.gd" id="2_qkuxn"]
+[ext_resource type="Resource" uid="uid://3e84hq2md55y" path="res://Resource/DB_ITEM/ItemRow/id_30001_wooden_chest.tres" id="3_g3rlt"]
 [ext_resource type="Resource" uid="uid://6k44m1q1a7a5" path="res://Resource/DB_ITEM/ItemRow/id_1_acorn.tres" id="3_gicf3"]
+[ext_resource type="Resource" uid="uid://d05m1sosg6ie8" path="res://Resource/DB_ITEM/ItemRow/id_30002_wooden_legging.tres" id="4_cxmrw"]
 [ext_resource type="Resource" uid="uid://di4u0b3tmvma5" path="res://Resource/DB_ITEM/ItemRow/id_2_gel.tres" id="4_plbqh"]
 [ext_resource type="Resource" uid="uid://2o7hfh78x6ah" path="res://Resource/DB_ITEM/ItemRow/id_3_iron_ore.tres" id="5_nwj7b"]
 [ext_resource type="Resource" uid="uid://12wcnkt4xyer" path="res://Resource/DB_ITEM/ItemRow/id_4_iron_bar.tres" id="6_plbqh"]
@@ -21,4 +25,5 @@ script = ExtResource("7_1500t")
 MATERIALS = Array[ExtResource("1_oq1p7")]([ExtResource("2_nwj7b"), ExtResource("3_gicf3"), ExtResource("4_plbqh"), ExtResource("5_nwj7b"), ExtResource("6_plbqh"), ExtResource("7_w66yn"), ExtResource("8_igy48"), ExtResource("9_w66yn")])
 WEAPONS = Array[ExtResource("13_n2aqb")]([ExtResource("14_edivp")])
 TOOLS = Array[ExtResource("2_qkuxn")]([ExtResource("11_1500t"), ExtResource("12_1500t")])
+ARMOR = Array[ExtResource("1_n2aqb")]([ExtResource("2_aqr3a"), ExtResource("3_g3rlt"), ExtResource("4_cxmrw")])
 metadata/_custom_type_script = "uid://dt83y27064sxe"

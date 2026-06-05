@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="ItemRowArmor" format=3 uid="uid://3e84hq2md55y"]
+
+[ext_resource type="Script" uid="uid://bo1p4w8vu0n62" path="res://Resource/DB_ITEM/Item_Row_Armor.gd" id="1_lhw85"]
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="2_23f8t"]
+
+[resource]
+script = ExtResource("1_lhw85")
+defense = 2
+group = 1
+name = "木胸甲"
+type = 5
+texture2d = ExtResource("2_23f8t")
+metadata/_custom_type_script = "uid://bo1p4w8vu0n62"

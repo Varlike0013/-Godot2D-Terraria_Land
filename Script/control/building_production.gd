@@ -1,7 +1,7 @@
 extends Control
 class_name BuildingProduction
 
-enum BuildingType {Base,Production}
+enum BuildingStatus {Make,Creat}
 
 signal Pressed(bd:BuildingProduction)
 
@@ -16,7 +16,7 @@ signal Pressed(bd:BuildingProduction)
 @export var production_item_id:int = -1
 @export var production_inteval:float = 1.0
 @export var production_item_quality:int = 1
-@export var building_type:BuildingType = BuildingType.Base
+@export var building_status:BuildingStatus = BuildingStatus.Make
 
 var building_row:BuildingRow
 var current_production_inteval:float = 1.0
@@ -54,12 +54,12 @@ func set_current_inteval():
 	else:
 		current_production_inteval = production_inteval/0.3
 	texture_progress_bar.max_value = current_production_inteval
-func update_production(time:float,array_in:Array[Vector2],array_out:Array[Vector2]):
-	var item_show_id:int = int(array_out.get(0).x)
+func update_production(formula:TableFormulaRow):
+	var item_show_id:int = int(formula.output_items_id.get(0).x)
 	texture_rect_item.texture = ManagerItem.get_item_info(item_show_id).texture2d
-	current_items_input = array_in
-	current_items_output = array_out
-	production_inteval = time
+	current_items_input = formula.input_items_id
+	current_items_output = formula.output_items_id
+	production_inteval = formula.time
 	texture_progress_bar.max_value = production_inteval
 	timer_production.start()
 func check_input_item(array_in:Array[Vector2])->bool:
@@ -84,9 +84,9 @@ func _on_button_button_down() -> void:
 	Pressed.emit(self)
 func _on_timer_production_timeout() -> void:
 	if production_item_id != -1 or current_items_input.size()>0:
-		if building_type == BuildingType.Base:
+		if building_status == BuildingStatus.Creat:
 			texture_progress_bar.value += 0.1
-		elif building_type == BuildingType.Production:
+		elif building_status == BuildingStatus.Make:
 			if check_input_item(current_items_input):
 				texture_progress_bar.value += 0.1
 				label_warning.visible = false
@@ -94,10 +94,10 @@ func _on_timer_production_timeout() -> void:
 				label_warning.visible = true
 	if texture_progress_bar.value == texture_progress_bar.max_value:
 		texture_progress_bar.value = 0
-		if building_type == BuildingType.Base:
+		if building_status == BuildingStatus.Creat:
 			var new_item:Item = ManagerItem.get_item(production_item_id,production_item_quality)
 			ManagerItem.append_item(new_item)
 			remove_tool_durability()
-		elif building_type == BuildingType.Production:
+		elif building_status == BuildingStatus.Make:
 			ManagerItem.remove_items(current_items_input)
 			ManagerItem.append_items(current_items_output)

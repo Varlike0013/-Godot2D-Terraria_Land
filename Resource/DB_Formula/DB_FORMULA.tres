@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TableFormula" format=3 uid="uid://blt0k50xuvjuv"]
+
+[ext_resource type="Script" uid="uid://limgqcy1lywv" path="res://Resource/DB_Formula/Table_Building_Row.gd" id="1_7bcer"]
+[ext_resource type="Script" uid="uid://bpg46ml572h3q" path="res://Resource/DB_Formula/Table_Formula.gd" id="1_ciqgt"]
+[ext_resource type="Resource" uid="uid://dhe60n7q7ff6q" path="res://Resource/DB_Formula/Row_Building/id_0_sawmill.tres" id="2_f0kcc"]
+[ext_resource type="Resource" uid="uid://debr502lqio40" path="res://Resource/DB_Formula/Row_Building/id_1_mining_site.tres" id="3_tupyg"]
+[ext_resource type="Resource" uid="uid://c4nm6fl6fa8ep" path="res://Resource/DB_Formula/Row_Building/id_2_crafting_area.tres" id="4_ovlre"]
+[ext_resource type="Resource" uid="uid://buqmmkmwyay5r" path="res://Resource/DB_Formula/Row_Building/id_3_smelting_area.tres" id="5_mptfo"]
+[ext_resource type="Resource" uid="uid://d1pfveme6m0ho" path="res://Resource/DB_Formula/Row_Building/id_4_casting_area.tres" id="6_f0kcc"]
+
+[resource]
+script = ExtResource("1_ciqgt")
+BUILDING_FORMULA = Array[ExtResource("1_7bcer")]([ExtResource("2_f0kcc"), ExtResource("3_tupyg"), ExtResource("4_ovlre"), ExtResource("5_mptfo"), ExtResource("6_f0kcc")])
+metadata/_custom_type_script = "uid://bpg46ml572h3q"
