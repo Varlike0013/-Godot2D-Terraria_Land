@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://iuehj6823x4l"]
 
 [ext_resource type="Script" uid="uid://besn6mpvh3ra1" path="res://Script/control/building_select_base.gd" id="1_7m26w"]
+[ext_resource type="PackedScene" uid="uid://boy5m3itr0gk5" path="res://Script/control/production_item_slot.tscn" id="3_41ps4"]
 [ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="3_po1ha"]
+[ext_resource type="Texture2D" uid="uid://cm8u35d6sm08i" path="res://image/button_mobile/lineDark/lineDark20.png" id="4_fydc6"]
 
-[node name="BuildingSelectBase" type="PanelContainer" unique_id=1838650201]
+[node name="BuildingSelectMake" type="PanelContainer" unique_id=1838650201]
 custom_minimum_size = Vector2(1440, 580)
 script = ExtResource("1_7m26w")
 
@@ -33,21 +35,35 @@ layout_mode = 2
 
 [node name="FoldableContainer" type="FoldableContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=129790336]
 layout_mode = 2
+folded = true
 title = "物品"
 title_alignment = 1
 
 [node name="GDCItem" type="GridContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/FoldableContainer" unique_id=845451969]
+visible = false
 layout_mode = 2
 columns = 6
 
 [node name="FoldableContainer2" type="FoldableContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2033817887]
 layout_mode = 2
+folded = true
 title = "工具"
 title_alignment = 1
 
 [node name="GDCTool" type="GridContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/FoldableContainer2" unique_id=1847885815]
+visible = false
 layout_mode = 2
 columns = 6
+
+[node name="FoldableContainer3" type="FoldableContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=890286122]
+layout_mode = 2
+folded = true
+title = "配方"
+title_alignment = 1
+
+[node name="VBoxFormula" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/FoldableContainer3" unique_id=1007681162]
+visible = false
+layout_mode = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer/HBoxContainer" unique_id=1261691844]
 custom_minimum_size = Vector2(600, 0)
@@ -134,6 +150,46 @@ horizontal_alignment = 1
 [node name="LabelDurability" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCTool/VBoxContainer" unique_id=1022368082]
 layout_mode = 2
 text = "???/???"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer" unique_id=1426164256]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="VBCItemIn" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer2" unique_id=368478830]
+layout_mode = 2
+alignment = 1
+
+[node name="ProductionItemSlot" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer2/VBCItemIn" unique_id=314272210 instance=ExtResource("3_41ps4")]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer2" unique_id=1355832922]
+layout_mode = 2
+texture = ExtResource("4_fydc6")
+stretch_mode = 5
+
+[node name="LabelTime" type="Label" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer2/TextureRect" unique_id=1350771817]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1.0
+offset_top = -51.0
+offset_right = 1.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "?? sec"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBCItemOut" type="VBoxContainer" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer2" unique_id=2021022683]
+layout_mode = 2
+alignment = 1
+
+[node name="ProductionItemSlot" parent="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer2/VBCItemOut" unique_id=1687317733 instance=ExtResource("3_41ps4")]
+layout_mode = 2
 
 [connection signal="value_changed" from="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer/ProgressBar" to="." method="_on_progress_bar_value_changed"]
 [connection signal="timeout" from="MarginContainer/HBoxContainer/CenterContainer/HBoxContainer/PCItem/VBoxContainer/TimerUpdate" to="." method="_on_timer_update_timeout"]

@@ -124,18 +124,7 @@ func update_create():
 	for info in info_dic:
 		add_building_slot(info)
 func update_select(new_bd:BuildingProduction):
-	if new_bd.building_type == BuildingProduction.BuildingType.Base:
-		building_select_base.visible = true
-		var array:Array[Vector3] = ManagerBuilding.get_building_production(new_bd.building_id)
-		building_select_base.update(array)
-		building_select_base.current_building = new_bd
-		building_select_product.visible = false
-	elif new_bd.building_type == BuildingProduction.BuildingType.Production:
-		building_select_base.visible = false
-		var array:Array[Dictionary] = ManagerBuilding.get_building_make(new_bd.building_id)
-		building_select_product.update(array)
-		building_select_product.current_building = new_bd
-		building_select_product.visible = true
+	building_select_base.update(new_bd)
 func update_players():
 	var array_players:Array[Player] = level.get_players()
 	var array_slots:Array[DisplayCharaterNpc] = get_player_slots()

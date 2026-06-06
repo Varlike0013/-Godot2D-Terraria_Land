@@ -12,7 +12,7 @@ func get_building_id(input_id:int) ->BuildingProduction:
 		new_bd.building_id = input_id
 		return new_bd
 	return null
-func get_building_info(bu_id:int):
+func get_building_info(bu_id:int)->TableBuildingRow:
 	return DB_FORMULA.get_row(bu_id)
 func get_building_formula(bd_id:int)->Array[TableFormulaRow]:
 	var info_row:TableBuildingRow = DB_FORMULA.get_row(bd_id)

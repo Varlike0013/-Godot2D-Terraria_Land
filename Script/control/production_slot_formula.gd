@@ -1,5 +1,5 @@
 extends PanelContainer
-class_name ProductionSlot
+class_name ProductionSlotFormula
 
 const PRODUCTION_ITEM_SLOT = preload("uid://boy5m3itr0gk5")
 
@@ -14,10 +14,10 @@ signal Pressed(time:float,array_in:Array[Vector2],array_out:Array[Vector2])
 @export var output_array:Array[Vector2]##id&&quality
 @export var product_time:float = 3.0 ##time_interval
 
-func update(array_in:Array[Vector2],array_out:Array[Vector2],time:float):
-	input_array = array_in
-	output_array = array_out
-	label_time.text = str(time)+"sec"
+func update(formula:TableFormulaRow):
+	input_array = formula.input_items_id
+	output_array = formula.output_items_id
+	label_time.text = str(formula.time)+"sec"
 	for input:Vector2 in input_array:
 		var new_slot:ProductionItemSlot = get_slot()
 		h_box_input.add_child(new_slot)
