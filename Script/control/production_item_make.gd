@@ -11,12 +11,12 @@ var current_id:int
 var current_quality:int
 var current_time:float
 
-func update(item_id:int,new_qua:int,new_time:float):
-	current_id = item_id
-	current_quality = new_qua
-	current_time = new_time
-	texture_rect.texture = ManagerItem.get_item_info(item_id).texture2d
-	label_quality.text = "x"+str(new_qua)
-	label_time.text = str(new_time)+" sec"
+func update(formula:TableFormulaRow):
+	current_id = formula.output_items_id.get(0).x
+	current_quality = formula.output_items_id.get(0).y
+	current_time = formula.time
+	texture_rect.texture = ManagerItem.get_item_info(current_id).texture2d
+	label_quality.text = "x"+str(current_quality)
+	label_time.text = str(current_time)+" sec"
 func _on_button_button_down() -> void:
 	Pressed.emit(current_id,current_quality,current_time)

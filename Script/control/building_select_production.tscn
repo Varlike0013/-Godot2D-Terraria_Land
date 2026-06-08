@@ -18,12 +18,22 @@ theme_override_constants/margin_bottom = 20
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=2098864969]
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer" unique_id=1928853332]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer" unique_id=1162360952]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer" unique_id=881656957]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1928853332]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 draw_focus_border = true
 
-[node name="VBCFormula" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScrollContainer" unique_id=1927654053]
+[node name="VBCFormula" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PanelContainer/MarginContainer/ScrollContainer" unique_id=1927654053]
 layout_mode = 2
 size_flags_horizontal = 2
 size_flags_vertical = 0
