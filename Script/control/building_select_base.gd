@@ -27,14 +27,28 @@ func update(new_bd:BuildingProduction):
 	update_items(bd_row.get_formula_all())
 	update_item_tool()
 func update_item_tool():
-	clear_tools()
+	var count:int = 0
 	var array:Array[Item] = ManagerItem.get_item_tools()
-	for cur in array:
-		append_slot_tool(cur)
+	for ar in array:
+		var slot:ProductionSlotTool = gdc_tool.get_child(count)
+		if slot:
+			slot.update(ar)
+		else:
+			append_slot_tool(ar)
+		count += 1
+	for i in range(gdc_tool.get_child_count() - 1, count - 1, -1):
+		gdc_tool.get_child(i).queue_free()
 func update_items(formulas:Array[TableFormulaRow]):
-	clear_slots()
-	for row in formulas:
-		append_item(row)
+	var count:int = 0
+	for fma in formulas:
+		var slot:ProductionItemMake = gdc_item.get_child(count)
+		if slot:
+			slot.update(fma)
+		else:
+			append_item(fma)
+		count += 1
+	for i in range(gdc_item.get_child_count() - 1, count - 1, -1):
+		gdc_item.get_child(i).queue_free()
 func append_slot_tool(item_tool:Item):
 	var slot:ProductionSlotTool = get_slot_tool()
 	gdc_tool.add_child(slot)

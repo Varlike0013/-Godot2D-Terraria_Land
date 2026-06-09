@@ -11,7 +11,7 @@ const DISPLAY_CHARATER_NPC = preload("uid://di7bddk56tmpm")
 @onready var grid_container_slots: GridContainer = $UI_Bag/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/GridContainer
 @onready var grid_container_create: GridContainer = $UI_Create/MarginContainer/PanelContainer/MarginContainer/ScrollContainer/GridContainer
 @onready var building_select_base: BuildingSelectBase = $UI_Select/MarginContainer/BuildingSelectBase
-@onready var building_select_product: BuildingSelectProduction = $UI_Select/MarginContainer/BuildingSelect
+@onready var building_select_production: BuildingSelectProduction = $UI_Select/MarginContainer/BuildingSelectProduction
 @onready var timer_flash: Timer = $UI_Bag/Control/HBoxContainer/CB_flash/TimerFlash
 @onready var top_info: Control = $UI_Top/TopInfo
 @onready var top_info_show: PanelContainer = $UI_Top/TopInfo/TopInfoShow
@@ -124,7 +124,14 @@ func update_create():
 	for info in info_dic:
 		add_building_slot(info)
 func update_select(new_bd:BuildingProduction):
-	building_select_base.update(new_bd)
+	if new_bd.building_status == BuildingProduction.BuildingStatus.Make:
+		building_select_production.visible = true
+		building_select_base.visible = false
+		building_select_production.update(new_bd)
+	elif new_bd.building_status == BuildingProduction.BuildingStatus.Creat:
+		building_select_production.visible = false
+		building_select_base.visible = true
+		building_select_base.update(new_bd)
 func update_players():
 	var array_players:Array[Player] = level.get_players()
 	var array_slots:Array[DisplayCharaterNpc] = get_player_slots()

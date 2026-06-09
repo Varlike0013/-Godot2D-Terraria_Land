@@ -1,5 +1,6 @@
 extends MarginContainer
 class_name ProductionItemSlot
+
 @onready var texture_rect: TextureRect = $VBoxContainer/TextureRect
 @onready var label: Label = $VBoxContainer/Label
 
