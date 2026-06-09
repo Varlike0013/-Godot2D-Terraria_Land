@@ -27,7 +27,7 @@ class_name CharacterData
 @export_range(0, 1) var percentage_bonus: float = 0.0 ##百分比增伤
 @export_group("Attack", "attack")
 @export var attack_distance: float = 50.0
-@export var attack_damage: float = 0.0
+@export var attack_damage: float = 5.0
 @export var attack_range: float = 1.0
 @export var attack_interval: float = 1.0
 @export_group("Repelled")
@@ -36,11 +36,21 @@ var resistance_array:Array[float] = []
 var bonus_array:Array[float] = []
 
 func reduce_health(value:float):
-	health.x -= value
-	health.x = max(0,health.x)
+	if value>0:
+		health.x -= value
+		health.x = max(0,health.x)
 func restore_health(value:float):
-	health.x += value
-	health.x = min(health.y,health.x)
+	if value>0:
+		health.x += value
+		health.x = min(health.y,health.x)
+func restore_health_percentage(per:float): ##per range in (0,100)
+	restore_health(health.y*(per/100.0))
+func reduce_health_percentage(per:float):  ##per range in (0,100)
+	reduce_health(health.y*(per/100.0))
+func get_lost_health_percentage() -> float:
+	if health.y == 0:
+		return 0.0  # 避免除以零
+	return (health.y - health.x) / health.y * 100.0
 func set_health_max(value:float):
 	health.y = value
 	if health.x>health.y:
