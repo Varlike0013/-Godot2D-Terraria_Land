@@ -146,7 +146,7 @@ func get_item(new_id:int,new_qua:int=1)->Item:
 		#item.update_info()
 		#return item
 	return null
-func get_item_info(new_id:int)->TableItemRow:##null返回全部信息-》Dictionary
+func get_item_info(new_id:int)->TableItemRow:##返回id 对应的Res资源行以TableItemRow的形式
 	return DB_ITEM.get_row(new_id)
 func get_coin_number(type:int=4)->int:##0铜币，1银币，2金币，3铂金币,4全部
 	if type == 4:

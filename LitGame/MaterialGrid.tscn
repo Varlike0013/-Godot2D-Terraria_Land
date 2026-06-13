@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://byhjbiiror8s5"]
+
+[ext_resource type="PackedScene" uid="uid://bktgsiv1vj1q" path="res://LitGame/MaterialSlot.tscn" id="1_p5v0k"]
+[ext_resource type="Script" uid="uid://8lqogwp1wdm7" path="res://LitGame/material_grid.gd" id="1_wf1le"]
+
+[node name="MaterialGrid" type="PanelContainer" unique_id=1387361730]
+script = ExtResource("1_wf1le")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1801344585]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=853188007]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=64712937]
+layout_mode = 2
+alignment = 2
+
+[node name="Lable_GridCount" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=107955749]
+layout_mode = 2
+text = "SlotCount:?/?"
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=1670516303]
+layout_mode = 2
+
+[node name="MaterialSlot" parent="MarginContainer/VBoxContainer/GridContainer" unique_id=183102722 instance=ExtResource("1_p5v0k")]
+layout_mode = 2

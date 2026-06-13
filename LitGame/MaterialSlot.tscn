@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bktgsiv1vj1q"]
+
+[ext_resource type="Texture2D" uid="uid://l62wypi1p38p" path="res://image/icon_question.png" id="1_gpjv0"]
+[ext_resource type="Script" uid="uid://368kalscvmfr" path="res://LitGame/material_slot.gd" id="1_u4iqb"]
+
+[node name="MaterialSlot" type="PanelContainer" unique_id=183102722]
+script = ExtResource("1_u4iqb")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1177099534]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("1_gpjv0")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Timer" type="Timer" parent="." unique_id=1863549633]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
