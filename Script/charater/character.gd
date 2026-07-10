@@ -51,10 +51,10 @@ func _physics_process(delta: float) -> void:
 		if is_ray_round(): ##在地面上
 			if attack_target:
 				if position.x<attack_target.position.x-character_data.attack_distance:
-					linear_velocity.x = character_data.speed
+					linear_velocity.x = character_data.speed.current_value
 					change_face_direction(false)
 				elif position.x>attack_target.position.x+character_data.attack_distance:
-					linear_velocity.x = -character_data.speed
+					linear_velocity.x = -character_data.speed.current_value
 					change_face_direction(true)
 				else :
 					move_status = MoveStatus.STAND
@@ -148,7 +148,7 @@ func get_buffer(is_array:bool = true)->Array[Buffer]:
 	return re_array
 func reduce_health(value:float):
 	character_data.reduce_health(value)
-	if character_data.health.x<=0:
+	if character_data.health<=0:
 		be_death()
 func restore_health(value:float):
 	character_data.restore_health(value)
