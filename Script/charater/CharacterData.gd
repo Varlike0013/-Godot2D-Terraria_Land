@@ -20,7 +20,7 @@ class_name CharacterData
 @export_group("level")
 @export var character_level: int = 1
 @export var level_growth_health:float = 10.0
-@export var level_growth_magic:float = 5.0
+@export var level_growth_magic:float = 0.0
 @export var level_growth_bonus:float = 5.0
 @export var level_growth_defense:float = 3.0
 @export_group("Attack", "attack")
@@ -66,6 +66,11 @@ func set_magic_max(value:float):
 	magic_max.set_base(value)
 	if magic>magic_max.current_value:
 		magic = magic_max.current_value
+func set_level(value:int):
+	character_level = value
+	update_level_modifier()
+func get_level():
+	return character_level
 func update_level_modifier():
 	health_max.add_modifier(Modifier.add("level",level_growth_health*(character_level-1)))
 	magic_max.add_modifier(Modifier.add("level",level_growth_magic*(character_level-1)))
@@ -75,5 +80,17 @@ func calculate_taken_damage(damage: float,pent:float) -> float: ##受到伤害�
 	damage *= 1-resistance_pec.current_value
 	var def:float = max(0,(defense.current_value-pent))
 	return damage-def
-func calculate_dealt_damage(damage: float) -> float: ##造成伤害计算（由攻击者调用）
+func calculate_dealt_damage(weapon:Weapon=null) -> float: ##造成伤害计算（由攻击者调用）
+	var damage:float = attack_damage
+	if weapon and self is PlayerData:
+		damage = weapon.get_damage_value(self)
 	return (damage+bonus.current_value)*(1+bonus_pec.current_value)
+func get_modifiers_info() ->Array[Array]:
+	var result:Array[Array] = []
+	var property_list:Array[Dictionary] = get_property_list()
+	for property in property_list:
+		var property_name = property["name"]
+		var property_value = get(property_name)
+		if property_value is Attribute:
+			result.append(property_value.get_modifiers_info())
+	return result

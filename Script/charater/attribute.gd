@@ -98,7 +98,11 @@ func clear_modifiers() -> void:
 		return
 	modifiers.clear()
 	recalculate()
-
+func get_modifiers_info()->Array[Dictionary]:
+	var result:Array[Dictionary] = []
+	for mod in modifiers:
+		result.append(mod.get_info())
+	return result
 # ----- 基础值直接修改 -----
 func set_base(value: float) -> void:
 	base_value = value   # 触发 setter，自动重算

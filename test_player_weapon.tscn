@@ -6,9 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://8pjrsdi30vxr" path="res://Script/charater/player/player.tscn" id="3_d8a0y"]
 [ext_resource type="Script" uid="uid://cw1qhl71u8ojx" path="res://Script/charater/CharacterData.gd" id="3_dwowh"]
 [ext_resource type="PackedScene" uid="uid://dptpcr1w4w7ad" path="res://Script/weapon2d/ShortSword/copper_shortsword.tscn" id="4_dwowh"]
+[ext_resource type="Script" uid="uid://dsxytqcr0ee26" path="res://Script/charater/player/AttributeVigor.gd" id="4_t5umm"]
+
+[sub_resource type="Resource" id="Resource_wtbiq"]
+script = ExtResource("4_t5umm")
+metadata/_custom_type_script = "uid://dsxytqcr0ee26"
 
 [sub_resource type="Resource" id="Resource_of57p"]
 script = ExtResource("3_355dv")
+vigor = SubResource("Resource_wtbiq")
 metadata/_custom_type_script = "uid://dvitwc1y5w1rs"
 
 [sub_resource type="Resource" id="Resource_355dv"]

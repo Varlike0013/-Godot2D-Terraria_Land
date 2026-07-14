@@ -18,9 +18,9 @@ func update_info():
 func get_damage(player:Player=null)->float:
 	var damage:float = base_damage
 	if player:
-		damage = get_damage_value(player)
+		damage = get_damage_value(player.character_data)
 	return damage
-func get_damage_value(player:Player)->float: ##计算伤害的方法,计算加成
+func get_damage_value(player:PlayerData)->float: ##计算伤害的方法,计算加成
 	var damage:float = (base_damage+bonus_strength*player.bonus_strength)
 	damage += bonus_dexterity*player.bonus_dexterity
 	damage += bonus_intelligence*player.bonus_intelligence

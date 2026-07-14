@@ -17,6 +17,8 @@ func _init(p_source: String, p_amount: float, p_operation: Operation = Operation
 	source = p_source
 	amount = p_amount
 	operation = p_operation
+func get_info()->Dictionary:
+	return {"source":source,"amount":amount,"operation":operation}
 # 静态工厂方法（便于使用）
 static func add(source: String, amount: float) -> Modifier: ##_init(operation.add)
 	return Modifier.new(source, amount, Operation.ADD)
