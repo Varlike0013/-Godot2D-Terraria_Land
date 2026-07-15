@@ -14,6 +14,7 @@ class_name CharacterData
 @export var magic_max:Attribute = Attribute.new(50.0)
 @export var defense: Attribute = Attribute.new(0) 	##固定减伤
 @export var bonus: Attribute = Attribute.new(0)		##固定增伤
+@export var armor:Attribute = Attribute.new(0)		##护甲
 @export var penetration: Attribute = Attribute.new(0)		##护甲穿透
 @export var resistance_pec: Attribute = Attribute.new(0) 	##百分比减伤
 @export var bonus_pec: Attribute = Attribute.new(0) ##百分比增伤
@@ -71,15 +72,10 @@ func set_level(value:int):
 	update_level_modifier()
 func get_level():
 	return character_level
-func update_level_modifier():
-	health_max.add_modifier(Modifier.add("level",level_growth_health*(character_level-1)))
-	magic_max.add_modifier(Modifier.add("level",level_growth_magic*(character_level-1)))
-	defense.add_modifier(Modifier.add("level",level_growth_defense*(character_level-1)))
-	bonus.add_modifier(Modifier.add("level",level_growth_bonus*(character_level-1)))
 func calculate_taken_damage(damage: float,pent:float) -> float: ##受到伤害计算（由被攻击者调用）：pent护甲穿透
 	damage *= 1-resistance_pec.current_value
-	var def:float = max(0,(defense.current_value-pent))
-	return damage-def
+	var def:float = max(0,(armor.current_value-pent))
+	return max(0,(damage-def-defense.current_value))
 func calculate_dealt_damage(weapon:Weapon=null) -> float: ##造成伤害计算（由攻击者调用）
 	var damage:float = attack_damage
 	if weapon and self is PlayerData:
@@ -94,3 +90,8 @@ func get_modifiers_info() ->Array[Array]:
 		if property_value is Attribute:
 			result.append(property_value.get_modifiers_info())
 	return result
+func update_level_modifier():
+	health_max.add_modifier(Modifier.add("level",level_growth_health*(character_level-1)))
+	magic_max.add_modifier(Modifier.add("level",level_growth_magic*(character_level-1)))
+	defense.add_modifier(Modifier.add("level",level_growth_defense*(character_level-1)))
+	bonus.add_modifier(Modifier.add("level",level_growth_bonus*(character_level-1)))
