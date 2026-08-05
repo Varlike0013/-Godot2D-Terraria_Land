@@ -53,7 +53,7 @@ func append_top_info(new_str:String):
 	new_label.queue_free()
 func _on_timer_timeout() -> void:
 	if bind_node is Character:
-		current_value = bind_node.health
+		current_value = bind_node.character_data.health
 	elif bind_node is PylonPoint:
 		current_value = bind_node.health
 	update_show_type(ManagerSettings.is_show_health_bar)

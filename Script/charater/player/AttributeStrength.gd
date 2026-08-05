@@ -2,4 +2,7 @@ extends AttributePlayer
 class_name AttributeStrength
 
 @export_group("growth","growth")
-@export var growth_:Array[Vector2] = [Vector2(1,10),Vector2(30,15),Vector2(50,12),Vector2(80,8),Vector2(100,4)]
+@export var growth:Array[Vector2] = [Vector2(1,10),Vector2(30,15),Vector2(50,12),Vector2(80,8),Vector2(100,4)]
+
+func update_modifier_attribute():
+	add_modifier(Modifier.add("Attribute_Strength",attribute_base_growth(growth)))

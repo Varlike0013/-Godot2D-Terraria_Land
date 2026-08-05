@@ -15,5 +15,5 @@ func attribute_base_growth(array_growth: Array[Vector2]) -> float:##返回具体
 		if points_in_range > 0:
 			result += points_in_range * add_per_level
 	return result
-func update_modifier_attribute(): ##need overrite for player's attribute
-	pass
+#func update_modifier_attribute(): ##need overrite for player's attribute
+	#pass
